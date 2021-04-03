@@ -94,6 +94,19 @@
                 android:text="@string/log_in" />
 
             <TextView
+                android:id="@+id/forgotPassword_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:onClick="forgotPass"
+                android:text="@string/forgot_password"
+                android:textColor="@color/red1"
+                android:textSize="16dp"
+                android:textStyle="italic" />
+
+            <TextView
                 android:id="@+id/SignUp_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,18 +115,12 @@
                 android:layout_marginBottom="16dp"
                 android:onClick="startRegister"
                 android:text="@string/sign_up"
-                android:textColor="@color/red1"
-                android:textSize="12dp"
+                android:textColor="@color/blue2"
+                android:textSize="14dp"
                 android:textStyle="italic" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-
-
-
-
 
     <TextView
         android:id="@+id/cultOfGoats_TextView"
@@ -123,7 +130,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/unify_project"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

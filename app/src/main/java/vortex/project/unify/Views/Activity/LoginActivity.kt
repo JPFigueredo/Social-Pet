@@ -13,4 +13,5 @@ class LoginActivity : AppCompatActivity() {
 
     fun startRegister(view: View) {}
     fun logIN(view: View) {}
+    fun forgotPass(view: View) {}
 }
