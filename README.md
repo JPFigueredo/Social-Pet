@@ -10,8 +10,23 @@
 
 # Rede Social Pets
 
+
 # Cenário
 
 # Funcionalidades:
-- Vacinação, Remédios
-- Foursquare (Localização)
+Nivel Dono:
+- Cadastro de perfil de pets (Cada usuário pode cadastrar um perfil para cada pet)
+- Calendário de Vacinação, Remédios, etc...
+- Calendário de Eventos (Reuniões, Lojas e Doações)
+- Criar usuário PJ e ONG
+- Catalogo de Lojas de Pets
+- Espaço para Anúcios de Lojas de Pets
+
+Nivel Pet:
+- CheckIn [Foursquare (Localização)]
+- Album de Fotos & Videos
+- - Curti, comentar, compartilhar...
+- History (Videos de duração de 24 horas)
+- Mensagens
+- Filtragem de perfil de acordo com o tipo de pet
+- Filtragem de conteúdo de usuários em comum
