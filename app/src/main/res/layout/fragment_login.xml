@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink_500"
-    tools:context=".Views.Activity.LoginActivity">
+    tools:context=".Views.Fragment.LoginFragment">
 
 
     <ImageView
@@ -67,7 +67,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:text="SocialPet"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/emailLogin_layout"
@@ -82,6 +82,7 @@
             android:layout_marginStart="46dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="46dp"
+            android:textColorHint="?attr/colorSecondaryVariant"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
@@ -108,6 +109,9 @@
             android:layout_marginStart="46dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="46dp"
+            android:textColorHint="?attr/colorSecondaryVariant"
+            app:passwordToggleTint="?attr/colorSecondaryVariant"
+            app:counterTextColor="?attr/colorSecondaryVariant"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
@@ -136,7 +140,6 @@
             android:clickable="true"
             android:scaleX="1.2"
             android:scaleY="1.2"
-            android:onClick="logIN"
             app:backgroundTint="?attr/colorOnSecondary"
             app:layout_constraintBottom_toTopOf="@+id/passwordLogin_layout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +153,7 @@
             android:layout_height="wrap_content"
             android:text="@string/not_a_member_sigup_now"
             android:textSize="16sp"
-            android:onClick="startRegister"
+            android:textColor="?attr/colorSecondaryVariant"
             app:layout_constraintBottom_toTopOf="@+id/tv_forgot_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,9 +164,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_password"
-            android:textColor="@color/pink_500"
+            android:textColor="?attr/colorSecondary"
             android:textStyle="bold"
-            android:onClick="forgotPass"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
