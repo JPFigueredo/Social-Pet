@@ -26,4 +26,6 @@
     <string name="welcome_">Welcome,</string>
     <string name="buddy_">buddy!</string>
     <string name="not_a_member_sigup_now">Not a member? Sigup now</string>
+    <string name="next">Next</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
