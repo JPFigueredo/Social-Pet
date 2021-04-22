@@ -19,10 +19,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dog_01" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_buddy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buddy_"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="280dp"
         android:background="@drawable/rect_top_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,22 +59,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
+        <TextView
+            android:id="@+id/tv_socialPet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="46dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="SocialPet"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/emailLogin_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailLogin_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="46dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="46dp"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeWidth="2dp"
+            app:boxStrokeWidth="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tv_socialPet">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailLogin_input"
@@ -69,7 +112,7 @@
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeWidth="2dp"
+            app:boxStrokeWidth="3dp"
             app:counterEnabled="true"
             app:counterMaxLength="12"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,12 +136,38 @@
             android:clickable="true"
             android:scaleX="1.2"
             android:scaleY="1.2"
-            app:backgroundTint="@color/black"
-            app:tint="@color/white"
+            android:onClick="logIN"
+            app:backgroundTint="?attr/colorOnSecondary"
             app:layout_constraintBottom_toTopOf="@+id/passwordLogin_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailLogin_layout"
-            app:srcCompat="@drawable/ic_arrow_forward" />
+            app:srcCompat="@drawable/ic_arrow_forward"
+            app:tint="?attr/colorOnPrimary" />
+
+        <TextView
+            android:id="@+id/tv_not_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_a_member_sigup_now"
+            android:textSize="16sp"
+            android:onClick="startRegister"
+            app:layout_constraintBottom_toTopOf="@+id/tv_forgot_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLogin_layout" />
+
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:textColor="@color/pink_500"
+            android:textStyle="bold"
+            android:onClick="forgotPass"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_not_member" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
