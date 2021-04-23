@@ -7,4 +7,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="phone_number_optional">Phone Number (optional)</string>
     <string name="save">Save</string>
+    <string name="_1_of_3">1 of 3</string>
+    <string name="_2_of_3">2 of 3</string>
+    <string name="_3_of_3">3 of 3</string>
 </resources>
