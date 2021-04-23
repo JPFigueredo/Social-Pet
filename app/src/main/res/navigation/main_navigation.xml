@@ -10,4 +10,19 @@
         android:name="vortex.project.unify.Views.Fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/emailFragment"
+        android:name="vortex.project.unify.Views.Fragment.EmailFragment"
+        android:label="fragment_email"
+        tools:layout="@layout/fragment_email" />
+    <fragment
+        android:id="@+id/phoneFragment"
+        android:name="vortex.project.unify.Views.Fragment.PhoneFragment"
+        android:label="fragment_phone"
+        tools:layout="@layout/fragment_phone" />
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="vortex.project.unify.Views.Fragment.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" />
 </navigation>

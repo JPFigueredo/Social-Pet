@@ -5,4 +5,6 @@
     <string name="not_a_member_sigup_now">Not a member? Sigup now</string>
     <string name="next">Next</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="phone_number_optional">Phone Number (optional)</string>
+    <string name="save">Save</string>
 </resources>
