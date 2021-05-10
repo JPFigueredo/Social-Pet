@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="470dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_infoPet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/cd_profilePost"
+        app:layout_constraintStart_toEndOf="@+id/cd_profilePost"
+        app:layout_constraintTop_toTopOf="@+id/cd_profilePost">
+
+        <TextView
+            android:id="@+id/tv_petsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pet's name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_datePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd_profilePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cd_post"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/img_profilePost"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd_post"
+        android:layout_width="360dp"
+        android:layout_height="320dp"
+        android:layout_marginBottom="64dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/img_post"
+            android:layout_width="360dp"
+            android:layout_height="360dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_utilities"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rect_all_radius"
+        android:backgroundTint="#EEECEAEA"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/img_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_favorite" />
+
+        <ImageView
+            android:id="@+id/img_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_comment" />
+
+        <ImageView
+            android:id="@+id/img_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_send" />
+
+        <ImageView
+            android:id="@+id/img_savePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_bookmark" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

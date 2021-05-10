@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_dest"
+        android:icon="@drawable/ic_home"
+        android:menuCategory="secondary"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/search_dest"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/addPost_dest"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ic_add"
+        android:title="@string/add" />
+
+    <item
+        android:id="@+id/likes_dest"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/likes" />
+
+    <item
+        android:id="@+id/profile_dest"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ic_person"
+        android:title="@string/profile" />
+
+</menu>
