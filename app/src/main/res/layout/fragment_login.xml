@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dog_01" />
+        app:srcCompat="@drawable/dog" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="220dp"
         android:background="@drawable/rect_top_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,8 +110,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="46dp"
             android:textColorHint="?attr/colorSecondaryVariant"
-            app:passwordToggleTint="?attr/colorSecondaryVariant"
-            app:counterTextColor="?attr/colorSecondaryVariant"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
@@ -119,10 +117,12 @@
             app:boxStrokeWidth="3dp"
             app:counterEnabled="true"
             app:counterMaxLength="12"
+            app:counterTextColor="?attr/colorSecondaryVariant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailLogin_layout"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="?attr/colorSecondaryVariant">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordLogin_input"
@@ -152,8 +152,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/not_a_member_sigup_now"
-            android:textSize="16sp"
             android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_forgot_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

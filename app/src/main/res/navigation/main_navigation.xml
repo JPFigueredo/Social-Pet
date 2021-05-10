@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_emailFragment"
             app:destination="@id/emailFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_postFragment"
+            app:destination="@id/postFragment" />
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
@@ -41,4 +44,9 @@
             android:id="@+id/action_passwordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="vortex.project.unify.Views.Fragment.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" />
 </navigation>

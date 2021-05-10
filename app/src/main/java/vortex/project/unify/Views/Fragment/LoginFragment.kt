@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import vortex.project.unify.R
 
@@ -22,11 +24,21 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpListeners()
+        setToolbar()
     }
 
     private fun setUpListeners(){
         tv_not_member.setOnClickListener {
             findNavController().navigate(R.id.emailFragment, null)
         }
+        fab_login.setOnClickListener {
+            findNavController().navigate(R.id.postFragment, null)
+        }
+    }
+
+    private fun setToolbar() {
+        val background = context?.let { AppCompatResources.getDrawable(it, R.color.pink_500) }
+
+        activity?.toolbar!!.background = background
     }
 }

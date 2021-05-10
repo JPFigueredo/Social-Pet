@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_email.*
 import vortex.project.unify.R
 
@@ -21,6 +23,7 @@ class EmailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setToolbar()
         setUpListeners()
     }
 
@@ -28,5 +31,11 @@ class EmailFragment : Fragment() {
         btn_next_email.setOnClickListener {
             findNavController().navigate(R.id.phoneFragment, null)
         }
+    }
+
+    private fun setToolbar() {
+        val background = context?.let { getDrawable(it, R.drawable.rect_gradient) }
+
+        activity?.toolbar!!.background = background
     }
 }
