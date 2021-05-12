@@ -37,8 +37,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun setToolbar() {
-        val background = context?.let { AppCompatResources.getDrawable(it, R.color.pink_500) }
-
-        activity?.toolbar!!.background = background
+        activity?.toolbar_feed!!.visibility = View.GONE
     }
 }

@@ -3,6 +3,7 @@ package vortex.project.unify.Views.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -11,6 +12,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import vortex.project.unify.R
 
 
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        setupDrawerMenu()
 
         /*val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.main_navigation_xml) as NavHostFragment? ?: return
@@ -50,4 +54,14 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.post_fragment).navigateUp(appBarConfiguration)
     }*/
+
+    private fun setupDrawerMenu() {
+        drawer_button.setOnClickListener {
+            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+                drawer_layout.closeDrawer(GravityCompat.START)
+            } else {
+                drawer_layout.openDrawer(GravityCompat.START)
+            }
+        }
+    }
 }

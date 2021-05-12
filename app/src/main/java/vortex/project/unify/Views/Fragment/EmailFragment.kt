@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_email.*
+import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
 class EmailFragment : Fragment() {
@@ -34,8 +35,8 @@ class EmailFragment : Fragment() {
     }
 
     private fun setToolbar() {
-        val background = context?.let { getDrawable(it, R.drawable.rect_gradient) }
+        //val background = context?.let { AppCompatResources.getDrawable(it, R.drawable.rect_gradient) }
 
-        activity?.toolbar!!.background = background
+        activity?.toolbar_feed!!.visibility = View.GONE
     }
 }

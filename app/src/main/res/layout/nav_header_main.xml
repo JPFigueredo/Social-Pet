@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="?attr/colorOnPrimary"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageViewProfileFragment"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/labelHaederName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="OwnerPet name"
+        android:textColor="?attr/colorPrimary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/labelHaederEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ownerEmail@exmple.com"
+        android:textColor="?attr/colorPrimary"/>
+
+</LinearLayout>

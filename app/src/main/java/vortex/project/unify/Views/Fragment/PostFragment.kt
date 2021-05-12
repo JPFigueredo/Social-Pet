@@ -26,6 +26,7 @@ class PostFragment : Fragment() {
     private fun setToolbar() {
         val background = context?.let { AppCompatResources.getDrawable(it, R.color.white) }
 
-        activity?.toolbar!!.background = background
+        activity?.toolbar_feed!!.visibility = View.VISIBLE
+        activity?.toolbar_feed!!.background = background
     }
 }

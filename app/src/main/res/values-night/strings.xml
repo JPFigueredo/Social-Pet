@@ -15,4 +15,6 @@
     <string name="likes">Likes</string>
     <string name="add">Add</string>
     <string name="profile">Profile</string>
+    <string name="preferences">Preferences</string>
+    <string name="my_pets">My pets</string>
 </resources>

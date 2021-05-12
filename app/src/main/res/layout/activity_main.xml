@@ -6,25 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".Views.Activity.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:background="@color/pink_500"
+    <RelativeLayout
+        android:id="@+id/toolbar_feed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/pink_500"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <fragment
-        android:id="@+id/display_fragments"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
+        <FrameLayout
+            android:id="@+id/drawer_button"
+            android:layout_width="50dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentStart="true"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/ic_menu"
+                android:tint="@color/black" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/camera_button"
+            android:layout_width="50dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/message_button"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/ic_photo_camera"
+                android:tint="@color/black" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/message_button"
+            android:layout_width="50dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/ic_send"
+                android:tint="@color/black" />
+        </FrameLayout>
+
+        <include layout="@layout/toolbar" />
+    </RelativeLayout>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:navGraph="@navigation/main_navigation" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_feed"
+        tools:openDrawer="start">
+
+        <fragment
+            android:id="@+id/display_fragments"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main_navigation" />
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/drawer_nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="?attr/colorPrimary"
+            app:headerLayout="@layout/nav_header_main"
+            app:itemIconTint="?attr/colorOnPrimary"
+            app:itemTextColor="?attr/colorOnPrimary"
+            app:menu="@menu/drawer_menu">
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
