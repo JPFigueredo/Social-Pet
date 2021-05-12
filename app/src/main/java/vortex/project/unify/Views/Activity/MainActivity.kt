@@ -1,6 +1,7 @@
 package vortex.project.unify.Views.Activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -27,8 +28,6 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        setupDrawerMenu()
-
         /*val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.main_navigation_xml) as NavHostFragment? ?: return
 
@@ -39,6 +38,14 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         setupActionBar(navController, appBarConfiguration)*/
+    }
+
+    fun setupDrawerMenu(view: View) {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            drawer_layout.openDrawer(GravityCompat.START)
+        }
     }
 
     /*private fun setupBottomNavMenu(navController: NavController) {
@@ -54,14 +61,4 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.post_fragment).navigateUp(appBarConfiguration)
     }*/
-
-    private fun setupDrawerMenu() {
-        drawer_button.setOnClickListener {
-            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-                drawer_layout.closeDrawer(GravityCompat.START)
-            } else {
-                drawer_layout.openDrawer(GravityCompat.START)
-            }
-        }
-    }
 }
