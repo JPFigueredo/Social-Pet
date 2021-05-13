@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_password.*
 import vortex.project.unify.R
+import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class PasswordFragment : Fragment() {
@@ -26,38 +27,34 @@ class PasswordFragment : Fragment() {
         setUpListeners()
     }
 
-    private fun setUpListeners(){
+    private fun setUpListeners() {
         btn_next_password.setOnClickListener {
-            if(checkPassword()){
+            if (checkPassword()) {
                 findNavController().navigate(R.id.loginFragment, null)
-            }else{
+            } else {
                 Toast.makeText(context, "Senha inválida!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    fun checkPassword(): Boolean {
-        val specialCharPattern: Pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE)
-        val upperCasePattern: Pattern = Pattern.compile("[A-Z ]")
-        val lowerCasePattern: Pattern = Pattern.compile("[a-z ]")
-        val digitCasePattern: Pattern = Pattern.compile("[0-9 ]")
+
+    private fun checkPassword(): Boolean {
+        val passwordInput = passwordCadastro_input.toString()
+        val passwordREGEX: Pattern = Pattern.compile("^" +
+                "(?=.*[0-9])" +             //at least 1 digit
+                "(?=.*[a-zA-Z])"+           //at least 1 lowercase and 1 uppercase character
+                "(?=.*[!@#$%¨&*()_+])" +    //at least 1 special character
+                "(?=\\S+$)" +               //no white spaces
+                ".{8,12}" +                 //min 8 characters, max 12
+                "$")
         var flag = true
         if (passwordCadastro_input != ConfirmPasswordCadastro_input) {
             flag = false
         }
-        if (passwordCadastro_input.length() in 13 downTo 7) {
+        if(passwordInput.isEmpty()){
             flag = false
         }
-        if (!specialCharPattern.matcher(passwordCadastro_input.toString()).find()) {
-            flag = false
-        }
-        if (!upperCasePattern.matcher(passwordCadastro_input.toString()).find()) {
-            flag = false
-        }
-        if (!lowerCasePattern.matcher(passwordCadastro_input.toString()).find()) {
-            flag = false
-        }
-        if (!digitCasePattern.matcher(passwordCadastro_input.toString()).find()) {
+        if(!passwordREGEX.matcher(passwordInput).matches()){
             flag = false
         }
         return flag
