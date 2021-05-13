@@ -42,8 +42,9 @@ class PasswordFragment : Fragment() {
         val passwordInput = passwordCadastro_input.toString()
         val passwordREGEX: Pattern = Pattern.compile("^" +
                 "(?=.*[0-9])" +             //at least 1 digit
-                "(?=.*[a-zA-Z])"+           //at least 1 lowercase and 1 uppercase character
-                "(?=.*[!@#$%¨&*()_+])" +    //at least 1 special character
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[@#$%^&+=])" +    //at least 1 special character
                 "(?=\\S+$)" +               //no white spaces
                 ".{8,12}" +                 //min 8 characters, max 12
                 "$")
