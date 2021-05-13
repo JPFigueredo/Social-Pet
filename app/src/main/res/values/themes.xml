@@ -12,5 +12,10 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/graphite</item>
         <!-- Customize your theme here. -->
+        <item name="colorOnSurface">@color/graphite</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnPrimarySurface">@color/gray_05</item>
+
+
     </style>
 </resources>
