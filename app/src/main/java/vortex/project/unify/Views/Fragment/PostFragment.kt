@@ -32,6 +32,9 @@ class PostFragment : Fragment() {
         val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
 
         activity?.toolbar_feed!!.visibility = View.VISIBLE
+        activity?.drawer_button!!.visibility = View.VISIBLE
+        activity?.camera_button!!.visibility = View.VISIBLE
+        activity?.message_button!!.visibility = View.VISIBLE
         activity?.toolbar_feed!!.background = background!!.toDrawable()
     }
 }
