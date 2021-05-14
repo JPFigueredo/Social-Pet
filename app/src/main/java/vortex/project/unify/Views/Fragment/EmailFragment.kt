@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginStart
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_email.*
+import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
 
@@ -44,7 +48,7 @@ class EmailFragment : Fragment() {
 
     private fun setUpListeners(){
         btn_next_email.setOnClickListener {
-            if(validateEmail()) {
+            if(!validateEmail()) {
                 findNavController().navigate(R.id.phoneFragment, null)
             }else{
                 Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
@@ -60,5 +64,11 @@ class EmailFragment : Fragment() {
         activity?.camera_button!!.visibility = View.GONE
         activity?.message_button!!.visibility = View.GONE
         activity?.toolbar_feed!!.background = background
+
+        val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
+        parameter.marginStart = 0
+        activity?.toolbar!!.layoutParams = parameter
+
+
     }
 }
