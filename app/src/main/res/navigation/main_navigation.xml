@@ -18,7 +18,7 @@
             app:destination="@id/postFragment" />
         <action
             android:id="@+id/action_loginFragment_to_preferencesFragment"
-            app:destination="@id/preferencesFragment" />
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
