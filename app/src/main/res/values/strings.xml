@@ -39,4 +39,6 @@
     <string name="profile">Profile</string>
     <string name="preferences">Preferences</string>
     <string name="my_pets">My pets</string>
+    <string name="text_forgot_password">We just need your registered email address/nto send you password reset</string>
+    <string name="reset_password">Reset Password</string>
 </resources>
