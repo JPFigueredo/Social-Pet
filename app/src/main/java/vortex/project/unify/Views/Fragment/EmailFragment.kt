@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginStart
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,11 +56,11 @@ class EmailFragment : Fragment() {
     private fun setToolbar() {
         val background = context?.let { AppCompatResources.getDrawable(it, R.drawable.rect_gradient) }
 
-        activity?.toolbar_feed!!.visibility = View.VISIBLE
+        activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
         activity?.camera_button!!.visibility = View.GONE
         activity?.message_button!!.visibility = View.GONE
-        activity?.toolbar_feed!!.background = background
+        activity?.toolbar_layout!!.background = background
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 0

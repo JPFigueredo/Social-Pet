@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -34,9 +33,12 @@ class LoginFragment : Fragment() {
         fab_login.setOnClickListener {
             findNavController().navigate(R.id.postFragment, null)
         }
+        tv_forgot_password.setOnClickListener {
+            findNavController().navigate(R.id.forgotPasswordFragment, null)
+        }
     }
 
     private fun setToolbar() {
-        activity?.toolbar_feed!!.visibility = View.GONE
+        activity?.toolbar_layout!!.visibility = View.GONE
     }
 }
