@@ -51,10 +51,19 @@
         android:id="@+id/postFragment"
         android:name="vortex.project.unify.Views.Fragment.PostFragment"
         android:label="fragment_post"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="vortex.project.unify.Views.Fragment.ForgotPasswordFragment"
         android:label="fragment_preferences"
         tools:layout="@layout/fragment_forgot_password" />
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="vortex.project.unify.Views.Fragment.PreferencesFragment"
+        android:label="fragment_preferences"
+        tools:layout="@layout/fragment_preferences" />
 </navigation>

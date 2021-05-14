@@ -1,9 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Unify" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/blue2</item>
-        <item name="colorPrimaryVariant">@color/blue2</item>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/pink_500</item>
@@ -15,7 +16,6 @@
         <item name="colorOnSurface">@color/graphite</item>
         <item name="colorSurface">@color/white</item>
         <item name="colorOnPrimarySurface">@color/gray_05</item>
-
 
     </style>
 </resources>

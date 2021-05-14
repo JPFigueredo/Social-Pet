@@ -54,7 +54,7 @@ class EmailFragment : Fragment() {
     }
 
     private fun setToolbar() {
-        val background = context?.let { AppCompatResources.getDrawable(it, R.drawable.rect_gradient) }
+        val background = context?.let { AppCompatResources.getDrawable(it, R.color.purple_500) }
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
@@ -65,7 +65,5 @@ class EmailFragment : Fragment() {
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 0
         activity?.toolbar!!.layoutParams = parameter
-
-
     }
 }

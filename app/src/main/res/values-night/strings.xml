@@ -19,4 +19,9 @@
     <string name="my_pets">My pets</string>
     <string name="text_forgot_password">We just need your registered email address/nto send you password reset</string>
     <string name="reset_password">Reset Password</string>
+    <string name="language_">Language:</string>
+    <string name="appearance_">Appearance:</string>
+    <string name="day_mode">Day Mode</string>
+    <string name="change">Change</string>
+    <string name="english">English</string>
 </resources>
