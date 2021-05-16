@@ -20,12 +20,6 @@
         android:title="@string/add" />
 
     <item
-        android:id="@+id/likes_dest"
-        android:menuCategory="secondary"
-        android:icon="@drawable/ic_favorite"
-        android:title="@string/likes" />
-
-    <item
         android:id="@+id/profile_dest"
         android:menuCategory="secondary"
         android:icon="@drawable/ic_person"

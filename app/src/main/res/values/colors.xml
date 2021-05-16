@@ -19,6 +19,7 @@
     <color name="gray_25">#E6DADADA</color>
     <color name="gray_05">#E6F5F5F5</color>
     <color name="gray_600">#E6353535</color>
+    <color name="gray_700">#232323</color>
 
     <color name="graphite_00">#E61B1B1B</color>
 </resources>
