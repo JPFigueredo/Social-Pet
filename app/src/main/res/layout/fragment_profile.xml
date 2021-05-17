@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewProfileFragment"
                 app:layout_constraintStart_toEndOf="@+id/imageViewProfileFragment"
                 app:layout_constraintTop_toTopOf="@+id/imageViewProfileFragment">
 
@@ -58,7 +59,7 @@
                     android:id="@+id/tv_pets_name_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pet´s name"
+                    android:text="@string/pet_s_name"
                     android:textColor="?attr/colorOnSecondary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -67,8 +68,21 @@
                     android:id="@+id/tv_bio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bio"
+                    android:text="@string/bio"
                     android:textColor="?attr/colorOnSecondary" />
+
+                <TextView
+                    android:id="@+id/tv_bio2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+
+                <TextView
+                    android:id="@+id/tv_bio3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSecondary" />
+
             </LinearLayout>
 
             <LinearLayout

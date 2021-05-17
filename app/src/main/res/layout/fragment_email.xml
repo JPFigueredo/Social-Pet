@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailCadastro_layout"
+            android:id="@+id/pets_name_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailCadastro_input"
+                android:id="@+id/pets_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/e_mail"
@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailCadastro_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/pets_name_layout" />
 
         <Button
             android:id="@+id/btn_next_email"
@@ -91,7 +91,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailCadastro_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/pets_name_layout" />
 
         <TextView
             android:id="@+id/tv_progressOne"

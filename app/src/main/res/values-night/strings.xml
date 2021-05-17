@@ -27,4 +27,7 @@
     <string name="posts">Posts</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
+    <string name="pet_s_name">Pet´s name</string>
+    <string name="username">Username</string>
+    <string name="bio">Bio</string>
 </resources>
