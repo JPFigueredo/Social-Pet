@@ -39,23 +39,20 @@ class PasswordFragment : Fragment() {
 
 
     private fun checkPassword(): Boolean {
+        
         val passwordInput = passwordCadastro_input.toString()
-        val passwordREGEX: Pattern = Pattern.compile("^" +
-                "(?=.*[0-9])" +             //at least 1 digit
-                "(?=.*[a-z])" +             //at least 1 lower case letter
-                "(?=.*[A-Z])" +             //at least 1 upper case letter
-                "(?=.*[@#$%^&+=])" +        //at least 1 special character
-                "(?=\\S+$)" +               //no white spaces
-                ".{8,12}" +                 //min 8 characters, max 12
-                "$")
+        val confirmInput = ConfirmPasswordCadastro_input.toString()
+        val passwordREGEX: Pattern = Pattern.compile("""^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%¨&*()_+=-])(?=\S+$).{8,12}$""")
+        val match : Matcher = passwordREGEX.matcher(passwordInput)
         var flag = true
-        if (passwordCadastro_input != ConfirmPasswordCadastro_input) {
+
+        if (passwordInput != confirmInput) {
             flag = false
-        }
+        }else
         if(passwordInput.isEmpty()){
             flag = false
         }
-        if(!passwordREGEX.matcher(passwordInput).matches()){
+        if(!match.matches()){
             flag = false
         }
         return flag
