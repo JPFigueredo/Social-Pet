@@ -75,7 +75,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:backgroundTint="@color/purple_500"
+                android:backgroundTint="@color/orange_400"
                 android:text="@string/change"
                 android:textColor="@color/white"
                 app:cornerRadius="50dp" />
@@ -124,7 +124,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:backgroundTint="@color/purple_500"
+                android:backgroundTint="@color/orange_400"
                 android:text="@string/change"
                 android:textColor="@color/white"
                 app:cornerRadius="50dp" />

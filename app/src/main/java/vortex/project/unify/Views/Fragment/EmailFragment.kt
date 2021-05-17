@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.fragment_email.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
-
 class EmailFragment : Fragment() {
 
     override fun onCreateView(
@@ -54,7 +53,7 @@ class EmailFragment : Fragment() {
     }
 
     private fun setToolbar() {
-        val background = context?.let { AppCompatResources.getDrawable(it, R.color.purple_500) }
+        val background = context?.let { AppCompatResources.getDrawable(it, R.color.white) }
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE

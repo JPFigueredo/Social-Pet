@@ -26,11 +26,11 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/fab_save_info_pet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/purple_500"
+            android:backgroundTint="@color/orange_400"
             android:clickable="true"
             android:src="@drawable/ic_check"
             app:layout_constraintBottom_toBottomOf="parent"
