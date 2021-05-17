@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rect_gradient_background"
+    tools:context=".Views.Fragment.ProfileFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="?attr/colorOnPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_profile"
+        android:layout_width="350dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageViewProfileFragment"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toTopOf="@+id/labelHaederName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/layout_info_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@+id/imageViewProfileFragment"
+                app:layout_constraintTop_toTopOf="@+id/imageViewProfileFragment">
+
+                <TextView
+                    android:id="@+id/tv_pets_name_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pet´s name"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bio"
+                    android:textColor="?attr/colorOnSecondary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_posts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/layout_fallowers"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfileFragment">
+
+                <TextView
+                    android:id="@+id/label_posts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/posts"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_num_posts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:textColor="?attr/colorOnSecondary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_fallowers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/layout_following"
+                app:layout_constraintStart_toEndOf="@+id/layout_posts"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfileFragment">
+
+                <TextView
+                    android:id="@+id/label_fallowers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/followers"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_num_fallowers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="?attr/colorOnSecondary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_following"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layout_fallowers"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfileFragment">
+
+                <TextView
+                    android:id="@+id/label_following"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/following"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_num_following"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="?attr/colorOnSecondary" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/layout_fallowers"
+                app:layout_constraintStart_toEndOf="@+id/layout_posts"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfileFragment" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/layout_following"
+                app:layout_constraintStart_toEndOf="@+id/layout_fallowers"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfileFragment" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_profile"
+        tools:listitem="@layout/profile_card"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

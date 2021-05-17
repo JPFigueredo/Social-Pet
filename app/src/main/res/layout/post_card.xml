@@ -2,22 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/rect_gradient_background"
     android:layout_width="match_parent"
-    android:layout_height="470dp">
+    android:layout_height="500dp"
+    android:background="@drawable/rect_gradient_background">
 
     <LinearLayout
-        android:id="@+id/linearLayout_infoPet"
+        android:id="@+id/layout_info_pet_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/cd_profilePost"
-        app:layout_constraintStart_toEndOf="@+id/cd_profilePost"
-        app:layout_constraintTop_toTopOf="@+id/cd_profilePost">
+        app:layout_constraintBottom_toBottomOf="@+id/cd_img_profile"
+        app:layout_constraintStart_toEndOf="@+id/cd_img_profile"
+        app:layout_constraintTop_toTopOf="@+id/cd_img_profile">
 
         <TextView
-            android:id="@+id/tv_petsName"
+            android:id="@+id/tv_username_profile_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pet's name"
@@ -26,7 +26,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_datePost"
+            android:id="@+id/tv_datePost_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Today"
@@ -35,26 +35,26 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cd_profilePost"
+        android:id="@+id/cd_img_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/cd_post"
+        app:layout_constraintBottom_toTopOf="@+id/cd_posts_profile"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/img_profilePost"
+            android:id="@+id/img_pet_profile"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:srcCompat="@drawable/ic_launcher_background" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cd_post"
-        android:layout_width="360dp"
-        android:layout_height="320dp"
+        android:id="@+id/cd_posts_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
@@ -63,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/img_post"
+            android:id="@+id/img_post_profile"
             android:layout_width="360dp"
             android:layout_height="360dp"
             app:srcCompat="@drawable/ic_launcher_background" />
@@ -71,8 +71,8 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:id="@+id/linearLayout_utilities"
-        android:layout_width="match_parent"
+        android:id="@+id/layout_utilies"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
@@ -85,41 +85,67 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/img_like"
+        <LinearLayout
+            android:id="@+id/layout_likes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:tint="?attr/colorOnSecondary"
-            app:srcCompat="@drawable/ic_favorite" />
+            android:backgroundTint="?attr/colorOnPrimarySurface"
+            android:elevation="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_post_profile">
 
-        <ImageView
-            android:id="@+id/img_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:tint="?attr/colorOnSecondary"
-            app:srcCompat="@drawable/ic_comment" />
+            <ImageView
+                android:id="@+id/img_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:tint="?attr/colorOnSecondary"
+                app:srcCompat="@drawable/ic_favorite" />
 
-        <ImageView
-            android:id="@+id/img_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:tint="?attr/colorOnSecondary"
-            app:srcCompat="@drawable/ic_send" />
+            <TextView
+                android:id="@+id/tv_num_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:text="0" />
 
-        <ImageView
-            android:id="@+id/img_savePost"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_coments"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:tint="?attr/colorOnSecondary"
-            app:srcCompat="@drawable/ic_bookmark" />
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/layout_utilies"
+            app:layout_constraintTop_toBottomOf="@+id/img_post_profile">
+
+            <ImageView
+                android:id="@+id/img_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:tint="?attr/colorOnSecondary"
+                app:srcCompat="@drawable/ic_comment" />
+
+            <TextView
+                android:id="@+id/tv_num_coments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:text="0" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

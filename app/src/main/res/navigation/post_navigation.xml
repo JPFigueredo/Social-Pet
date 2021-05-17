@@ -2,12 +2,4 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/post_navigation"
-    app:startDestination="@id/feedFragment">
-
-    <fragment
-        android:id="@+id/feedFragment"
-        android:name="vortex.project.unify.Views.Fragment.FeedFragment"
-        android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
-</navigation>
+    android:id="@+id/post_navigation" />

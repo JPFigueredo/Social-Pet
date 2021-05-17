@@ -46,4 +46,7 @@
     <string name="day_mode">Day Mode</string>
     <string name="change">Change</string>
     <string name="english">English</string>
+    <string name="posts">Posts</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
 </resources>

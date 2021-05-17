@@ -66,4 +66,9 @@
         android:name="vortex.project.unify.Views.Fragment.PreferencesFragment"
         android:label="fragment_preferences"
         tools:layout="@layout/fragment_preferences" />
+    <fragment
+        android:id="@+id/profile_dest"
+        android:name="vortex.project.unify.Views.Fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

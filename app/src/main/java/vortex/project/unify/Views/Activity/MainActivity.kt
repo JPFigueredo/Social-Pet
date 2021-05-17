@@ -1,6 +1,9 @@
 package vortex.project.unify.Views.Activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -8,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -48,6 +52,10 @@ class MainActivity : AppCompatActivity() {
                                appBarConfig : AppBarConfiguration) {
         setupActionBarWithNavController(navController, appBarConfig)
     }
+
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return  item.onNavDestinationSelected(findNavController(R.id.display_fragments))
+    }*/
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.display_fragments).navigateUp(appBarConfiguration)
