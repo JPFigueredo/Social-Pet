@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/emailFragment"
         android:name="vortex.project.unify.Views.Fragment.EmailFragment"
-        android:label="fragment_email"
+        android:label="Insert your email"
         tools:layout="@layout/fragment_email" >
         <action
             android:id="@+id/action_emailFragment_to_phoneFragment"
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/phoneFragment"
         android:name="vortex.project.unify.Views.Fragment.PhoneFragment"
-        android:label="fragment_phone"
+        android:label="Insert your phone"
         tools:layout="@layout/fragment_phone" >
         <action
             android:id="@+id/action_phoneFragment_to_passwordFragment"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/passwordFragment"
         android:name="vortex.project.unify.Views.Fragment.PasswordFragment"
-        android:label="fragment_password"
+        android:label="Insert your password"
         tools:layout="@layout/fragment_password" >
         <action
             android:id="@+id/action_passwordFragment_to_loginFragment"
