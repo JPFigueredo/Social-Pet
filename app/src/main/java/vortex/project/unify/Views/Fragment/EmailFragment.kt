@@ -31,7 +31,7 @@ class EmailFragment : Fragment() {
     }
 
     private fun validateEmail(): Boolean {
-        val emailInput = pets_name_input.toString()
+        val emailInput = pets_name_input.text.toString()
         var flag = true
         if (emailInput.isEmpty()) {
             flag = false
@@ -44,7 +44,7 @@ class EmailFragment : Fragment() {
 
     private fun setUpListeners(){
         btn_next_email.setOnClickListener {
-            if(!validateEmail()) {
+            if(validateEmail()) {
                 findNavController().navigate(R.id.phoneFragment, null)
             }else{
                 Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
