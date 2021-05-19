@@ -40,15 +40,15 @@ class PasswordFragment : Fragment() {
 
     private fun checkPassword(): Boolean {
         
-        val passwordInput = passwordCadastro_input.toString()
-        val confirmInput = ConfirmPasswordCadastro_input.toString()
+        val passwordInput = passwordCadastro_input.text.toString()
+        val confirmInput = ConfirmPasswordCadastro_input.text.toString()
         val passwordREGEX: Pattern = Pattern.compile("""^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%¨&*()_+=-])(?=\S+$).{8,12}$""")
         val match : Matcher = passwordREGEX.matcher(passwordInput)
         var flag = true
 
         if (passwordInput != confirmInput) {
             flag = false
-        }else
+        }
         if(passwordInput.isEmpty()){
             flag = false
         }
