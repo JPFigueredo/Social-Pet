@@ -23,7 +23,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpListeners()
-        setToolbar()
+        setWidgets()
     }
 
     private fun setUpListeners(){
@@ -31,14 +31,16 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.emailFragment, null)
         }
         fab_login.setOnClickListener {
-            findNavController().navigate(R.id.postFragment, null)
+            findNavController().navigate(R.id.home_dest, null)
         }
         tv_forgot_password.setOnClickListener {
             findNavController().navigate(R.id.forgotPasswordFragment, null)
         }
     }
 
-    private fun setToolbar() {
+    private fun setWidgets() {
         activity?.toolbar_layout!!.visibility = View.GONE
+        activity?.bottom_nav_post!!.visibility = View.GONE
     }
+
 }

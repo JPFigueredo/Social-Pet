@@ -35,7 +35,14 @@ class MainActivity : AppCompatActivity() {
 
         setupBottomNavMenu(navController)
 
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+//        appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        appBarConfiguration = AppBarConfiguration(
+                setOf(
+                        R.id.home_dest,
+                        R.id.profile_dest
+                )
+        )
 
         setupActionBar(navController, appBarConfiguration)
     }
@@ -52,10 +59,6 @@ class MainActivity : AppCompatActivity() {
                                appBarConfig : AppBarConfiguration) {
         setupActionBarWithNavController(navController, appBarConfig)
     }
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return  item.onNavDestinationSelected(findNavController(R.id.display_fragments))
-    }*/
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.display_fragments).navigateUp(appBarConfiguration)

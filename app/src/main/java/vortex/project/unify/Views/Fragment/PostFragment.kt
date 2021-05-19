@@ -9,7 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_post.*
+import kotlinx.android.synthetic.main.fragment_preferences.view.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
@@ -24,12 +31,11 @@ class PostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setToolbar()
+        setWidgets()
     }
 
-    private fun setToolbar() {
-
-        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+    private fun setWidgets() {
+        activity?.bottom_nav_post!!.visibility = View.VISIBLE
 
         val value = TypedValue()
         activity?.theme!!.resolveAttribute(R.attr.colorOnPrimary, value, true)
