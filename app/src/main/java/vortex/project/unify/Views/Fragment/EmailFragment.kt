@@ -34,7 +34,7 @@ class EmailFragment : Fragment() {
     }
 
     private fun validateEmail(): Boolean {
-        val emailInput = pets_name_input.text.toString()
+        val emailInput = owner_email_input.text.toString()
         var flag = true
         if (emailInput.isEmpty()) {
             flag = false
