@@ -2,11 +2,14 @@ package vortex.project.unify.Views.Fragment
 
 import android.os.Bundle
 import android.util.Patterns
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
@@ -53,13 +56,17 @@ class EmailFragment : Fragment() {
     }
 
     private fun setToolbar() {
-        val background = context?.let { AppCompatResources.getDrawable(it, R.color.white) }
+        //val background = context?.let { AppCompatResources.getDrawable(it, R.color.white) }
+
+        val value = TypedValue()
+        activity?.theme!!.resolveAttribute(R.attr.colorOnPrimary, value, true)
+        val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
         activity?.camera_button!!.visibility = View.GONE
         activity?.message_button!!.visibility = View.GONE
-        activity?.toolbar_layout!!.background = background
+        activity?.toolbar_layout!!.background = background!!.toDrawable()
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 0
