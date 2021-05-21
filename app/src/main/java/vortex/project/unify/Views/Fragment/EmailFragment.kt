@@ -29,7 +29,7 @@ class EmailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setToolbar()
+        //setToolbar()
         setUpListeners()
     }
 
@@ -48,7 +48,7 @@ class EmailFragment : Fragment() {
     private fun setUpListeners(){
         btn_next_email.setOnClickListener {
             if(validateEmail()) {
-                findNavController().navigate(R.id.phoneFragment, null)
+                findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
             }else{
                 Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
             }

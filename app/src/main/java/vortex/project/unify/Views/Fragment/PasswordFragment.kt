@@ -30,9 +30,11 @@ class PasswordFragment : Fragment() {
     private fun setUpListeners() {
         btn_next_password.setOnClickListener {
             if (checkPassword()) {
-                findNavController().navigate(R.id.loginFragment, null)
+                activity?.let{
+                    getActivity()?.finish()
+                }
             } else {
-                Toast.makeText(context, "Senha inválida!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Password Mismatch", Toast.LENGTH_SHORT).show()
             }
         }
     }

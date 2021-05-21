@@ -11,41 +11,11 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_emailFragment"
-            app:destination="@id/emailFragment" />
-        <action
             android:id="@+id/action_loginFragment_to_postFragment"
             app:destination="@id/home_dest" />
         <action
             android:id="@+id/action_loginFragment_to_preferencesFragment"
             app:destination="@id/forgotPasswordFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/emailFragment"
-        android:name="vortex.project.unify.Views.Fragment.EmailFragment"
-        android:label="Insert your email"
-        tools:layout="@layout/fragment_email" >
-        <action
-            android:id="@+id/action_emailFragment_to_phoneFragment"
-            app:destination="@id/phoneFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/phoneFragment"
-        android:name="vortex.project.unify.Views.Fragment.PhoneFragment"
-        android:label="Insert your phone"
-        tools:layout="@layout/fragment_phone" >
-        <action
-            android:id="@+id/action_phoneFragment_to_passwordFragment"
-            app:destination="@id/passwordFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/passwordFragment"
-        android:name="vortex.project.unify.Views.Fragment.PasswordFragment"
-        android:label="Insert your password"
-        tools:layout="@layout/fragment_password" >
-        <action
-            android:id="@+id/action_passwordFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/home_dest"

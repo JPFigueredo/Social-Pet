@@ -1,5 +1,6 @@
 package vortex.project.unify.Views.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.Activity.RegisterActivity
 
 class LoginFragment : Fragment() {
 
@@ -28,7 +30,10 @@ class LoginFragment : Fragment() {
 
     private fun setUpListeners(){
         tv_not_member.setOnClickListener {
-            findNavController().navigate(R.id.emailFragment, null)
+            activity?.let{
+                val intent = Intent (it, RegisterActivity::class.java)
+                it.startActivity(intent)
+            }
         }
         fab_login.setOnClickListener {
             findNavController().navigate(R.id.home_dest, null)

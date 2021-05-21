@@ -27,7 +27,7 @@ class PhoneFragment : Fragment() {
 
     private fun setUpListeners(){
         btn_next_phone.setOnClickListener {
-            findNavController().navigate(R.id.passwordFragment, null)
+            findNavController().navigate(R.id.action_reg_phone_to_reg_password, null)
         }
     }
 }
