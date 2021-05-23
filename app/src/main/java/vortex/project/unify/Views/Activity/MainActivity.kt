@@ -21,6 +21,7 @@ import vortex.project.unify.R
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
+    private lateinit var listener: NavController.OnDestinationChangedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +29,30 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        val host: NavHostFragment = supportFragmentManager
-            .findFragmentById(R.id.display_fragments) as NavHostFragment? ?: return
+        val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.display_fragments) as NavHostFragment? ?: return
 
         val navController = host.navController
 
         setupBottomNavMenu(navController)
 
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        appBarConfiguration = AppBarConfiguration(
-                setOf(
-                        R.id.home_dest,
-                        R.id.profile_dest
-                )
-        )
+//        appBarConfiguration = AppBarConfiguration(
+//                setOf(
+//                        R.id.home_dest,
+//                        R.id.profile_dest
+//                )
+//        )
 
         setupActionBar(navController, appBarConfiguration)
+
+        listener = NavController.OnDestinationChangedListener {controller, destination, arguments ->
+            if (destination.id == R.id.home_dest){
+                supportActionBar!!.title = "Posts"
+            } else if (destination.id == R.id.profile_dest){
+                supportActionBar!!.title = "Profile"
+            }
+        }
     }
 
     fun setupDrawerMenu(view: View) {
@@ -55,8 +63,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupActionBar(navController: NavController,
-                               appBarConfig : AppBarConfiguration) {
+    private fun setupActionBar(navController: NavController, appBarConfig : AppBarConfiguration) {
         setupActionBarWithNavController(navController, appBarConfig)
     }
 

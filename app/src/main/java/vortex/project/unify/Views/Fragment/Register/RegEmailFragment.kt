@@ -1,4 +1,4 @@
-package vortex.project.unify.Views.Fragment
+package vortex.project.unify.Views.Fragment.Register
 
 import android.os.Bundle
 import android.util.Patterns
@@ -6,29 +6,30 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_email.*
+import kotlinx.android.synthetic.main.fragment_reg_email.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.ViewModel.UserViewModel
 
-class EmailFragment : Fragment() {
+class RegEmailFragment : Fragment() {
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_email, container, false)
+    private lateinit var userViewModel: UserViewModel
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_reg_email, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.let {
+                act -> userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
+        }
         //setToolbar()
         setUpListeners()
     }
@@ -47,11 +48,14 @@ class EmailFragment : Fragment() {
 
     private fun setUpListeners(){
         btn_next_email.setOnClickListener {
-            if(validateEmail()) {
-                findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
-            }else{
-                Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
-            }
+
+            findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
+
+//            if(validateEmail()) {
+//                findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
+//            }else{
+//                Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
+//            }
         }
     }
 

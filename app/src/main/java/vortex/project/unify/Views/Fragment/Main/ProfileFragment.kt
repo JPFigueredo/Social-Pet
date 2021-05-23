@@ -1,4 +1,4 @@
-package vortex.project.unify.Views.Fragment
+package vortex.project.unify.Views.Fragment.Main
 
 import android.os.Bundle
 import android.view.LayoutInflater

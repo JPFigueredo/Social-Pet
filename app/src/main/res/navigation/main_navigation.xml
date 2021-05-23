@@ -16,12 +16,19 @@
         <action
             android:id="@+id/action_loginFragment_to_preferencesFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_regEmailFragment"
+            app:destination="@id/regEmail" />
     </fragment>
     <fragment
         android:id="@+id/home_dest"
-        android:name="vortex.project.unify.Views.Fragment.PostFragment"
+        android:name="vortex.project.unify.Views.Fragment.Main.PostFragment"
         android:label="fragment_post"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_home_dest_to_profile_dest"
+            app:destination="@id/profile_dest" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="vortex.project.unify.Views.Fragment.ForgotPasswordFragment"
@@ -29,12 +36,43 @@
         tools:layout="@layout/fragment_forgot_password" />
     <fragment
         android:id="@+id/preferencesFragment"
-        android:name="vortex.project.unify.Views.Fragment.PreferencesFragment"
+        android:name="vortex.project.unify.Views.Fragment.Main.PreferencesFragment"
         android:label="fragment_preferences"
         tools:layout="@layout/fragment_preferences" />
     <fragment
         android:id="@+id/profile_dest"
-        android:name="vortex.project.unify.Views.Fragment.ProfileFragment"
+        android:name="vortex.project.unify.Views.Fragment.Main.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_dest_to_home_dest"
+            app:destination="@id/home_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/regEmail"
+        android:name="vortex.project.unify.Views.Fragment.Register.RegEmailFragment"
+        android:label="fragment_reg_email"
+        tools:layout="@layout/fragment_reg_email" >
+        <action
+            android:id="@+id/action_reg_email_to_reg_phone"
+            app:destination="@id/regPhone" />
+    </fragment>
+    <fragment
+        android:id="@+id/regPhone"
+        android:name="vortex.project.unify.Views.Fragment.Register.RegPhoneFragment"
+        android:label="fragment_reg_phone"
+        tools:layout="@layout/fragment_reg_phone" >
+        <action
+            android:id="@+id/action_reg_phone_to_reg_password"
+            app:destination="@id/regPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/regPassword"
+        android:name="vortex.project.unify.Views.Fragment.Register.RegPasswordFragment"
+        android:label="fragment_reg_password"
+        tools:layout="@layout/fragment_reg_password" >
+        <action
+            android:id="@+id/action_reg_password_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
