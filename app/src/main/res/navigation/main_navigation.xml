@@ -35,7 +35,7 @@
         android:label="fragment_preferences"
         tools:layout="@layout/fragment_forgot_password" />
     <fragment
-        android:id="@+id/preferencesFragment"
+        android:id="@+id/nav_preferences"
         android:name="vortex.project.unify.Views.Fragment.Main.PreferencesFragment"
         android:label="fragment_preferences"
         tools:layout="@layout/fragment_preferences" />
@@ -75,4 +75,9 @@
             android:id="@+id/action_reg_password_to_login"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_myPets"
+        android:name="vortex.project.unify.Views.Fragment.Main.MyPetsFragment"
+        android:label="fragment_my_pets"
+        tools:layout="@layout/fragment_my_pets" />
 </navigation>

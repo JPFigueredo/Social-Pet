@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
 
     private fun setWidgets() {
         activity?.toolbar_layout!!.visibility = View.GONE
-        activity?.bottom_nav_post!!.visibility = View.GONE
+        activity?.bottom_nav_view!!.visibility = View.GONE
     }
 
     private fun fillUserData () {
