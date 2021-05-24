@@ -6,6 +6,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
@@ -35,7 +36,7 @@ class RegEmailFragment : Fragment() {
     }
 
     private fun validateEmail(): Boolean {
-        val emailInput = owner_email_input.text.toString()
+        val emailInput = regEmail_input.text.toString()
         var flag = true
         if (emailInput.isEmpty()) {
             flag = false
@@ -49,13 +50,14 @@ class RegEmailFragment : Fragment() {
     private fun setUpListeners(){
         btn_next_email.setOnClickListener {
 
-            findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
+//            findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
 
-//            if(validateEmail()) {
-//                findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
-//            }else{
-//                Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
-//            }
+            if(validateEmail()) {
+                userViewModel.emailDB.setValue(regEmail_input.text.toString())
+                findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
+            }else{
+                Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

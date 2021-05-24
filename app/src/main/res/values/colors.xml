@@ -23,6 +23,7 @@
     <color name="gray_700">#232323</color>
     <color name="orange_400">#EF5350</color>
     <color name="orange_200">#EF9A9A</color>
+    <color name="transparent">#00EF9A9A</color>
 
 
     <color name="graphite_00">#E61B1B1B</color>
