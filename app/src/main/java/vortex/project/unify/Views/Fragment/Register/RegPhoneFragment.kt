@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_reg_password.*
 import kotlinx.android.synthetic.main.fragment_reg_phone.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.UserViewModel
@@ -29,6 +30,9 @@ class RegPhoneFragment : Fragment() {
 
     private fun setUpListeners(){
         btn_next_phone.setOnClickListener {
+            if (regPhone_input != null) {
+                userViewModel.passwordDB.setValue(regPhone_input.text.toString())
+            }
             findNavController().navigate(R.id.action_reg_phone_to_reg_password, null)
         }
     }

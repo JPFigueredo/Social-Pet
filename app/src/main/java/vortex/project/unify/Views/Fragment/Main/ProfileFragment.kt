@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import vortex.project.unify.R
@@ -21,7 +20,7 @@ class ProfileFragment : Fragment() {
 
     private fun setWidgets() {
         activity?.toolbar_layout!!.visibility = View.GONE
-        activity?.bottom_nav_post!!.visibility = View.GONE
+        activity?.bottom_nav_view!!.visibility = View.GONE
 
     }
 }

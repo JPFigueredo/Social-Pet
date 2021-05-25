@@ -27,7 +27,7 @@ class PostFragment : Fragment() {
     }
 
     private fun setWidgets() {
-        activity?.bottom_nav_post!!.visibility = View.VISIBLE
+        activity?.bottom_nav_view!!.visibility = View.VISIBLE
 
         val value = TypedValue()
         activity?.theme!!.resolveAttribute(R.attr.colorOnPrimary, value, true)
