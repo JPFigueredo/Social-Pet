@@ -55,4 +55,6 @@
     <string name="bio">Bio</string>
     <string name="species">Species</string>
     <string name="change_profile_photo">Change profile photo</string>
+    <string name="follow">Follow</string>
+    <string name="liked_your_post">liked your post</string>
 </resources>

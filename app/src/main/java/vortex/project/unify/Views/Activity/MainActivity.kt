@@ -31,14 +31,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navController = host.navController
 
         setupBottomNavMenu(navController)
-        setupDrawerNavMenu(navController)
+//        setupDrawerNavMenu(navController)
 
 //        appBarConfiguration = AppBarConfiguration(navController.graph)
 
         appBarConfiguration = AppBarConfiguration(
                 setOf(
                         R.id.home_dest,
-                        R.id.profile_dest
+                        R.id.profile_dest,
+                        R.id.likes_dest
                 )
         )
 

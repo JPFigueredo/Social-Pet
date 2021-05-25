@@ -80,4 +80,9 @@
         android:name="vortex.project.unify.Views.Fragment.Main.MyPetsFragment"
         android:label="fragment_my_pets"
         tools:layout="@layout/fragment_my_pets" />
+    <fragment
+        android:id="@+id/likes_dest"
+        android:name="vortex.project.unify.Views.Fragment.Main.LikesFragment"
+        android:label="fragment_likes"
+        tools:layout="@layout/fragment_likes" />
 </navigation>
