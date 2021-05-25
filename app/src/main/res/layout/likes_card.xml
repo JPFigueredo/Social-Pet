@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageViewLikeFollower"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_like_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/username"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewLikeFollower"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLikeFollower"
+        app:layout_constraintTop_toTopOf="@+id/imageViewLikeFollower" />
+
+    <TextView
+        android:id="@+id/tv_liked_your_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/liked_your_post"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_like_username"
+        app:layout_constraintStart_toEndOf="@+id/tv_like_username"
+        app:layout_constraintTop_toTopOf="@+id/tv_like_username" />
+
+    <TextView
+        android:id="@+id/tv_time_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="0m"
+        android:textColor="@color/gray_300"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_liked_your_post"
+        app:layout_constraintStart_toEndOf="@+id/tv_liked_your_post"
+        app:layout_constraintTop_toTopOf="@+id/tv_liked_your_post" />
+
+    <ImageView
+        android:id="@+id/img_post_like"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
