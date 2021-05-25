@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rect_gradient_background">
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cd_posts_profile"

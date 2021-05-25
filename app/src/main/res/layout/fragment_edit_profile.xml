@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rect_gradient_background"
+    android:background="?attr/colorSurface"
     tools:context=".Views.Fragment.Main.EditProfileFragment">
 
 
@@ -16,7 +16,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rect_top_radius"
-        android:backgroundTint="?attr/colorSurface"
+        android:backgroundTint="?attr/colorOnPrimary"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

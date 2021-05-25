@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rect_gradient_background"
+    android:background="?attr/colorSurface"
     tools:context=".Views.Fragment.Main.MyPetsFragment">
 
     <androidx.recyclerview.widget.RecyclerView

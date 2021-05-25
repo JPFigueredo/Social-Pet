@@ -10,12 +10,11 @@
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="10dp"
         android:visibility="gone"
-        android:background="@color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:elevation="10dp"
-        app:layout_constraintTop_toTopOf="@+id/drawer_layout">
+        app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
             android:id="@+id/drawer_button"
@@ -31,7 +30,7 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:onClick="setupDrawerMenu"
                 android:src="@drawable/ic_menu"
-                android:tint="@color/black" />
+                android:tint="?attr/colorOnSurface" />
         </FrameLayout>
 
         <FrameLayout
@@ -48,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:src="@drawable/ic_photo_camera"
-                android:tint="@color/black" />
+                android:tint="?attr/colorOnSurface" />
         </FrameLayout>
 
         <FrameLayout
@@ -64,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:src="@drawable/ic_send"
-                android:tint="@color/black" />
+                android:tint="?attr/colorOnSurface" />
         </FrameLayout>
 
         <include layout="@layout/toolbar" />
@@ -78,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
         tools:openDrawer="start">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -120,7 +119,6 @@
             android:id="@+id/drawer_nav_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
             android:layout_gravity="start"
             android:background="@drawable/rect_radius_right"
             android:backgroundTint="?attr/colorOnPrimarySurface"

@@ -14,7 +14,7 @@
             android:id="@+id/action_loginFragment_to_postFragment"
             app:destination="@id/home_dest" />
         <action
-            android:id="@+id/action_loginFragment_to_preferencesFragment"
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
         <action
             android:id="@+id/action_loginFragment_to_regEmailFragment"

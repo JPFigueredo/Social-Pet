@@ -1,9 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">SocialPet</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="new_member">Are you a New Member?</string>
+    <string name="cult_of_goats_inc">Cult of Goats Inc.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="next">Next</string>
+    <string name="uf">UF</string>
+    <string name="city">City</string>
+    <string name="address_number">Number</string>
+    <string name="street_name">Street Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="comfirm_password">Comfirm Password</string>
+    <string name="password_mismatch">Password Mismatch</string>
+    <string name="e_mail">E-mail</string>
+    <string name="wellcome">Wellcome</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="unify_project">Unify Project</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_password">Forgot Password?</string>
     <string name="welcome_">Welcome,</string>
     <string name="buddy_">buddy!</string>
     <string name="not_a_member_sigup_now">Not a member? Sigup now</string>
-    <string name="next">Next</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="phone_number_optional">Phone Number (optional)</string>
     <string name="save">Save</string>
@@ -22,6 +44,7 @@
     <string name="language_">Language:</string>
     <string name="appearance_">Appearance:</string>
     <string name="day_mode">Day Mode</string>
+    <string name="night_mode">Night Mode</string>
     <string name="change">Change</string>
     <string name="english">English</string>
     <string name="posts">Posts</string>

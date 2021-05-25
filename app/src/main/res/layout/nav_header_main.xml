@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:background="@drawable/rect_top_right_radius"
-    android:backgroundTint="?attr/colorSurface"
+    android:backgroundTint="?attr/colorOnPrimarySurface"
     android:gravity="bottom"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">

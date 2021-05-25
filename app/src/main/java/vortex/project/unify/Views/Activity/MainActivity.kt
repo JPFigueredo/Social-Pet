@@ -1,6 +1,7 @@
 package vortex.project.unify.Views.Activity
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -14,10 +15,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
-    private lateinit var listener: NavController.OnDestinationChangedListener
+//    private lateinit var listener: NavController.OnDestinationChangedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,24 +33,26 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavMenu(navController)
         setupDrawerNavMenu(navController)
 
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+//        appBarConfiguration = AppBarConfiguration(navController.graph)
 
-//        appBarConfiguration = AppBarConfiguration(
-//                setOf(
-//                        R.id.home_dest,
-//                        R.id.profile_dest
-//                )
-//        )
+        appBarConfiguration = AppBarConfiguration(
+                setOf(
+                        R.id.home_dest,
+                        R.id.profile_dest
+                )
+        )
 
         setupActionBar(navController, appBarConfiguration)
 
-        listener = NavController.OnDestinationChangedListener {controller, destination, arguments ->
-            if (destination.id == R.id.home_dest){
-                supportActionBar!!.title = "Posts"
-            } else if (destination.id == R.id.profile_dest){
-                supportActionBar!!.title = "Profile"
-            }
-        }
+//        listener = NavController.OnDestinationChangedListener {controller, destination, arguments ->
+//            if (destination.id == R.id.home_dest){
+//                supportActionBar!!.title = "Posts"
+//            } else if (destination.id == R.id.profile_dest){
+//                supportActionBar!!.title = "Profile"
+//            }
+//        }
+
+        drawer_nav_view.setNavigationItemSelectedListener(this)
     }
 
     fun setupDrawerMenu(view: View) {
@@ -75,5 +78,11 @@ class MainActivity : AppCompatActivity() {
     private fun setupDrawerNavMenu(navController: NavController) {
         val drawerNav = findViewById<NavigationView>(R.id.drawer_nav_view)
         drawerNav?.setupWithNavController(navController)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return item.onNavDestinationSelected(findNavController(R.id.display_fragments))
+                || super.onOptionsItemSelected(item)
     }
 }

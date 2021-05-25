@@ -69,7 +69,7 @@ class PreferencesFragment : Fragment() {
         activity?.drawer_button!!.visibility = View.GONE
         activity?.camera_button!!.visibility = View.GONE
         activity?.message_button!!.visibility = View.GONE
-        activity?.bottom_nav_post!!.visibility = View.GONE
+        activity?.bottom_nav_view!!.visibility = View.GONE
 //        activity?.toolbar_layout!!.background = background!!.toDrawable()
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams

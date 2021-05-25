@@ -31,7 +31,7 @@ class RegEmailFragment : Fragment() {
         activity?.let {
                 act -> userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
         }
-        //setToolbar()
+        setToolbar()
         setUpListeners()
     }
 
@@ -64,15 +64,15 @@ class RegEmailFragment : Fragment() {
     private fun setToolbar() {
         //val background = context?.let { AppCompatResources.getDrawable(it, R.color.white) }
 
-        val value = TypedValue()
-        activity?.theme!!.resolveAttribute(R.attr.colorOnPrimary, value, true)
-        val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
+//        val value = TypedValue()
+//        activity?.theme!!.resolveAttribute(R.attr.colorOnPrimarySurface, value, true)
+//        val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
         activity?.camera_button!!.visibility = View.GONE
         activity?.message_button!!.visibility = View.GONE
-        activity?.toolbar_layout!!.background = background!!.toDrawable()
+//        activity?.toolbar_layout!!.background = background!!.toDrawable()
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 0

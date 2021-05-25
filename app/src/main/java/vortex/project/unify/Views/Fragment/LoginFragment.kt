@@ -33,13 +33,13 @@ class LoginFragment : Fragment() {
 
     private fun setUpListeners(){
         tv_not_member.setOnClickListener {
-            findNavController().navigate(R.id.regEmail, null)
+            findNavController().navigate(R.id.action_loginFragment_to_regEmailFragment, null)
         }
         fab_login.setOnClickListener {
-            findNavController().navigate(R.id.home_dest, null)
+            findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
         }
         tv_forgot_password.setOnClickListener {
-            findNavController().navigate(R.id.forgotPasswordFragment, null)
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment, null)
         }
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="500dp"
-    android:background="@drawable/rect_gradient_background">
+    android:background="?attr/colorSurface">
 
     <LinearLayout
         android:id="@+id/layout_info_pet_profile"
