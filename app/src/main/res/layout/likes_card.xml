@@ -6,11 +6,11 @@
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageViewLikeFollower"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/img_new_follower"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,40 +18,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_like_username"
+        android:id="@+id/tv_follower_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/username"
         android:textColor="?attr/colorOnSecondary"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewLikeFollower"
-        app:layout_constraintStart_toEndOf="@+id/imageViewLikeFollower"
-        app:layout_constraintTop_toTopOf="@+id/imageViewLikeFollower" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_new_follower"
+        app:layout_constraintStart_toEndOf="@+id/img_new_follower"
+        app:layout_constraintTop_toTopOf="@+id/img_new_follower" />
 
     <TextView
-        android:id="@+id/tv_liked_your_post"
+        android:id="@+id/tv_started_following_you"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/liked_your_post"
         android:textColor="?attr/colorOnSecondary"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_like_username"
-        app:layout_constraintStart_toEndOf="@+id/tv_like_username"
-        app:layout_constraintTop_toTopOf="@+id/tv_like_username" />
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_follower_username"
+        app:layout_constraintStart_toEndOf="@+id/tv_follower_username"
+        app:layout_constraintTop_toTopOf="@+id/tv_follower_username" />
 
     <TextView
-        android:id="@+id/tv_time_like"
+        android:id="@+id/tv_time_follower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0m"
         android:textColor="@color/gray_300"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_liked_your_post"
-        app:layout_constraintStart_toEndOf="@+id/tv_liked_your_post"
-        app:layout_constraintTop_toTopOf="@+id/tv_liked_your_post" />
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_started_following_you"
+        app:layout_constraintStart_toEndOf="@+id/tv_started_following_you" />
 
     <ImageView
         android:id="@+id/img_post_like"
