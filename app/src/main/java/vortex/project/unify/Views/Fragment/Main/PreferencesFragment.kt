@@ -1,11 +1,11 @@
 package vortex.project.unify.Views.Fragment.Main
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.PreferencesViewModel
-import java.util.*
 
 class PreferencesFragment : Fragment() {
 
@@ -61,16 +60,12 @@ class PreferencesFragment : Fragment() {
     }
 
     private fun setToolbar() {
-//        val value = TypedValue()
-//        activity?.theme!!.resolveAttribute(R.attr.colorOnPrimary, value, true)
-//        val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
         activity?.camera_button!!.visibility = View.GONE
-        activity?.message_button!!.visibility = View.GONE
+        activity?.new_fallowers_button!!.visibility = View.GONE
         activity?.bottom_nav_view!!.visibility = View.GONE
-//        activity?.toolbar_layout!!.background = background!!.toDrawable()
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 0

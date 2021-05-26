@@ -85,4 +85,14 @@
         android:name="vortex.project.unify.Views.Fragment.Main.LikesFragment"
         android:label="fragment_likes"
         tools:layout="@layout/fragment_likes" />
+    <fragment
+        android:id="@+id/search_dest"
+        android:name="vortex.project.unify.Views.Fragment.Main.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/new_fallowers_dest"
+        android:name="vortex.project.unify.Views.Fragment.Main.NewFallowersFragment"
+        android:label="fragment_new_fallowers"
+        tools:layout="@layout/fragment_new_fallowers" />
 </navigation>

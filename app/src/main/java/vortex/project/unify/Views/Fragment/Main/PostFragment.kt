@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
@@ -29,15 +31,12 @@ class PostFragment : Fragment() {
     private fun setWidgets() {
         activity?.bottom_nav_view!!.visibility = View.VISIBLE
 
-//        val value = TypedValue()
-//        activity?.theme!!.resolveAttribute(R.attr.colorOnPrimary, value, true)
-//        val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
-
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.VISIBLE
         activity?.camera_button!!.visibility = View.VISIBLE
-        activity?.message_button!!.visibility = View.VISIBLE
-//        activity?.toolbar_layout!!.background = background!!.toDrawable()
+        activity?.new_fallowers_button!!.visibility = View.VISIBLE
+
+
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 100

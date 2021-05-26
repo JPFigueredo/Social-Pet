@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -39,7 +40,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 setOf(
                         R.id.home_dest,
                         R.id.profile_dest,
-                        R.id.likes_dest
+                        R.id.likes_dest,
+                        R.id.search_dest
                 )
         )
 
@@ -76,10 +78,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         bottomNav?.setupWithNavController(navController)
     }
-    private fun setupDrawerNavMenu(navController: NavController) {
-        val drawerNav = findViewById<NavigationView>(R.id.drawer_nav_view)
-        drawerNav?.setupWithNavController(navController)
-    }
+
+//    private fun setupDrawerNavMenu(navController: NavController) {
+//        val drawerNav = findViewById<NavigationView>(R.id.drawer_nav_view)
+//        drawerNav?.setupWithNavController(navController)
+//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         drawer_layout.closeDrawer(GravityCompat.START)

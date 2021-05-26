@@ -38,7 +38,7 @@
             android:layout_width="50dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@+id/message_button"
+            android:layout_toStartOf="@+id/new_fallowers_button"
             android:clickable="true"
             android:focusable="true">
 
@@ -51,7 +51,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/message_button"
+            android:id="@+id/new_fallowers_button"
             android:layout_width="50dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentEnd="true"
