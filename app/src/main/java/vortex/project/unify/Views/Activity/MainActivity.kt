@@ -1,6 +1,8 @@
 package vortex.project.unify.Views.Activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +43,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         R.id.home_dest,
                         R.id.profile_dest,
                         R.id.likes_dest,
-                        R.id.search_dest
+                        R.id.search_dest,
+                        R.id.new_fallowers_dest
                 )
         )
 
@@ -56,6 +59,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        }
 
         drawer_nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_bar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return  item.onNavDestinationSelected(findNavController(R.id.display_fragments))
     }
 
     fun setupDrawerMenu(view: View) {

@@ -2,12 +2,11 @@ package vortex.project.unify.Views.Fragment.Main
 
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -33,10 +32,8 @@ class PostFragment : Fragment() {
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.VISIBLE
-        activity?.camera_button!!.visibility = View.VISIBLE
-        activity?.new_fallowers_button!!.visibility = View.VISIBLE
-
-
+//        activity?.camera_button!!.visibility = View.VISIBLE
+//        activity?.new_fallowers_button!!.visibility = View.VISIBLE
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 100

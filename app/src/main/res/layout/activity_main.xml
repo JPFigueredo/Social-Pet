@@ -33,7 +33,7 @@
                 android:tint="?attr/colorOnSurface" />
         </FrameLayout>
 
-        <FrameLayout
+        <!--<FrameLayout
             android:id="@+id/camera_button"
             android:layout_width="50dp"
             android:layout_height="?attr/actionBarSize"
@@ -64,7 +64,7 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:src="@drawable/ic_person_add"
                 android:tint="?attr/colorOnSurface" />
-        </FrameLayout>
+        </FrameLayout>-->
 
         <include layout="@layout/toolbar" />
     </RelativeLayout>

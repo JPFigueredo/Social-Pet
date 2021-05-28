@@ -30,8 +30,8 @@ class MyPetsFragment : Fragment() {
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
-        activity?.camera_button!!.visibility = View.GONE
-        activity?.new_fallowers_button!!.visibility = View.GONE
+//        activity?.camera_button!!.visibility = View.GONE
+//        activity?.new_fallowers_button!!.visibility = View.GONE
         activity?.bottom_nav_view!!.visibility = View.GONE
 //        activity?.toolbar_layout!!.background = background!!.toDrawable()
 
