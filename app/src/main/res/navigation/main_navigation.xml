@@ -92,7 +92,7 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/new_fallowers_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.NewFallowersFragment"
+        android:name="vortex.project.unify.Views.Fragment.Main.NewFollowersFragment"
         android:label="fragment_new_fallowers"
-        tools:layout="@layout/fragment_new_fallowers" />
+        tools:layout="@layout/fragment_new_followers" />
 </navigation>
