@@ -28,7 +28,7 @@ class SearchFragment : Fragment() {
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.VISIBLE
 //        activity?.camera_button!!.visibility = View.VISIBLE
-//        activity?.new_fallowers_button!!.visibility = View.VISIBLE
+//        activity?.new_followers_button!!.visibility = View.VISIBLE
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 100

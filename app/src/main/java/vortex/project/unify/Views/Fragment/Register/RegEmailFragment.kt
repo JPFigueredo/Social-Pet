@@ -35,7 +35,7 @@ class RegEmailFragment : Fragment() {
     private fun validateEmail(): Boolean {
         val emailInput = regEmail_input.text.toString()
         var flag = true
-        if (emailInput.isEmpty()) {
+        if (emailInput.isNullOrEmpty()) {
             flag = false
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
@@ -50,7 +50,7 @@ class RegEmailFragment : Fragment() {
 //            findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
 
             if(validateEmail()) {
-                userViewModel.emailDB.setValue(regEmail_input.text.toString())
+                userViewModel.emailDB.value = regEmail_input.text.toString()
                 findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
             }else{
                 Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
@@ -68,7 +68,7 @@ class RegEmailFragment : Fragment() {
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
 //        activity?.camera_button!!.visibility = View.GONE
-//        activity?.new_fallowers_button!!.visibility = View.GONE
+//        activity?.new_followers_button!!.visibility = View.GONE
 //        activity?.toolbar_layout!!.background = background!!.toDrawable()
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams

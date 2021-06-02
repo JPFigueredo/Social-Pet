@@ -36,7 +36,7 @@ class RegPasswordFragment : Fragment() {
 //            findNavController().navigate(R.id.action_reg_password_to_login, null)
 
             if (checkPassword()) {
-                userViewModel.passwordDB.setValue(regPassword_input.text.toString())
+                userViewModel.passwordDB.value = regPassword_input.text.toString()
                 findNavController().navigate(R.id.action_reg_password_to_login, null)
             } else {
                 Toast.makeText(context, "Password Mismatch", Toast.LENGTH_SHORT).show()
@@ -56,7 +56,7 @@ class RegPasswordFragment : Fragment() {
         if (passwordInput != confirmInput) {
             flag = false
         }
-        if(passwordInput.isEmpty()){
+        if(passwordInput.isNullOrEmpty()){
             flag = false
         }
         if(!match.matches()){

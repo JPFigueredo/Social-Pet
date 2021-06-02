@@ -31,7 +31,7 @@ class RegPhoneFragment : Fragment() {
     private fun setUpListeners(){
         btn_next_phone.setOnClickListener {
             if (regPhone_input != null) {
-                userViewModel.passwordDB.setValue(regPhone_input.text.toString())
+                userViewModel.passwordDB.value = regPhone_input.text.toString()
             }
             findNavController().navigate(R.id.action_reg_phone_to_reg_password, null)
         }
