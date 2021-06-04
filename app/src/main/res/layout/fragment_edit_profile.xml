@@ -54,7 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:textColorHint="?attr/colorSecondaryVariant"
             app:boxCornerRadiusBottomEnd="15dp"
@@ -64,7 +64,6 @@
             app:boxStrokeWidth="3dp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
-            app:layout_constraintBottom_toTopOf="@+id/pets_username_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_edit_profile">
@@ -74,35 +73,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/pet_s_name"
-                android:inputType="textEmailAddress" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pets_username_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textColorHint="?attr/colorSecondaryVariant"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeWidth="3dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:layout_constraintBottom_toTopOf="@+id/pets_especies_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pets_name_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/pets_username_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/username"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +95,7 @@
             app:layout_constraintBottom_toTopOf="@+id/pets_bio_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pets_username_layout">
+            app:layout_constraintTop_toBottomOf="@+id/pets_name_layout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pets_especies_input"
@@ -180,7 +150,7 @@
             app:boxStrokeWidth="3dp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
-            app:layout_constraintBottom_toTopOf="@+id/fab_save_info_pet"
+            app:layout_constraintBottom_toTopOf="@+id/pets_bio3_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pets_bio_layout">
@@ -193,17 +163,45 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pets_bio3_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:textColorHint="?attr/colorSecondaryVariant"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeWidth="3dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:layout_constraintBottom_toTopOf="@+id/fab_save_info_pet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pets_bio2_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pets_bio3_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_save_info_pet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/orange_400"
             android:clickable="true"
             android:src="@drawable/ic_check"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pets_bio3_layout"
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
