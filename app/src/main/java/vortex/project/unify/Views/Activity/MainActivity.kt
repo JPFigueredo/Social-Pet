@@ -21,7 +21,6 @@ import vortex.project.unify.R
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
-//    private lateinit var listener: NavController.OnDestinationChangedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +33,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navController = host.navController
 
         setupBottomNavMenu(navController)
-//        setupDrawerNavMenu(navController)
-
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
 
         appBarConfiguration = AppBarConfiguration(
                 setOf(
@@ -49,14 +45,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
 
         setupActionBar(navController, appBarConfiguration)
-
-//        listener = NavController.OnDestinationChangedListener {controller, destination, arguments ->
-//            if (destination.id == R.id.home_dest){
-//                supportActionBar!!.title = "Posts"
-//            } else if (destination.id == R.id.profile_dest){
-//                supportActionBar!!.title = "Profile"
-//            }
-//        }
 
         drawer_nav_view.setNavigationItemSelectedListener(this)
     }

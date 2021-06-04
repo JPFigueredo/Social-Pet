@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="@+id/cd_img_profile">
 
         <TextView
-            android:id="@+id/tv_username_profile_card"
+            android:id="@+id/tv_petname_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pet's name"
@@ -26,7 +26,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_datePost_profile"
+            android:id="@+id/tv_datePost_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Today"
@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/img_pet_profile"
+            android:id="@+id/img_pet"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:srcCompat="@drawable/ic_launcher_background" />
@@ -63,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/img_post_profile"
+            android:id="@+id/img_post"
             android:layout_width="360dp"
             android:layout_height="360dp"
             app:srcCompat="@drawable/ic_launcher_background" />

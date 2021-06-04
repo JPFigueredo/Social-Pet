@@ -8,6 +8,7 @@ package="vortex.project.unify">
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.Unify">
+    <activity android:name="vortex.project.unify.Views.Activity.AddActivity.AddPostActivity"></activity>
     <activity android:name=".Views.Activity.MainActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -21,5 +22,4 @@ package="vortex.project.unify">
         <nav-graph android:value="@navigation/main_navigation" />
     </activity>
 </application>
-
 </manifest>
