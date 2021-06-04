@@ -1,6 +1,7 @@
 package vortex.project.unify.Views.Fragment.Register
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.android.synthetic.main.fragment_reg_password.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.UserViewModel
@@ -17,9 +22,12 @@ import java.util.regex.Pattern
 class RegPasswordFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_reg_password, container, false)
+        auth = FirebaseAuth.getInstance()
+        val view = inflater.inflate(R.layout.fragment_reg_password, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,8 +44,11 @@ class RegPasswordFragment : Fragment() {
 //            findNavController().navigate(R.id.action_reg_password_to_login, null)
 
             if (checkPassword()) {
-                userViewModel.passwordDB.setValue(regPassword_input.text.toString())
-                findNavController().navigate(R.id.action_reg_password_to_login, null)
+                userViewModel.passwordDB.value = regPassword_input.text.toString()
+
+
+                doRegister()
+
             } else {
                 Toast.makeText(context, "Password Mismatch", Toast.LENGTH_SHORT).show()
             }
@@ -63,5 +74,22 @@ class RegPasswordFragment : Fragment() {
             flag = false
         }
         return flag
+    }
+
+    private fun doRegister() {
+        auth.createUserWithEmailAndPassword(userViewModel.emailDB.value.toString(), userViewModel.passwordDB.value.toString())
+            .addOnSuccessListener {
+                Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_reg_password_to_login, null)
+            }
+            .addOnFailureListener {
+                when (it) {
+                    is FirebaseAuthWeakPasswordException -> Toast.makeText(context, "  Password length error", Toast.LENGTH_SHORT).show()
+                    is FirebaseAuthUserCollisionException -> Toast.makeText(context, "E-mail already registered", Toast.LENGTH_SHORT).show()
+                    is FirebaseNetworkException -> Toast.makeText(context, " Internet error", Toast.LENGTH_SHORT).show()
+                    else ->  Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
+
     }
 }
