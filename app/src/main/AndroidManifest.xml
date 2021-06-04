@@ -21,5 +21,4 @@ package="vortex.project.unify">
         <nav-graph android:value="@navigation/main_navigation" />
     </activity>
 </application>
-
 </manifest>
