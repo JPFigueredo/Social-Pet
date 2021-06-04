@@ -1,13 +1,16 @@
 package vortex.project.unify.Views.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import vortex.project.unify.R
@@ -17,8 +20,15 @@ class LoginFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
+
+        auth = FirebaseAuth.getInstance()
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,7 +38,7 @@ class LoginFragment : Fragment() {
         }
         fillUserData ()
         setUpListeners()
-        setWidgets()
+//        setWidgets()
     }
 
     private fun setUpListeners(){
@@ -36,7 +46,7 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_regEmailFragment, null)
         }
         fab_login.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
+            doLogIn()
         }
         tv_forgot_password.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment, null)
@@ -59,6 +69,18 @@ class LoginFragment : Fragment() {
                 passwordLogin_input.setText(it.toString())
             }
         })
+    }
+
+    fun doLogIn() {
+        auth.signInWithEmailAndPassword(emailLogin_input.text.toString(), passwordLogin_input.text.toString())
+            .addOnSuccessListener { taskSnapshot ->
+                Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(context, "Authentication Failure", Toast.LENGTH_SHORT).show()
+            }
+
     }
 
 }

@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/home_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.PostFragment"
-        android:label="fragment_post"
+        android:label="Posts"
         tools:layout="@layout/fragment_post" >
         <action
             android:id="@+id/action_home_dest_to_profile_dest"
@@ -37,12 +37,12 @@
     <fragment
         android:id="@+id/nav_preferences"
         android:name="vortex.project.unify.Views.Fragment.Main.PreferencesFragment"
-        android:label="fragment_preferences"
+        android:label="Preferences"
         tools:layout="@layout/fragment_preferences" />
     <fragment
         android:id="@+id/profile_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profile_dest_to_home_dest"
@@ -78,21 +78,21 @@
     <fragment
         android:id="@+id/nav_myPets"
         android:name="vortex.project.unify.Views.Fragment.Main.MyPetsFragment"
-        android:label="fragment_my_pets"
+        android:label="My Pets"
         tools:layout="@layout/fragment_my_pets" />
     <fragment
         android:id="@+id/likes_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.LikesFragment"
-        android:label="fragment_likes"
+        android:label="Likes"
         tools:layout="@layout/fragment_likes" />
     <fragment
         android:id="@+id/search_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.SearchFragment"
-        android:label="fragment_search"
+        android:label="Search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/new_fallowers_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.NewFallowersFragment"
-        android:label="fragment_new_fallowers"
+        android:label="Fallowers"
         tools:layout="@layout/fragment_new_fallowers" />
 </navigation>
