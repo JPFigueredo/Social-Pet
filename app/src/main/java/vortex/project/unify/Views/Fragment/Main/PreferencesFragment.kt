@@ -25,16 +25,14 @@ class PreferencesFragment : Fragment() {
     private lateinit var preferencesViewModel: PreferencesViewModel
     private lateinit var sharedPreferences: SharedPreferences
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        sharedPreferences = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE)
         val view = inflater.inflate(R.layout.fragment_reg_password, container, false)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         activity?.let {
             act -> preferencesViewModel = ViewModelProviders.of(act).get(PreferencesViewModel::class.java)
         }
@@ -46,7 +44,7 @@ class PreferencesFragment : Fragment() {
 
     private fun setUpListeners() {
         btn_changeLanguage.setOnClickListener {
-            alertPop()
+//            alertPop()
 //            changeLanguage()
         }
 
@@ -83,17 +81,15 @@ class PreferencesFragment : Fragment() {
         config.locale = locale
         context?.resources?.updateConfiguration(config, context?.resources!!.displayMetrics)
 
-        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
         editor.putString("My Lang", Lang)
         editor.apply()
     }
 
     private fun loadLocate(){
-        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My Lang","")
-        setLocate(language)
+        setLocate(language.toString())
     }
-
 
     private fun fillUserData() {
         preferencesViewModel.modeNight.observe(viewLifecycleOwner, Observer {
@@ -107,14 +103,28 @@ class PreferencesFragment : Fragment() {
         })
     }
 
-    private fun alertPop(view: View){
-        val alertDialog = AlertDialog.Builder(requireContext())
-                .setTitle("Choose Language:")
-                .setMessage("Test message")
-                .setNegativeButton("English", this)
-                .setPositiveButton("Português", this)
-                .show()
-    }
+//    private fun alertPop(view: View){
+////        val dialogBuilder = AlertDialog.Builder(requireActivity())
+////        dialogBuilder.setMessage("Choose Language")
+////            // if the dialog is cancelable
+////            .setCancelable(false)
+////        dialogBuilder.setNegativeButton("English") { dialog, which ->
+////
+////        }
+////        dialogBuilder.setPositiveButton("Portugues", this) { dialog, which ->
+////
+////        }
+////            .show()
+////            .setPositiveButton("Ok", DialogInterface.OnClickListener {
+////                    dialog, id ->
+////                dialog.dismiss()
+////
+////            })
+//
+//        val alert = dialogBuilder.create()
+//        alert.setTitle("Test")
+//        alert.show()
+//    }
 
 
     private fun setToolbar() {

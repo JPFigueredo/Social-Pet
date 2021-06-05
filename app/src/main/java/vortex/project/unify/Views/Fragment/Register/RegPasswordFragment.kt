@@ -13,7 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.android.synthetic.main.fragment_reg_password.*
+import kotlinx.android.synthetic.main.fragment_reg_phone.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.Encrypto
 import vortex.project.unify.Views.ViewModel.UserViewModel
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -22,9 +24,11 @@ class RegPasswordFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
     private lateinit var auth: FirebaseAuth
+    private val encrypto = Encrypto()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
+
         val view = inflater.inflate(R.layout.fragment_reg_password, container, false)
         return view
     }
@@ -39,21 +43,14 @@ class RegPasswordFragment : Fragment() {
 
     private fun setUpListeners() {
         btn_next_password.setOnClickListener {
-
-//            findNavController().navigate(R.id.action_reg_password_to_login, null)
-
             if (checkPassword()) {
-                userViewModel.passwordDB.value = regPassword_input.text.toString()
-
-
+                saveViewModel()
                 doRegister()
-
             } else {
                 Toast.makeText(context, "Password Mismatch", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 
     private fun checkPassword(): Boolean {
         
@@ -76,7 +73,7 @@ class RegPasswordFragment : Fragment() {
     }
 
     private fun doRegister() {
-        auth.createUserWithEmailAndPassword(userViewModel.emailDB.value.toString(), userViewModel.passwordDB.value.toString())
+        auth.createUserWithEmailAndPassword(userViewModel.emailVM.value.toString(), userViewModel.passwordVM.value.toString())
             .addOnSuccessListener {
                 Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_reg_password_to_login, null)
@@ -90,5 +87,10 @@ class RegPasswordFragment : Fragment() {
                 }
             }
 
+    }
+
+    //Somente para testes
+    private fun saveViewModel(){
+        userViewModel.passwordVM.value = regPassword_input.text.toString()
     }
 }

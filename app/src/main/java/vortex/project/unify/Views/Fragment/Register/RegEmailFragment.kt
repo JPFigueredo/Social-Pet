@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_reg_email.*
+import kotlinx.android.synthetic.main.fragment_reg_pet.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.UserViewModel
@@ -35,7 +36,7 @@ class RegEmailFragment : Fragment() {
     private fun validateEmail(): Boolean {
         val emailInput = regEmail_input.text.toString()
         var flag = true
-        if (emailInput.isNullOrEmpty()) {
+        if (emailInput.isEmpty()) {
             flag = false
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
@@ -46,16 +47,16 @@ class RegEmailFragment : Fragment() {
 
     private fun setUpListeners(){
         btn_next_email.setOnClickListener {
-
-//            findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
-
             if(validateEmail()) {
-                userViewModel.emailDB.value = regEmail_input.text.toString()
+                saveViewModel()
                 findNavController().navigate(R.id.action_reg_email_to_reg_phone, null)
             }else{
                 Toast.makeText(context, "Email inválido!", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun saveViewModel(){
+        userViewModel.emailVM.value = regEmail_input.text.toString()
     }
 
     private fun setToolbar() {
@@ -68,7 +69,7 @@ class RegEmailFragment : Fragment() {
         activity?.toolbar_layout!!.visibility = View.VISIBLE
         activity?.drawer_button!!.visibility = View.GONE
 //        activity?.camera_button!!.visibility = View.GONE
-//        activity?.new_followers_button!!.visibility = View.GONE
+//        activity?.new_fallowers_button!!.visibility = View.GONE
 //        activity?.toolbar_layout!!.background = background!!.toDrawable()
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams

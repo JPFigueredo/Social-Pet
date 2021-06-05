@@ -10,17 +10,13 @@ import vortex.project.unify.R
 
 class ProfileFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
-
         setWidgets()
     }
 
     private fun setWidgets() {
         activity?.toolbar_layout!!.visibility = View.GONE
         activity?.bottom_nav_view!!.visibility = View.GONE
-
     }
 }

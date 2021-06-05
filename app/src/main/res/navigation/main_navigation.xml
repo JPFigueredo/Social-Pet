@@ -17,8 +17,8 @@
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_regEmailFragment"
-            app:destination="@id/regEmail" />
+            android:id="@+id/action_loginFragment_to_regPetFragment"
+            app:destination="@id/regPetFragment" />
     </fragment>
     <fragment
         android:id="@+id/home_dest"
@@ -92,7 +92,16 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/new_fallowers_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.NewFallowersFragment"
+        android:name="vortex.project.unify.Views.Fragment.Main.NewFollowersFragment"
         android:label="Fallowers"
-        tools:layout="@layout/fragment_new_fallowers" />
+        tools:layout="@layout/fragment_new_followers" />
+    <fragment
+        android:id="@+id/regPetFragment"
+        android:name="vortex.project.unify.Views.Fragment.Register.RegPetFragment"
+        android:label="fragment_reg_pet"
+        tools:layout="@layout/fragment_reg_pet" >
+        <action
+            android:id="@+id/action_regPetFragment_to_regEmail"
+            app:destination="@id/regEmail" />
+    </fragment>
 </navigation>
