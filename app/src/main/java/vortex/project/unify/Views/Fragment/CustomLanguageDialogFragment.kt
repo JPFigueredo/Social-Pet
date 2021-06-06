@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_custom_language_dialog.*
 import kotlinx.android.synthetic.main.fragment_custom_language_dialog.view.*
 import vortex.project.unify.R
@@ -37,11 +38,11 @@ class CustomLanguageDialogFragment : DialogFragment() {
             if(ratingResult == "@string/english"){
                 val bundle = Bundle()
                 bundle.putString("key", value)
-                navController.navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
+                findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
             }else if(ratingResult == "@string/Portuguese"){
                 val bundle = Bundle()
                 bundle.putString("key", value)
-                navController.navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
+                findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
             }
 
         }
