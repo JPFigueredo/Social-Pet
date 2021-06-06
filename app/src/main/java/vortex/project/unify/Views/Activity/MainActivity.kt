@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    ///Test COmmit
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 
