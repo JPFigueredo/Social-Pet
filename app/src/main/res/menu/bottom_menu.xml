@@ -14,17 +14,23 @@
             android:icon="@drawable/ic_search"
             android:title="@string/search" />
 
-        <item
-            android:id="@+id/addPost_dest"
-            android:menuCategory="secondary"
-            android:icon="@drawable/ic_add"
-            android:title="@string/add" />
+<!--        <item-->
+<!--            android:id="@+id/addPost_dest"-->
+<!--            android:menuCategory="secondary"-->
+<!--            android:icon="@drawable/ic_add"-->
+<!--            android:title="@string/add" />-->
 
         <item
             android:id="@+id/likes_dest"
             android:menuCategory="secondary"
             android:icon="@drawable/ic_favorite"
             android:title="@string/likes" />
+
+        <item
+            android:id="@+id/myPets_dest"
+            android:menuCategory="secondary"
+            android:icon="@drawable/ic_pets"
+            android:title="@string/my_pets"/>
 
         <item
             android:id="@+id/profile_dest"

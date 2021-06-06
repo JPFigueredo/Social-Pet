@@ -76,10 +76,14 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nav_myPets"
+        android:id="@+id/myPets_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.MyPetsFragment"
         android:label="My Pets"
-        tools:layout="@layout/fragment_my_pets" />
+        tools:layout="@layout/fragment_my_pets" >
+        <action
+            android:id="@+id/action_myPets_dest_to_addPetFragment"
+            app:destination="@id/addPetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/likes_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.LikesFragment"
@@ -103,5 +107,14 @@
         <action
             android:id="@+id/action_regPetFragment_to_regEmail"
             app:destination="@id/regEmail" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPetFragment"
+        android:name="vortex.project.unify.Views.Fragment.Register.AddPetFragment"
+        android:label="fragment_add_pet"
+        tools:layout="@layout/fragment_add_pet" >
+        <action
+            android:id="@+id/action_addPetFragment_to_myPets_dest"
+            app:destination="@id/myPets_dest" />
     </fragment>
 </navigation>

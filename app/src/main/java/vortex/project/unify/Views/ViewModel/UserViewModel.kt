@@ -11,6 +11,8 @@ class UserViewModel : ViewModel() {
     var passwordVM = MutableLiveData<String>().apply { value = "@@Aa123" }
     var phoneVM = MutableLiveData<String>().apply { value = "" }
 
+    var petCountVM = MutableLiveData<Int>().apply { value = 1 }
+
     var pet1_nameVM = MutableLiveData<String>().apply { value = "Gertrude" }
     var pet1_specieVM = MutableLiveData<String>().apply { value = "Goat" }
     var pet1_genderVM = MutableLiveData<String>().apply { value = "Female" }

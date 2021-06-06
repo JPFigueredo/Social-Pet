@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Views.Fragment.Register.RegPetFragment">
+    tools:context=".Views.Fragment.Register.AddPetFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
@@ -25,7 +24,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_edit_profile"
+            android:id="@+id/add_img_edit_profile"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginTop="16dp"
@@ -42,13 +41,13 @@
             android:text="@string/change_profile_photo"
             android:textSize="10sp"
             app:cornerRadius="40dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_edit_profile"
+            app:layout_constraintBottom_toBottomOf="@+id/add_img_edit_profile"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_edit_profile"
-            app:layout_constraintTop_toTopOf="@+id/img_edit_profile" />
+            app:layout_constraintStart_toEndOf="@+id/add_img_edit_profile"
+            app:layout_constraintTop_toTopOf="@+id/add_img_edit_profile" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pets_name_layout"
+            android:id="@+id/add_pets_name_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,10 +64,10 @@
             app:counterMaxLength="20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_edit_profile">
+            app:layout_constraintTop_toBottomOf="@+id/add_img_edit_profile">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/reg_pets_name_input"
+                android:id="@+id/add_pets_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/pet_s_name"
@@ -77,7 +76,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pets_especies_layout"
+            android:id="@+id/add_pets_especies_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -91,13 +90,13 @@
             app:boxStrokeWidth="3dp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
-            app:layout_constraintBottom_toTopOf="@+id/pets_bio_layout"
+            app:layout_constraintBottom_toTopOf="@+id/add_pets_bio_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pets_name_layout">
+            app:layout_constraintTop_toBottomOf="@+id/add_pets_name_layout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/reg_pets_especies_input"
+                android:id="@+id/add_pets_especies_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/species"
@@ -106,7 +105,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pets_bio_layout"
+            android:id="@+id/add_pets_bio_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -122,10 +121,10 @@
             app:counterMaxLength="20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pets_especies_layout">
+            app:layout_constraintTop_toBottomOf="@+id/add_pets_especies_layout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/reg_pets_gender_input"
+                android:id="@+id/add_pets_gender_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Gender"
@@ -133,17 +132,20 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/reg_pet_fab"
+            android:id="@+id/add_pet_finish_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/orange_400"
             android:clickable="true"
-            android:src="@drawable/ic_arrow_forward"
+            android:src="@drawable/ic_pets"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pets_bio_layout"
+            app:layout_constraintTop_toBottomOf="@+id/add_pets_bio_layout"
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,8 @@ class User(
     var email: String = "",
     var phone: String = "",
 
+    var petCount: Int = 0,
+
     var pet1_name: String = "",
     var pet1_specie: String = "",
     var pet1_followers: String = "0",

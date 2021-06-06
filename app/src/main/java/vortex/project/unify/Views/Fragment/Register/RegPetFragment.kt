@@ -36,8 +36,9 @@ class RegPetFragment : Fragment() {
     }
 
     private fun saveViewModel(){
-        userViewModel.pet1_nameVM.value = pets_name_input.text.toString()
-        userViewModel.pet1_specieVM.value = pets_especies_input.text.toString()
-        userViewModel.pet1_genderVM.value = pets_gender_input.text.toString()
+        userViewModel.pet1_nameVM.value = reg_pets_name_input.text.toString()
+        userViewModel.pet1_specieVM.value = reg_pets_especies_input.text.toString()
+        userViewModel.pet1_genderVM.value = reg_pets_gender_input.text.toString()
+        userViewModel.petCountVM.value = userViewModel.petCountVM.value?.plus(1)
     }
 }

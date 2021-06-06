@@ -25,7 +25,7 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="welcome_">Welcome,</string>
     <string name="buddy_">buddy!</string>
-    <string name="not_a_member_sigup_now">Not a member? Sigup now</string>
+    <string name="not_a_member_sigup_now">Not a member? Sign Up now!</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="phone_number_optional">Phone Number (optional)</string>
     <string name="save">Save</string>
