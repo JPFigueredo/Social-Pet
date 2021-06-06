@@ -81,7 +81,7 @@ class LoginFragment : Fragment() {
             .addOnSuccessListener { taskSnapshot ->
                 Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
                 getUserData()
-                getPetsData()
+                getPetsDataFromUserVMtoPetsVM()
                 findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
             }
             .addOnFailureListener { exception ->
@@ -95,7 +95,7 @@ class LoginFragment : Fragment() {
         userViewModel.emailVM.value = Firebase.auth.currentUser?.email
     }
 
-    private fun getPetsData() {
+    private fun getPetsDataFromUserVMtoPetsVM() {
         if (userViewModel.petCountVM.value == 0) {
             //Do nothing
         } else if (userViewModel.petCountVM.value == 1) {

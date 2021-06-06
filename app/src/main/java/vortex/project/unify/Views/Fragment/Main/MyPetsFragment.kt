@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_my_pets.*
 import kotlinx.android.synthetic.main.fragment_my_pets.fab_add_pet
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Adapters.MyPetsAdapter
@@ -23,10 +25,11 @@ import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
 
-class MyPetsFragment : Fragment() {
+class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
 
     private lateinit var petsViewModel: PetsViewModel
-//    private val ADD_REQUEST_CODE = 51
+    private lateinit var userViewModel: UserViewModel
+    private lateinit var petList: List<Pet>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_my_pets, container, false)
@@ -36,6 +39,8 @@ class MyPetsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.let { act ->
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
+            userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
+            petList = petsViewModel.petsListVM.value ?: listOf()
         }
         configRecycleView()
         subscribe()
@@ -49,12 +54,22 @@ class MyPetsFragment : Fragment() {
     }
     private fun configRecycleView() {
         myPets_recyclerView.layoutManager = LinearLayoutManager(activity)
-        myPets_recyclerView.adapter = MyPetsAdapter()
+        myPets_recyclerView.adapter = MyPetsAdapter(petList, this)
         myPets_recyclerView.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
     }
+
+    override fun onItemClick(position: Int) {
+        val chosenPetName: String = petList[position].pet_name
+        val chosenPetSpecie: String = petList[position].pet_specie
+
+        userViewModel.petMain_nameVM.value = chosenPetName
+        userViewModel.petMain_specieVM.value = chosenPetSpecie
+
+        Toast.makeText(context, "$chosenPetName chosen as your main Pet", Toast.LENGTH_SHORT).show()
+    }
+
     private fun subscribe(){
-        petsViewModel.petsListVM.observe(viewLifecycleOwner, Observer {
-                list->
+        petsViewModel.petsListVM.observe(viewLifecycleOwner, Observer { list->
             if (list != null){
                 val adapter = myPets_recyclerView.adapter
                 if (adapter is MyPetsAdapter){
@@ -63,23 +78,6 @@ class MyPetsFragment : Fragment() {
             }
         })
     }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (resultCode == Activity.RESULT_OK){
-//            if (requestCode == ADD_REQUEST_CODE){
-//                data?.let {
-//                    val list = petsViewModel.petsListVM.value ?: listOf()
-//                    val petName = data.getStringExtra("petName").toString()
-//                    val petSpecie = data.getStringExtra("petSpecie").toString()
-//                    val petGender = data.getStringExtra("petGender").toString()
-//
-//                    val newPet = Pet(petName, petSpecie, petGender, null, null, null)
-//                    petsViewModel.petsListVM.value = list + newPet
-//                }
-//            }
-//        }
-//    }
 
 //    private fun setToolbar() {
 ////        val value = TypedValue()

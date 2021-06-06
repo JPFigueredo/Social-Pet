@@ -8,6 +8,12 @@ class User(
 
     var petCount: Int = 0,
 
+    var petMain_name: String = "",
+    var petMain_specie: String = "",
+    var petMain_followers: String = "0",
+    var petMain_gender: String = "",
+    var petMain_address: String = "",
+
     var pet1_name: String = "",
     var pet1_specie: String = "",
     var pet1_followers: String = "0",

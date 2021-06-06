@@ -13,6 +13,12 @@ class UserViewModel : ViewModel() {
 
     var petCountVM = MutableLiveData<Int>().apply { value = 1 }
 
+    var petMain_nameVM = MutableLiveData<String>().apply { value = "Gertrude" }
+    var petMain_specieVM = MutableLiveData<String>().apply { value = "Goat" }
+    var petMain_genderVM = MutableLiveData<String>().apply { value = "Female" }
+    var petMain_followersVM = MutableLiveData<String>().apply { value = "" }
+    var petMain_addressVM = MutableLiveData<String>().apply { value = "" }
+
     var pet1_nameVM = MutableLiveData<String>().apply { value = "Gertrude" }
     var pet1_specieVM = MutableLiveData<String>().apply { value = "Goat" }
     var pet1_genderVM = MutableLiveData<String>().apply { value = "Female" }
@@ -42,5 +48,10 @@ class UserViewModel : ViewModel() {
     var pet5_genderVM = MutableLiveData<String>().apply { value = "" }
     var pet5_followersVM = MutableLiveData<String>().apply { value = "" }
     var pet5_addressVM = MutableLiveData<String>().apply { value = "" }
+
+    internal fun changeMainPet(petName: String, petSpecie: String){
+        petMain_nameVM.value = petName
+        petMain_specieVM.value = petSpecie
+    }
 
 }

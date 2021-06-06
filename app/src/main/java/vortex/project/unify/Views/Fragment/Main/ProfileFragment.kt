@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -26,7 +27,6 @@ class ProfileFragment : Fragment() {
                 act -> userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
         }
         setData()
-
     }
 
     private fun setWidgets() {
@@ -35,7 +35,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setData(){
-        tv_pets_name_profile.text = userViewModel.pet1_nameVM.value.toString()
-        tv_bio.text = userViewModel.pet1_specieVM.value.toString()
+        userViewModel.petMain_nameVM.observe(viewLifecycleOwner, Observer {
+            if (it != null && it.isNotBlank()) {
+                tv_pets_name_profile.text = it.toString()
+            }
+        })
+
+        userViewModel.petMain_specieVM.observe(viewLifecycleOwner, Observer {
+            if (it != null && it.isNotBlank()) {
+                tv_bio.text = it.toString()
+            }
+        })
     }
 }
