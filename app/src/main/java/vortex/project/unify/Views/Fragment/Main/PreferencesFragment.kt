@@ -1,6 +1,5 @@
 package vortex.project.unify.Views.Fragment.Main
 
-import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
@@ -8,15 +7,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.Fragment.CustomLanguageDialogFragment
 import vortex.project.unify.Views.ViewModel.PreferencesViewModel
 import java.util.*
 
@@ -27,7 +27,7 @@ class PreferencesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         sharedPreferences = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE)
-        val view = inflater.inflate(R.layout.fragment_reg_password, container, false)
+        val view = inflater.inflate(R.layout.fragment_preferences, container, false)
         return view
     }
 
@@ -44,8 +44,19 @@ class PreferencesFragment : Fragment() {
 
     private fun setUpListeners() {
         btn_changeLanguage.setOnClickListener {
-//            alertPop()
-//            changeLanguage()
+            preferencesViewModel.language.value = if (preferencesViewModel.language.value == getString(R.string.Portuguese)) {
+                getString(R.string.Portuguese)
+            } else {
+                getString(R.string.english)
+            }
+//            navController.navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
+
+
+//            if(alertPop == /*botão negativo*/){
+//                setLocate("en")
+//            }else{
+//                setLocate("pt")
+//            }
         }
 
         btn_changeApparence.setOnClickListener {
@@ -56,23 +67,6 @@ class PreferencesFragment : Fragment() {
             }
         }
     }
-//    private fun changeLanguage() {
-//        val listItems = arrayOf("English", "Português")
-//
-//        val mBuilder = AlertDialog.Builder(requireContext())
-//        mBuilder.setTitle("Choose Language:")
-//        mBuilder.setSingleChoiceItems(listItems, -1){ _, which ->
-//            if(which == 0){
-//                setLocate("en")
-//                recreate()
-//            }
-//            else if(which==1){
-//                setLocate("pt")
-//                recreate()
-//            }
-//            //dialog.dismiss()
-//        }
-//    }
 
     private fun setLocate(Lang: String){
         val locale = Locale(Lang)
@@ -102,30 +96,6 @@ class PreferencesFragment : Fragment() {
             }
         })
     }
-
-//    private fun alertPop(view: View){
-////        val dialogBuilder = AlertDialog.Builder(requireActivity())
-////        dialogBuilder.setMessage("Choose Language")
-////            // if the dialog is cancelable
-////            .setCancelable(false)
-////        dialogBuilder.setNegativeButton("English") { dialog, which ->
-////
-////        }
-////        dialogBuilder.setPositiveButton("Portugues", this) { dialog, which ->
-////
-////        }
-////            .show()
-////            .setPositiveButton("Ok", DialogInterface.OnClickListener {
-////                    dialog, id ->
-////                dialog.dismiss()
-////
-////            })
-//
-//        val alert = dialogBuilder.create()
-//        alert.setTitle("Test")
-//        alert.show()
-//    }
-
 
     private fun setToolbar() {
 

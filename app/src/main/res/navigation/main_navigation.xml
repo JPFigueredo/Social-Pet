@@ -38,7 +38,14 @@
         android:id="@+id/nav_preferences"
         android:name="vortex.project.unify.Views.Fragment.Main.PreferencesFragment"
         android:label="Preferences"
-        tools:layout="@layout/fragment_preferences" />
+        tools:layout="@layout/fragment_preferences" >
+        <action
+            android:id="@+id/action_nav_preferences_self"
+            app:destination="@id/nav_preferences" />
+        <action
+            android:id="@+id/action_nav_preferences_to_customLanguageDialogFragment"
+            app:destination="@id/customLanguageDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profile_dest"
         android:name="vortex.project.unify.Views.Fragment.Main.ProfileFragment"
@@ -116,5 +123,14 @@
         <action
             android:id="@+id/action_addPetFragment_to_myPets_dest"
             app:destination="@id/myPets_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/customLanguageDialogFragment"
+        android:name="vortex.project.unify.Views.Fragment.CustomLanguageDialogFragment"
+        android:label="fragment_custom_language_dialog"
+        tools:layout="@layout/fragment_custom_language_dialog" >
+        <action
+            android:id="@+id/action_customLanguageDialogFragment_to_nav_preferences"
+            app:destination="@id/nav_preferences" />
     </fragment>
 </navigation>
