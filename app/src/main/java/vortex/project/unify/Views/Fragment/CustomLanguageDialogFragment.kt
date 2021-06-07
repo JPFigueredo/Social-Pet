@@ -20,31 +20,31 @@ class CustomLanguageDialogFragment : DialogFragment() {
     ): View? {
         var view: View = inflater.inflate(R.layout.fragment_custom_language_dialog, container, false)
 
-        setUpListeners()
+//        setUpListeners()
 
         return view
     }
 
-    private fun setUpListeners(){
-        view?.cancelButton?.setOnClickListener{
-            dismiss()
-        }
-        view?.submitButton?.setOnClickListener{
-            val selectedID = LanguageRG.checkedRadioButtonId
-            val radio = view?.findViewById<RadioButton>(selectedID)
-
-            var ratingResult = radio?.text.toString()
-
-            if(ratingResult == "@string/english"){
-                val bundle = Bundle()
-                bundle.putString("key", value)
-                findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
-            }else if(ratingResult == "@string/Portuguese"){
-                val bundle = Bundle()
-                bundle.putString("key", value)
-                findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
-            }
-
-        }
-    }
+//    private fun setUpListeners(){
+//        view?.cancelButton?.setOnClickListener{
+//            dismiss()
+//        }
+//        view?.submitButton?.setOnClickListener{
+//            val selectedID = LanguageRG.checkedRadioButtonId
+//            val radio = view?.findViewById<RadioButton>(selectedID)
+//
+//            var ratingResult = radio?.text.toString()
+//
+//            if(ratingResult == "@string/english"){
+//                val bundle = Bundle()
+//                bundle.putString("key", value)
+//                findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
+//            }else if(ratingResult == "@string/Portuguese"){
+//                val bundle = Bundle()
+//                bundle.putString("key", value)
+//                findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
+//            }
+//
+//        }
+//    }
 }

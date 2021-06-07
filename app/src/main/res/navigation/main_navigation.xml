@@ -40,11 +40,11 @@
         android:label="Preferences"
         tools:layout="@layout/fragment_preferences" >
         <action
-            android:id="@+id/action_nav_preferences_self"
-            app:destination="@id/nav_preferences" />
-        <action
             android:id="@+id/action_nav_preferences_to_customLanguageDialogFragment"
             app:destination="@id/customLanguageDialogFragment" />
+        <action
+            android:id="@+id/action_nav_preferences_to_profile_dest"
+            app:destination="@id/profile_dest" />
     </fragment>
     <fragment
         android:id="@+id/profile_dest"
@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_profile_dest_to_home_dest"
             app:destination="@id/home_dest" />
+        <action
+            android:id="@+id/action_profile_dest_to_nav_preferences"
+            app:destination="@id/nav_preferences" />
     </fragment>
     <fragment
         android:id="@+id/regEmail"

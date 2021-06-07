@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.UserViewModel
@@ -27,6 +29,13 @@ class ProfileFragment : Fragment() {
                 act -> userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
         }
         setData()
+        setUpListeners()
+    }
+
+    private fun setUpListeners(){
+        settings_ImageButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_dest_to_nav_preferences, null)
+        }
     }
 
     private fun setWidgets() {

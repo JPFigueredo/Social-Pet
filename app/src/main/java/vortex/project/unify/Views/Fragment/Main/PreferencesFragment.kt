@@ -37,7 +37,7 @@ class PreferencesFragment : Fragment() {
             act -> preferencesViewModel = ViewModelProviders.of(act).get(PreferencesViewModel::class.java)
         }
         loadLocate()
-        setToolbar()
+//        setToolbar()
         setUpListeners()
         fillUserData()
     }
@@ -97,16 +97,16 @@ class PreferencesFragment : Fragment() {
         })
     }
 
-    private fun setToolbar() {
-
-        activity?.toolbar_layout!!.visibility = View.VISIBLE
-        activity?.drawer_button!!.visibility = View.GONE
-//        activity?.camera_button!!.visibility = View.GONE
-//        activity?.new_followers_button!!.visibility = View.GONE
-        activity?.bottom_nav_view!!.visibility = View.GONE
-
-        val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
-        parameter.marginStart = 0
-        activity?.toolbar!!.layoutParams = parameter
-    }
+//    private fun setToolbar() {
+//
+//        activity?.toolbar_layout!!.visibility = View.VISIBLE
+//        activity?.drawer_button!!.visibility = View.GONE
+////        activity?.camera_button!!.visibility = View.GONE
+////        activity?.new_followers_button!!.visibility = View.GONE
+//        activity?.bottom_nav_view!!.visibility = View.GONE
+//
+//        val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
+//        parameter.marginStart = 0
+//        activity?.toolbar!!.layoutParams = parameter
+//    }
 }
