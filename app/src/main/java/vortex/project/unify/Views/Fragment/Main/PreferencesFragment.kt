@@ -44,12 +44,13 @@ class PreferencesFragment : Fragment() {
 
     private fun setUpListeners() {
         btn_changeLanguage.setOnClickListener {
-            preferencesViewModel.language.value = if (preferencesViewModel.language.value == getString(R.string.Portuguese)) {
-                getString(R.string.Portuguese)
-            } else {
-                getString(R.string.english)
-            }
-//            navController.navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
+            findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, null)
+            preferencesViewModel.language.value = if (preferencesViewModel.language.value == getString(R.string.Portuguese)) ({
+                setLocate("pt")
+            }).toString()
+            else ({
+                setLocate("en")
+            }).toString()
 
 
 //            if(alertPop == /*botão negativo*/){

@@ -35,13 +35,13 @@
             android:id="@+id/EnglishRB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/english"
+            android:text="@string/dialogEnglish"
             />
         <RadioButton
             android:id="@+id/PortugueseRB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Portuguese"
+            android:text="@string/dialogPortuguese"
             />
     </RadioGroup>
 
