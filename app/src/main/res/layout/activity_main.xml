@@ -34,39 +34,6 @@
 <!--                android:tint="?attr/colorOnSurface" />-->
         </FrameLayout>
 
-        <!--<FrameLayout
-            android:id="@+id/camera_button"
-            android:layout_width="50dp"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@+id/new_fallowers_button"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:src="@drawable/ic_photo_camera"
-                android:tint="?attr/colorOnSurface" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/new_fallowers_button"
-            android:layout_width="50dp"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentEnd="true"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:src="@drawable/ic_person_add"
-                android:tint="?attr/colorOnSurface" />
-        </FrameLayout>-->
-
         <include layout="@layout/toolbar" />
     </RelativeLayout>
 

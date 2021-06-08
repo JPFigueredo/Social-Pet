@@ -7,24 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.tv_not_member
 import kotlinx.android.synthetic.main.fragment_reg_pet.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.Encrypto
+import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
 
 class RegPetFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
+    private lateinit var petsViewModel: PetsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_reg_pet, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.let {
-                act -> userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
+        activity?.let {act ->
+            userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
+            petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
         }
         setUpListeners()
     }
@@ -36,9 +41,11 @@ class RegPetFragment : Fragment() {
     }
 
     private fun saveViewModel(){
-        userViewModel.pet1_nameVM.value = reg_pets_name_input.text.toString()
-        userViewModel.pet1_specieVM.value = reg_pets_especies_input.text.toString()
-        userViewModel.pet1_genderVM.value = reg_pets_gender_input.text.toString()
-        userViewModel.petCountVM.value = userViewModel.petCountVM.value?.plus(1)
+        val list = petsViewModel.petsListVM.value ?: listOf()
+        val petName = reg_pets_name_input.text.toString()
+        val petSpecie = reg_pets_especies_input.text.toString()
+        val petGender = reg_pets_gender_input.text.toString()
+        val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
+        petsViewModel.petsListVM.value = list + newPet
     }
 }

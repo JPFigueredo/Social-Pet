@@ -1,6 +1,5 @@
 package vortex.project.unify.Views.Activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,7 +9,6 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -19,7 +17,6 @@ import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    ///Test COmmit
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 

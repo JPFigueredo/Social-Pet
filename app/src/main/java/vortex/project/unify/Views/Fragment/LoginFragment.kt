@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_reg_pet.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Classes.Pet
+import vortex.project.unify.Views.Classes.User
 import vortex.project.unify.Views.Encrypto
 import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
@@ -91,7 +92,7 @@ class LoginFragment : Fragment() {
 //        val currentUser = auth.currentUser
 //        if (currentUser != null) {
 //            getUserData()
-//            loadUserData()
+//            loadDatabase()
 //            getPetsDataFromUserVMtoPetsVM()
 //            findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
 //        }
@@ -102,7 +103,7 @@ class LoginFragment : Fragment() {
             .addOnSuccessListener { taskSnapshot ->
                 Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
                 getUserData()
-                loadUserData()
+                loadDatabase()
 //                getPetsDataFromUserVMtoPetsVM()
                 findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
             }
@@ -117,7 +118,7 @@ class LoginFragment : Fragment() {
         userViewModel.emailVM.value = Firebase.auth.currentUser?.email
     }
 
-    private fun loadUserData() {
+    private fun loadPetData() {
         firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
             .get()
             .addOnCompleteListener { task ->
@@ -131,6 +132,30 @@ class LoginFragment : Fragment() {
 //                    }
             }
         }
+    }
+
+    private fun loadUserData() {
+        firestoreDB!!.collection("Users")
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+
+                    for(doc in task.result!!){
+                        val user_db = doc.toObject(User::class.java)
+
+                        if (user_db.user_id == userViewModel.user_idVM.value.toString()){
+                            userViewModel.user_idVM.value = user_db.user_id
+                            userViewModel.emailVM.value = user_db.email
+                            userViewModel.phoneVM.value = user_db.phone
+                        }
+                    }
+                }
+            }
+    }
+
+    private fun loadDatabase(){
+        loadUserData()
+        loadPetData()
     }
 
     //Firebase
