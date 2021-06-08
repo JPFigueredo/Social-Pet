@@ -1,6 +1,8 @@
 package vortex.project.unify.Views.Fragment.Register
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_my_pets.*
@@ -22,8 +26,11 @@ class AddPetFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
     private lateinit var petsViewModel: PetsViewModel
+    private var firestoreDB: FirebaseFirestore? = null
+    private var firestoreListener: ListenerRegistration? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        firestoreDB = FirebaseFirestore.getInstance()
         return inflater.inflate(R.layout.fragment_add_pet, container, false)
         setWidgets()
     }
@@ -45,6 +52,22 @@ class AddPetFragment : Fragment() {
         activity?.bottom_nav_view!!.visibility = View.GONE
     }
 
+    private fun addPetFirebase(pet_name: String, pet_specie: String, pet_gender: String, pet_followers: Int, pet_posts: Int, pet_address: String, pet_photo: String){
+        val pet = Pet(pet_name, pet_specie, pet_gender, pet_followers, pet_posts, pet_address, pet_photo)
+
+        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
+            .add(pet)
+            .addOnSuccessListener { documentReference ->
+                Log.e(ContentValues.TAG, "DocumentSnapshot written with ID: " + documentReference.id)
+                Toast.makeText(context, "Pet has been added!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Log.e(ContentValues.TAG, "Error adding Product document", e)
+                Toast.makeText(context, "Pet could not be added!", Toast.LENGTH_SHORT).show()
+            }
+
+    }
+
     private fun saveViewModel() {
         if (checkEmpty()) {
             var list = petsViewModel.petsListVM.value ?: listOf()
@@ -57,7 +80,9 @@ class AddPetFragment : Fragment() {
                 userViewModel.pet1_specieVM.value = petSpecie
                 userViewModel.pet1_genderVM.value = petGender
 
-                val newPet = Pet(petName, petSpecie, petGender, null, null, null)
+                addPetFirebase(petName, petSpecie, petGender,0,0,"","")
+
+                val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
                 petsViewModel.petsListVM.value = list + newPet
 
             } else if (userViewModel.petCountVM.value == 1) {
@@ -65,7 +90,9 @@ class AddPetFragment : Fragment() {
                 userViewModel.pet2_specieVM.value = petSpecie
                 userViewModel.pet2_genderVM.value = petGender
 
-                val newPet = Pet(petName, petSpecie, petGender, null, null, null)
+                addPetFirebase(petName, petSpecie, petGender,0,0,"","")
+
+                val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
                 petsViewModel.petsListVM.value = list + newPet
 
             } else if (userViewModel.petCountVM.value == 2) {
@@ -73,7 +100,9 @@ class AddPetFragment : Fragment() {
                 userViewModel.pet3_specieVM.value = petSpecie
                 userViewModel.pet3_genderVM.value = petGender
 
-                val newPet = Pet(petName, petSpecie, petGender, null, null, null)
+                addPetFirebase(petName, petSpecie, petGender,0,0,"","")
+
+                val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
                 petsViewModel.petsListVM.value = list + newPet
 
             } else if (userViewModel.petCountVM.value == 3) {
@@ -81,7 +110,9 @@ class AddPetFragment : Fragment() {
                 userViewModel.pet4_specieVM.value = petSpecie
                 userViewModel.pet4_genderVM.value = petGender
 
-                val newPet = Pet(petName, petSpecie, petGender, null, null, null)
+                addPetFirebase(petName, petSpecie, petGender,0,0,"","")
+
+                val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
                 petsViewModel.petsListVM.value = list + newPet
 
             } else if (userViewModel.petCountVM.value == 4) {
@@ -89,7 +120,9 @@ class AddPetFragment : Fragment() {
                 userViewModel.pet5_specieVM.value = petSpecie
                 userViewModel.pet5_genderVM.value = petGender
 
-                val newPet = Pet(petName, petSpecie, petGender, null, null, null)
+                addPetFirebase(petName, petSpecie, petGender,0,0,"","")
+
+                val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
                 petsViewModel.petsListVM.value = list + newPet
 
             } else {

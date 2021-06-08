@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_preferences.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Fragment.CustomLanguageDialogFragment
@@ -40,19 +41,32 @@ class PreferencesFragment : Fragment() {
 //        setToolbar()
         setUpListeners()
         fillUserData()
+        setLanguage()
+    }
+
+    private fun setLanguage(){
+        preferencesViewModel.language.observe(viewLifecycleOwner, Observer {
+            if (it != null && it.isNotBlank()) {
+                if (it == "Portuguese") {
+                    setLocate("pt")
+                } else if (it == "English") {
+                    setLocate("en")
+                }
+            }
+        })
     }
 
     private fun setUpListeners() {
         btn_changeLanguage.setOnClickListener {
-            findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, null)
-            preferencesViewModel.language.value = if (preferencesViewModel.language.value == getString(R.string.Portuguese)) ({
-                setLocate("pt")
-            }).toString()
-            else ({
-                setLocate("en")
-            }).toString()
 
+//            preferencesViewModel.language.value = if (preferencesViewModel.language.value == getString(R.string.Portuguese)) ({
+//                setLocate("pt")
+//            }).toString()
+//            else ({
+//                setLocate("en")
+//            }).toString()
 
+            findNavController().navigate(R.id.action_nav_preferences_to_customLanguageDialogFragment, null)
 //            if(alertPop == /*botão negativo*/){
 //                setLocate("en")
 //            }else{

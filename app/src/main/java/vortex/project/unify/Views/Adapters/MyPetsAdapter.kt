@@ -30,7 +30,7 @@ class MyPetsAdapter (var petsList: List<Pet?> = listOf(), private val listener: 
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
 
-//        holder.petPhotoCard.image = petsList[position]!!.goodRestaurantStaff
+//        holder.petPhotoCard.image = petsList[position]!!.pet_photos
         holder.petNameCard.text = petsList[position]!!.pet_name
         holder.petSpecieCard.text = petsList[position]!!.pet_specie
         holder.petGenderCard.text = petsList[position]!!.pet_gender

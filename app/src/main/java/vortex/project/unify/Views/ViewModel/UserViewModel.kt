@@ -16,6 +16,7 @@ class UserViewModel : ViewModel() {
     var petMain_nameVM = MutableLiveData<String>().apply { value = "Gertrude" }
     var petMain_specieVM = MutableLiveData<String>().apply { value = "Goat" }
     var petMain_genderVM = MutableLiveData<String>().apply { value = "Female" }
+    var petMain_postsVM = MutableLiveData<String>().apply { value = "" }
     var petMain_followersVM = MutableLiveData<String>().apply { value = "" }
     var petMain_addressVM = MutableLiveData<String>().apply { value = "" }
 

@@ -1,6 +1,7 @@
 package vortex.project.unify.Views.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,13 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -25,11 +31,14 @@ class LoginFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
     private lateinit var petsViewModel: PetsViewModel
+    private var firestoreDB: FirebaseFirestore? = null
+    private var firestoreListener: ListenerRegistration? = null
     private lateinit var auth: FirebaseAuth
     private val encrypto = Encrypto()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
+        firestoreDB = FirebaseFirestore.getInstance()
 
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         return view
@@ -76,12 +85,25 @@ class LoginFragment : Fragment() {
         })
     }
 
+//    override fun onStart() {
+//        super.onStart()
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        val currentUser = auth.currentUser
+//        if (currentUser != null) {
+//            getUserData()
+//            loadUserData()
+//            getPetsDataFromUserVMtoPetsVM()
+//            findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
+//        }
+//    }
+
     fun doLogIn() {
         auth.signInWithEmailAndPassword(emailLogin_input.text.toString(), passwordLogin_input.text.toString())
             .addOnSuccessListener { taskSnapshot ->
                 Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
                 getUserData()
-                getPetsDataFromUserVMtoPetsVM()
+                loadUserData()
+//                getPetsDataFromUserVMtoPetsVM()
                 findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
             }
             .addOnFailureListener { exception ->
@@ -91,137 +113,156 @@ class LoginFragment : Fragment() {
     }
 
     private fun getUserData() {
-        userViewModel.user_idVM.value = encrypto.cipher(auth.currentUser?.uid.toString()).toString()
+        userViewModel.user_idVM.value = auth.currentUser?.uid.toString()
         userViewModel.emailVM.value = Firebase.auth.currentUser?.email
     }
 
-    private fun getPetsDataFromUserVMtoPetsVM() {
-        if (userViewModel.petCountVM.value == 0) {
-            //Do nothing
-        } else if (userViewModel.petCountVM.value == 1) {
-            var petsList = petsViewModel.petsListVM.value ?: listOf()
-            val petName = userViewModel.pet1_nameVM.value.toString()
-            val petSpecie = userViewModel.pet1_specieVM.value.toString()
-            val petGender = userViewModel.pet1_genderVM.value.toString()
+    private fun loadUserData() {
+        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
 
-            val addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
+                    petsViewModel.petsListVM.value = task.result!!.toObjects(Pet::class.java)
 
-        } else if (userViewModel.petCountVM.value == 2) {
-            var petsList = petsViewModel.petsListVM.value ?: listOf()
-            var petName = userViewModel.pet1_nameVM.value.toString()
-            var petSpecie = userViewModel.pet1_specieVM.value.toString()
-            var petGender = userViewModel.pet1_genderVM.value.toString()
-            var addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet2_nameVM.value.toString()
-            petSpecie = userViewModel.pet2_specieVM.value.toString()
-            petGender = userViewModel.pet2_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-        } else if (userViewModel.petCountVM.value == 3) {
-            var petsList = petsViewModel.petsListVM.value ?: listOf()
-            var petName = userViewModel.pet1_nameVM.value.toString()
-            var petSpecie = userViewModel.pet1_specieVM.value.toString()
-            var petGender = userViewModel.pet1_genderVM.value.toString()
-            var addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet2_nameVM.value.toString()
-            petSpecie = userViewModel.pet2_specieVM.value.toString()
-            petGender = userViewModel.pet2_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet3_nameVM.value.toString()
-            petSpecie = userViewModel.pet3_specieVM.value.toString()
-            petGender = userViewModel.pet3_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-        } else if (userViewModel.petCountVM.value == 4) {
-            var petsList = petsViewModel.petsListVM.value ?: listOf()
-            var petName = userViewModel.pet1_nameVM.value.toString()
-            var petSpecie = userViewModel.pet1_specieVM.value.toString()
-            var petGender = userViewModel.pet1_genderVM.value.toString()
-            var addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet2_nameVM.value.toString()
-            petSpecie = userViewModel.pet2_specieVM.value.toString()
-            petGender = userViewModel.pet2_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet3_nameVM.value.toString()
-            petSpecie = userViewModel.pet3_specieVM.value.toString()
-            petGender = userViewModel.pet3_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet4_nameVM.value.toString()
-            petSpecie = userViewModel.pet4_specieVM.value.toString()
-            petGender = userViewModel.pet4_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-        }  else if (userViewModel.petCountVM.value == 4) {
-            var petsList = petsViewModel.petsListVM.value ?: listOf()
-            var petName = userViewModel.pet1_nameVM.value.toString()
-            var petSpecie = userViewModel.pet1_specieVM.value.toString()
-            var petGender = userViewModel.pet1_genderVM.value.toString()
-            var addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet2_nameVM.value.toString()
-            petSpecie = userViewModel.pet2_specieVM.value.toString()
-            petGender = userViewModel.pet2_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet3_nameVM.value.toString()
-            petSpecie = userViewModel.pet3_specieVM.value.toString()
-            petGender = userViewModel.pet3_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet4_nameVM.value.toString()
-            petSpecie = userViewModel.pet4_specieVM.value.toString()
-            petGender = userViewModel.pet4_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-        } else if (userViewModel.petCountVM.value == 5) {
-            var petsList = petsViewModel.petsListVM.value ?: listOf()
-            var petName = userViewModel.pet1_nameVM.value.toString()
-            var petSpecie = userViewModel.pet1_specieVM.value.toString()
-            var petGender = userViewModel.pet1_genderVM.value.toString()
-            var addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet2_nameVM.value.toString()
-            petSpecie = userViewModel.pet2_specieVM.value.toString()
-            petGender = userViewModel.pet2_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet3_nameVM.value.toString()
-            petSpecie = userViewModel.pet3_specieVM.value.toString()
-            petGender = userViewModel.pet3_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet4_nameVM.value.toString()
-            petSpecie = userViewModel.pet4_specieVM.value.toString()
-            petGender = userViewModel.pet4_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
-
-            petName = userViewModel.pet5_nameVM.value.toString()
-            petSpecie = userViewModel.pet5_specieVM.value.toString()
-            petGender = userViewModel.pet5_genderVM.value.toString()
-            addPet = Pet(petName, petSpecie, petGender, null, null, null)
-            petsViewModel.petsListVM.value = petsList + addPet
+//                    for (doc in task.result!!) {
+//                        val pet = doc.toObject(Pet::class.java)
+//                        petsViewModel.petsListVM.value = petsViewModel.petsListVM.value!! + pet
+//                    }
+            }
         }
     }
+
+    //Firebase
+    //fb.collection("Users").document("dasdasda").collection("Pets")
+
+//    private fun getPetsDataFromUserVMtoPetsVM() {
+//        if (userViewModel.petCountVM.value == 0) {
+//            //Do nothing
+//        } else if (userViewModel.petCountVM.value == 1) {
+//            var petsList = petsViewModel.petsListVM.value ?: listOf()
+//            val petName = userViewModel.pet1_nameVM.value.toString()
+//            val petSpecie = userViewModel.pet1_specieVM.value.toString()
+//            val petGender = userViewModel.pet1_genderVM.value.toString()
+//
+//            val addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//        } else if (userViewModel.petCountVM.value == 2) {
+//            var petsList = petsViewModel.petsListVM.value ?: listOf()
+//            var petName = userViewModel.pet1_nameVM.value.toString()
+//            var petSpecie = userViewModel.pet1_specieVM.value.toString()
+//            var petGender = userViewModel.pet1_genderVM.value.toString()
+//            var addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet2_nameVM.value.toString()
+//            petSpecie = userViewModel.pet2_specieVM.value.toString()
+//            petGender = userViewModel.pet2_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//        } else if (userViewModel.petCountVM.value == 3) {
+//            var petsList = petsViewModel.petsListVM.value ?: listOf()
+//            var petName = userViewModel.pet1_nameVM.value.toString()
+//            var petSpecie = userViewModel.pet1_specieVM.value.toString()
+//            var petGender = userViewModel.pet1_genderVM.value.toString()
+//            var addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet2_nameVM.value.toString()
+//            petSpecie = userViewModel.pet2_specieVM.value.toString()
+//            petGender = userViewModel.pet2_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet3_nameVM.value.toString()
+//            petSpecie = userViewModel.pet3_specieVM.value.toString()
+//            petGender = userViewModel.pet3_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//        } else if (userViewModel.petCountVM.value == 4) {
+//            var petsList = petsViewModel.petsListVM.value ?: listOf()
+//            var petName = userViewModel.pet1_nameVM.value.toString()
+//            var petSpecie = userViewModel.pet1_specieVM.value.toString()
+//            var petGender = userViewModel.pet1_genderVM.value.toString()
+//            var addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet2_nameVM.value.toString()
+//            petSpecie = userViewModel.pet2_specieVM.value.toString()
+//            petGender = userViewModel.pet2_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet3_nameVM.value.toString()
+//            petSpecie = userViewModel.pet3_specieVM.value.toString()
+//            petGender = userViewModel.pet3_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet4_nameVM.value.toString()
+//            petSpecie = userViewModel.pet4_specieVM.value.toString()
+//            petGender = userViewModel.pet4_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//        }  else if (userViewModel.petCountVM.value == 4) {
+//            var petsList = petsViewModel.petsListVM.value ?: listOf()
+//            var petName = userViewModel.pet1_nameVM.value.toString()
+//            var petSpecie = userViewModel.pet1_specieVM.value.toString()
+//            var petGender = userViewModel.pet1_genderVM.value.toString()
+//            var addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet2_nameVM.value.toString()
+//            petSpecie = userViewModel.pet2_specieVM.value.toString()
+//            petGender = userViewModel.pet2_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet3_nameVM.value.toString()
+//            petSpecie = userViewModel.pet3_specieVM.value.toString()
+//            petGender = userViewModel.pet3_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet4_nameVM.value.toString()
+//            petSpecie = userViewModel.pet4_specieVM.value.toString()
+//            petGender = userViewModel.pet4_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//        } else if (userViewModel.petCountVM.value == 5) {
+//            var petsList = petsViewModel.petsListVM.value ?: listOf()
+//            var petName = userViewModel.pet1_nameVM.value.toString()
+//            var petSpecie = userViewModel.pet1_specieVM.value.toString()
+//            var petGender = userViewModel.pet1_genderVM.value.toString()
+//            var addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet2_nameVM.value.toString()
+//            petSpecie = userViewModel.pet2_specieVM.value.toString()
+//            petGender = userViewModel.pet2_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet3_nameVM.value.toString()
+//            petSpecie = userViewModel.pet3_specieVM.value.toString()
+//            petGender = userViewModel.pet3_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet4_nameVM.value.toString()
+//            petSpecie = userViewModel.pet4_specieVM.value.toString()
+//            petGender = userViewModel.pet4_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//
+//            petName = userViewModel.pet5_nameVM.value.toString()
+//            petSpecie = userViewModel.pet5_specieVM.value.toString()
+//            petGender = userViewModel.pet5_genderVM.value.toString()
+//            addPet = Pet(petName, petSpecie, petGender, null, null, null, null)
+//            petsViewModel.petsListVM.value = petsList + addPet
+//        }
+//    }
 
 }
