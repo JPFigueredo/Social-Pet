@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         R.id.likes_dest,
                         R.id.search_dest,
                         R.id.new_fallowers_dest,
-                        R.id.myPets_dest
+                        R.id.myPets_dest,
+                        R.id.loginFragment
                 )
         )
 
