@@ -28,7 +28,6 @@ class ForgotPasswordFragment : Fragment() {
 //        val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
-        activity?.drawer_button!!.visibility = View.GONE
 //        activity?.camera_button!!.visibility = View.GONE
 //        activity?.new_followers_button!!.visibility = View.GONE
 //        activity?.toolbar_layout!!.background = background!!.toDrawable()

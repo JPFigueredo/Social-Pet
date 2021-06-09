@@ -44,26 +44,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
 
         setupActionBar(navController, appBarConfiguration)
-
-        drawer_nav_view.setNavigationItemSelectedListener(this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_bar_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return  item.onNavDestinationSelected(findNavController(R.id.display_fragments))
-    }
-
-    fun setupDrawerMenu(view: View) {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            drawer_layout.openDrawer(GravityCompat.START)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.top_bar_menu, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return  item.onNavDestinationSelected(findNavController(R.id.display_fragments))
+//    }
 
     private fun setupActionBar(navController: NavController, appBarConfig : AppBarConfiguration) {
         setupActionBarWithNavController(navController, appBarConfig)
@@ -78,13 +68,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         bottomNav?.setupWithNavController(navController)
     }
 
-//    private fun setupDrawerNavMenu(navController: NavController) {
-//        val drawerNav = findViewById<NavigationView>(R.id.drawer_nav_view)
-//        drawerNav?.setupWithNavController(navController)
-//    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        drawer_layout.closeDrawer(GravityCompat.START)
         return item.onNavDestinationSelected(findNavController(R.id.display_fragments))
                 || super.onOptionsItemSelected(item)
     }

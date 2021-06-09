@@ -23,7 +23,6 @@ class SearchFragment : Fragment() {
     private fun setToolbar() {
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
-        activity?.drawer_button!!.visibility = View.VISIBLE
 //        activity?.camera_button!!.visibility = View.VISIBLE
 //        activity?.new_followers_button!!.visibility = View.VISIBLE
 

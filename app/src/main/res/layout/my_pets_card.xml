@@ -45,9 +45,9 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="24dp"
                     android:layout_marginStart="32dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_weight="1"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_pet_photo_profile"
                     app:layout_constraintStart_toEndOf="@+id/iv_pet_photo_profile"
@@ -69,6 +69,7 @@
                         android:text="@string/species"
                         android:textColor="?attr/colorOnSurface"
                         android:textSize="18sp" />
+
                     <TextView
                         android:id="@+id/tv_gender_card"
                         android:layout_width="match_parent"
@@ -82,26 +83,30 @@
                     android:id="@+id/select_pet_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="12dp"
                     android:clickable="true"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
                     app:srcCompat="@drawable/ic_check" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/layout_posts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginBottom="12dp">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/layout_fallowers"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/label_posts"
@@ -121,12 +126,45 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/layout_following"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginBottom="12dp">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/layout_fallowers"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/label_following"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/following"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_num_following"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="?attr/colorOnSecondary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_fallowers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/layout_following"
+                    app:layout_constraintStart_toEndOf="@+id/layout_posts"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/label_fallowers"
@@ -145,31 +183,32 @@
                         android:textColor="?attr/colorOnSecondary" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginBottom="12dp">
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/layout_fallowers"
+                    app:layout_constraintStart_toEndOf="@+id/layout_posts"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/label_following"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/following"
-                        android:textColor="?attr/colorOnSecondary"
-                        android:textStyle="bold" />
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/layout_following"
+                    app:layout_constraintStart_toEndOf="@+id/layout_fallowers"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/tv_num_following"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="?attr/colorOnSecondary" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

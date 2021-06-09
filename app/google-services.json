@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "974140455965",
+    "project_id": "socialpet-7f1d0",
+    "storage_bucket": "socialpet-7f1d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974140455965:android:0ac20c167ec164f0c31af4",
+        "android_client_info": {
+          "package_name": "vortex.project.unify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974140455965-r7fmkpv5dd8ho56clni48bijkb6sf6ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaek7ZqZDBRMWQIp97HQfDXhSoqZpiD0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974140455965-r7fmkpv5dd8ho56clni48bijkb6sf6ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

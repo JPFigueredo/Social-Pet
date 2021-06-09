@@ -57,7 +57,6 @@ class PostFragment : Fragment() {
         activity?.bottom_nav_view!!.visibility = View.VISIBLE
 
         activity?.toolbar_layout!!.visibility = View.VISIBLE
-        activity?.drawer_button!!.visibility = View.VISIBLE
 
         val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
         parameter.marginStart = 100
