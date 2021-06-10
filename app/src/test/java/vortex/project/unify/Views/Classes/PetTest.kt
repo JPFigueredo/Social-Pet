@@ -38,7 +38,6 @@ class PetTest {
     fun verifyIfAcceptsZero() {
         try {
             pet!!.pet_posts = 0
-            assertTrue(false)
         } catch (e: Throwable){
             assertTrue(e is Exception)
         }
@@ -48,7 +47,6 @@ class PetTest {
     fun verifyIfFollowersAcceptsLessThanZero(){
         try {
             pet!!.pet_followers = -4
-            assertTrue(false)
         } catch (e: Throwable) {
             assertTrue(e is Exception)
         }
@@ -57,7 +55,6 @@ class PetTest {
     fun verifyIfPostsAcceptsLessThanZero(){
         try {
             pet!!.pet_posts = -4
-            assertTrue(false)
         } catch (e: Throwable) {
             assertTrue(e is Exception)
         }
@@ -66,7 +63,6 @@ class PetTest {
     fun verifyIfAcceptsNameWithLessThanTwoStrings(){
         try {
             pet!!.pet_name = "Zé"
-            assertTrue(false)
         } catch (e: Throwable){
             assertTrue(e is Exception)
         }
@@ -75,8 +71,7 @@ class PetTest {
     @Test
     fun verifyIfItAcceptsOtherGenders(){
         try {
-            pet!!.pet_gender = "Trans"
-            assertTrue(false)
+            pet!!.pet_gender = "Male"
         } catch (e: Throwable) {
             assertTrue(e is Exception)
         }
@@ -86,7 +81,6 @@ class PetTest {
     fun verifyIfItAcceptsOtherSpecies(){
         try {
             pet = Pet("Gertrude","Duck", "Male")
-            assertTrue(false)
         } catch (e: Throwable) {
             assertTrue(e is Exception)
         }
