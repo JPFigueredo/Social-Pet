@@ -32,6 +32,7 @@ class CustomLanguageDialogFragment : DialogFragment() {
         activity?.let {
             act -> preferencesViewModel = ViewModelProviders.of(act).get(PreferencesViewModel::class.java)
         }
+
         setUpListeners()
     }
 
@@ -44,14 +45,14 @@ class CustomLanguageDialogFragment : DialogFragment() {
             val selectedID = LanguageRG.checkedRadioButtonId
             val radio = view?.findViewById<RadioButton>(selectedID)
 
-            var ratingResult = radio?.text.toString()
+            var languageResult = radio?.text.toString()
 
-            if(ratingResult == "English"){
+            if(languageResult == "English"){
                 val bundle = Bundle()
                 bundle.putString("My Lang", "en")
                 preferencesViewModel.language.value = "en"
                 findNavController().navigate(R.id.action_customLanguageDialogFragment_to_nav_preferences, bundle)
-            }else if(ratingResult == "Portuguese"){
+            }else if(languageResult == "Portuguese"){
                 val bundle = Bundle()
                 bundle.putString("My Lang", "pt")
                 preferencesViewModel.language.value = "pt"
