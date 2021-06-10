@@ -61,4 +61,6 @@
     <string name="Portuguese">Português</string>
     <string name="cancel">Cancelar</string>
     <string name="submit">Enviar</string>
+    <string name="dialogEnglish">English</string>
+    <string name="dialogPortuguese">Portuguese</string>
 </resources>
