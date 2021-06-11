@@ -64,4 +64,5 @@
     <string name="submit">Submit</string>
     <string name="dialogEnglish">English</string>
     <string name="dialogPortuguese">Portuguese</string>
+    <string name="add_pet">Add Pet</string>
 </resources>

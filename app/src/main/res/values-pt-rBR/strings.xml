@@ -63,4 +63,5 @@
     <string name="submit">Enviar</string>
     <string name="dialogEnglish">English</string>
     <string name="dialogPortuguese">Portuguese</string>
+    <string name="add_pet">Add Pet</string>
 </resources>
