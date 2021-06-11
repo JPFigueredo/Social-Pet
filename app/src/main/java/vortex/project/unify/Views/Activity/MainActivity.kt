@@ -22,6 +22,7 @@ import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.PreferencesViewModel
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    //Test
 
     private lateinit var appBarConfiguration : AppBarConfiguration
     private lateinit var preferencesViewModel: PreferencesViewModel
