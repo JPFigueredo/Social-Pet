@@ -55,10 +55,10 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_pets_name_profile2"
+                    android:id="@+id/tv_species_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pet_s_name"
+                    android:text="@string/species"
                     android:textColor="?attr/colorOnSecondary"
                     android:textSize="12sp" />
 

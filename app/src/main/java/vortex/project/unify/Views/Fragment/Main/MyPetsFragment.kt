@@ -55,11 +55,13 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         setUpListeners()
 //        setToolbar()
     }
+
     private fun setUpListeners(){
         fab_add_pet.setOnClickListener {
             findNavController().navigate(R.id.action_myPets_dest_to_addPetFragment, null)
         }
     }
+
     private fun configRecycleView() {
         myPets_recyclerView.layoutManager = LinearLayoutManager(activity)
         myPets_recyclerView.adapter = MyPetsAdapter(petList, this)

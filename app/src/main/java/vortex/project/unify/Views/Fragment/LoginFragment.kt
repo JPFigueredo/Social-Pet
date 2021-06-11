@@ -139,7 +139,6 @@ class LoginFragment : Fragment() {
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-
                     for(doc in task.result!!){
                         val user_db = doc.toObject(User::class.java)
 
