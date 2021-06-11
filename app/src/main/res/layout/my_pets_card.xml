@@ -30,11 +30,33 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <LinearLayout
+                    android:id="@+id/delete_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rect_all_radius"
+                    android:backgroundTint="?attr/colorSurface"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/btn_delete_pet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        app:srcCompat="@android:drawable/ic_delete"
+                        app:tint="@color/orange_400" />
+
+                </LinearLayout>
+
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_pet_photo_profile"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="24dp"
                     android:src="@drawable/ic_launcher_background"
@@ -45,7 +67,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
