@@ -43,19 +43,19 @@ class PreferencesFragment : Fragment() {
     }
 
     private fun setUpListeners() {
-        btn_changeLanguage.setOnClickListener {
-            preferencesViewModel.language.value =
-                if (preferencesViewModel.language.value == getString(R.string.dialogPortuguese)) ({
-                findNavController().navigate(R.id.action_nav_preferences_to_customLanguageDialogFragment, null)
-            }).toString()
-            else ({
-                    if (preferencesViewModel.language.value == getString(R.string.dialogEnglish)) {
-                        findNavController().navigate(R.id.action_nav_preferences_to_customLanguageDialogFragment, null)
-                    }else{
-                        findNavController().navigate(R.id.action_nav_preferences_to_customLanguageDialogFragment, null)
-                    }
-            }).toString()
-        }
+//        btn_changeLanguage.setOnClickListener {
+//            preferencesViewModel.language.value =
+//                if (preferencesViewModel.language.value == getString(R.string.dialogPortuguese)) ({
+//                findNavController().navigate(R.id.action_nav_preferences_to_customLanguageDialogFragment, null)
+//            }).toString()
+//            else ({
+//                    if (preferencesViewModel.language.value == getString(R.string.dialogEnglish)) {
+//                        findNavController().navigate(R.id.action_nav_preferences_to_customLanguageDialogFragment, null)
+//                    }else{
+//                        findNavController().navigate(R.id.action_nav_preferences_to_customLanguageDialogFragment, null)
+//                    }
+//            }).toString()
+//        }
 
         btn_changeApparence.setOnClickListener {
             preferencesViewModel.modeNight.value = if (preferencesViewModel.modeNight.value == getString(R.string.day_mode)) {

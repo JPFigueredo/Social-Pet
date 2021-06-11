@@ -63,7 +63,6 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
     private fun configRecycleView() {
         myPets_recyclerView.layoutManager = LinearLayoutManager(activity)
         myPets_recyclerView.adapter = MyPetsAdapter(petList, this)
-        myPets_recyclerView.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
     }
 
     override fun onItemClick(position: Int) {

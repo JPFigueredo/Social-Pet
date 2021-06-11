@@ -55,11 +55,7 @@ class PostFragment : Fragment() {
 
     private fun setWidgets() {
         activity?.bottom_nav_view!!.visibility = View.VISIBLE
-
         activity?.toolbar_layout!!.visibility = View.VISIBLE
 
-        val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
-        parameter.marginStart = 100
-        activity?.toolbar!!.layoutParams = parameter
     }
 }
