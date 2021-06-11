@@ -5,7 +5,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,16 +16,21 @@ import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.ViewModel.PreferencesViewModel
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
+    private lateinit var preferencesViewModel: PreferencesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        preferencesViewModel = ViewModelProviders.of(this).get(PreferencesViewModel::class.java)
 
         setSupportActionBar(toolbar)
 
@@ -31,6 +39,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navController = host.navController
 
         setupBottomNavMenu(navController)
+
+        changeTheme()
 
         appBarConfiguration = AppBarConfiguration(
                 setOf(
@@ -72,5 +82,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return item.onNavDestinationSelected(findNavController(R.id.display_fragments))
                 || super.onOptionsItemSelected(item)
+    }
+
+    private fun changeTheme() {
+        preferencesViewModel.modeNight.observe(this, Observer {
+            if (it == getString(R.string.day_mode)) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        })
     }
 }

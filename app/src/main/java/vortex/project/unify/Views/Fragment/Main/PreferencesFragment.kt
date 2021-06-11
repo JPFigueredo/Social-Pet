@@ -2,7 +2,6 @@ package vortex.project.unify.Views.Fragment.Main
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +10,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_preferences.*
-import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
-import vortex.project.unify.Views.Fragment.CustomLanguageDialogFragment
 import vortex.project.unify.Views.ViewModel.PreferencesViewModel
-import java.util.*
 
 class PreferencesFragment : Fragment() {
 
@@ -39,7 +33,7 @@ class PreferencesFragment : Fragment() {
 //        loadLocate()
 //        setToolbar()
         setUpListeners()
-        fillUserData()
+        changeTheme()
     }
 
     private fun setUpListeners() {
@@ -66,13 +60,11 @@ class PreferencesFragment : Fragment() {
         }
     }
 
-    private fun fillUserData() {
+    private fun changeTheme() {
         preferencesViewModel.modeNight.observe(viewLifecycleOwner, Observer {
             if (it == getString(R.string.day_mode)) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 tv_appearance.text = it
             } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 tv_appearance.text = it
             }
         })
