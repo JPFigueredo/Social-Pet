@@ -1,5 +1,6 @@
 package vortex.project.unify.Views.Adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vortex.project.unify.R
 import vortex.project.unify.Views.Classes.Post
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PostsAdapter (var postsList: List<Post?> = listOf(), private val listener: OnItemClickListener): RecyclerView.Adapter<PostsAdapter.Viewholder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
@@ -17,6 +21,11 @@ class PostsAdapter (var postsList: List<Post?> = listOf(), private val listener:
     }
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
+
+//        var date = postsList[position]!!.datePost
+////        var newDate = date as Date
+//        var dateFormat = DateFormat.getDateTimeInstance().format(newDate)
+//        var dateString = dateFormat.toString()
 
 //        holder.petPhotoPost.image = postsList[position]!!.petPhotoPost
 //        holder.postPhoto.image = postsList[position]!!.photoPost
@@ -58,7 +67,12 @@ class PostsAdapter (var postsList: List<Post?> = listOf(), private val listener:
     }
 
     fun changeData(posts: List<Post>){
-        postsList = posts
+        postsList = posts.reversed()
         notifyDataSetChanged()
     }
+//    fun convertLongToTime(time: Long): String {
+//        val date = Date(time)
+//        val format = SimpleDateFormat("dd.MM..yyyy HH:mm")
+//        return format.format(date)
+//    }
 }

@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -109,7 +110,8 @@ class LoginFragment : Fragment() {
                 Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
                 getUserData()
                 loadDatabase()
-                loadPostsData()
+                loadAllPostsData()
+//                loadUserPostsData()
 //                getPetsDataFromUserVMtoPetsVM()
                 findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
             }
@@ -125,7 +127,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun loadPetData() {
-        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
+        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets").orderBy("pet_name", Query.Direction.ASCENDING)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -133,14 +135,30 @@ class LoginFragment : Fragment() {
                 }
             }
     }
-    private fun loadPostsData() {
-        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Post")
+    private fun loadUserPostsData() {
+        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Post").orderBy("secPost", Query.Direction.ASCENDING)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     postsViewModel.postsListVM.value = task.result!!.toObjects(Post::class.java)
                 }
             }
+    }
+    private fun loadAllPostsData() {
+        firestoreDB!!.collection("Users").get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                for (doc in task.result!!) {
+                    firestoreDB!!.collection("Users").document(doc.id)
+                        .collection("Post")
+                        .get()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                postsViewModel.postsListVM.value = task.result!!.toObjects(Post::class.java)
+                            }
+                        }
+                }
+            }
+        }
     }
 
     private fun loadUserData() {

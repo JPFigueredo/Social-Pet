@@ -7,6 +7,7 @@ class Post (
     var petNamePost: String = "",
     var datePost: String = "",
     var likesPost: String = "",
+    var secPost: String = "",
 //    var descriptionsPost: String = "",
 //    var locationPost: String = "0000.0000"
 

@@ -1,5 +1,6 @@
 package vortex.project.unify.Views.Fragment.Register
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.PostsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddPostFragment : Fragment() {
@@ -68,7 +70,7 @@ class AddPostFragment : Fragment() {
             val list = postsViewModel.postsListVM.value ?: listOf()
             val petName = userViewModel.petMain_nameVM.value.toString()
             val datePost = getDate()
-            val newPost = Post(petName, datePost, "0")
+            val newPost = Post(petName, datePost, "0", getSecPost())
 
             addPostFirebase(newPost)
 
@@ -97,6 +99,9 @@ class AddPostFragment : Fragment() {
     }
     private fun getDate(): String {
         val date = Calendar.getInstance().time
-        return DateFormat.getDateInstance(DateFormat.LONG).format(date)
+        return DateFormat.getDateTimeInstance().format(date)
+    }
+    private fun getSecPost(): String {
+        return Date().time.toString()
     }
 }

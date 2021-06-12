@@ -29,14 +29,14 @@ class ProfileFragment : Fragment() {
 
 //        setWidgets()
         setData()
-        setUpListeners()
+//        setUpListeners()
     }
 
-    private fun setUpListeners(){
-//        settings_ImageButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_profile_dest_to_nav_preferences, null)
-//        }
-    }
+//    private fun setUpListeners(){
+////        settings_ImageButton.setOnClickListener {
+////            findNavController().navigate(R.id.action_profile_dest_to_nav_preferences, null)
+////        }
+//    }
 
 //    private fun setWidgets() {
 //        activity?.toolbar_layout!!.visibility = View.VISIBLE
