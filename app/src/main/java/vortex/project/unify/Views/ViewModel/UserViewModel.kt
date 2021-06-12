@@ -7,8 +7,11 @@ class UserViewModel : ViewModel() {
 
     var user_idVM = MutableLiveData<String>().apply { value = "" }
 
-    var emailVM = MutableLiveData<String>().apply { value = "ice@age.com" }
-    var passwordVM = MutableLiveData<String>().apply { value = "@@Aa1234" }
+    var emailVM = MutableLiveData<String>().apply { value = "" }
+    var passwordVM = MutableLiveData<String>().apply { value = "" }
+
+//    var emailVM = MutableLiveData<String>().apply { value = "ice@age.com" }
+//    var passwordVM = MutableLiveData<String>().apply { value = "@@Aa1234" }
 //    var emailVM = MutableLiveData<String>().apply { value = "mara@gmail.dona" }
 //    var passwordVM = MutableLiveData<String>().apply { value = "@@Aa1234" }
 
