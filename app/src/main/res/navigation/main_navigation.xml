@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="vortex.project.unify.Views.Fragment.LoginFragment"
-        android:label="fragment_login"
+        android:label="SignIn"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_postFragment"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="vortex.project.unify.Views.Fragment.ForgotPasswordFragment"
-        android:label="fragment_preferences"
+        android:label="Forgot Password"
         tools:layout="@layout/fragment_forgot_password" />
     <fragment
         android:id="@+id/nav_preferences"
@@ -64,7 +64,7 @@
     <fragment
         android:id="@+id/regEmail"
         android:name="vortex.project.unify.Views.Fragment.Register.RegEmailFragment"
-        android:label="fragment_reg_email"
+        android:label="Your email"
         tools:layout="@layout/fragment_reg_email" >
         <action
             android:id="@+id/action_reg_email_to_reg_phone"
@@ -73,7 +73,7 @@
     <fragment
         android:id="@+id/regPhone"
         android:name="vortex.project.unify.Views.Fragment.Register.RegPhoneFragment"
-        android:label="fragment_reg_phone"
+        android:label="Your phone"
         tools:layout="@layout/fragment_reg_phone" >
         <action
             android:id="@+id/action_reg_phone_to_reg_password"
@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/regPassword"
         android:name="vortex.project.unify.Views.Fragment.Register.RegPasswordFragment"
-        android:label="fragment_reg_password"
+        android:label="Your password"
         tools:layout="@layout/fragment_reg_password" >
         <action
             android:id="@+id/action_reg_password_to_login"
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/regPetFragment"
         android:name="vortex.project.unify.Views.Fragment.Register.RegPetFragment"
-        android:label="fragment_reg_pet"
+        android:label="Your Pet"
         tools:layout="@layout/fragment_reg_pet" >
         <action
             android:id="@+id/action_regPetFragment_to_regEmail"
@@ -124,7 +124,7 @@
     <fragment
         android:id="@+id/addPetFragment"
         android:name="vortex.project.unify.Views.Fragment.Register.AddPetFragment"
-        android:label="fragment_add_pet"
+        android:label="Add your pet"
         tools:layout="@layout/fragment_add_pet" >
         <action
             android:id="@+id/action_addPetFragment_to_myPets_dest"
@@ -142,7 +142,7 @@
     <fragment
         android:id="@+id/addPostFragment"
         android:name="vortex.project.unify.Views.Fragment.Register.AddPostFragment"
-        android:label="fragment_add_post"
+        android:label="Add your post"
         tools:layout="@layout/fragment_add_post" >
         <action
             android:id="@+id/action_addPostFragment_to_home_dest"

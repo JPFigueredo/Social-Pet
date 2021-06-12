@@ -5,10 +5,8 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -39,6 +37,7 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         firestoreDB = FirebaseFirestore.getInstance()
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_my_pets, container, false)
     }
 
@@ -51,15 +50,15 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         }
         configRecycleView()
         subscribe()
-        setUpListeners()
+//        setUpListeners()
 //        setToolbar()
     }
 
-    private fun setUpListeners(){
-        fab_add_pet.setOnClickListener {
-            findNavController().navigate(R.id.action_myPets_dest_to_addPetFragment, null)
-        }
-    }
+//    private fun setUpListeners(){
+//        fab_add_pet.setOnClickListener {
+//            findNavController().navigate(R.id.action_myPets_dest_to_addPetFragment, null)
+//        }
+//    }
 
     private fun configRecycleView() {
         myPets_recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -132,6 +131,20 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
                     petsViewModel.petsListVM.value = petsViewModel.petsListVM.value!! + pet
                 }
             })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater!!.inflate(R.menu.add_pet_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_add_pet -> {
+                findNavController().navigate(R.id.action_myPets_dest_to_addPetFragment, null)
+            }
+        }
+        return true
     }
 
 
