@@ -30,6 +30,7 @@ import vortex.project.unify.Views.Classes.Post
 import vortex.project.unify.Views.Classes.User
 import vortex.project.unify.Views.Encrypto
 import vortex.project.unify.Views.ViewModel.PetsViewModel
+import vortex.project.unify.Views.ViewModel.PostsUserViewModel
 import vortex.project.unify.Views.ViewModel.PostsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
 
@@ -38,6 +39,7 @@ class LoginFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
     private lateinit var petsViewModel: PetsViewModel
     private lateinit var postsViewModel: PostsViewModel
+    private lateinit var postsUserViewModel: PostsUserViewModel
     private var firestoreDB: FirebaseFirestore? = null
     private var firestoreListener: ListenerRegistration? = null
     private lateinit var auth: FirebaseAuth
@@ -56,6 +58,7 @@ class LoginFragment : Fragment() {
             userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
             postsViewModel = ViewModelProviders.of(act).get(PostsViewModel::class.java)
+            postsUserViewModel = ViewModelProviders.of(act).get(PostsUserViewModel::class.java)
         }
 
         fillUserData ()
@@ -111,7 +114,7 @@ class LoginFragment : Fragment() {
                 getUserData()
                 loadDatabase()
                 loadAllPostsData()
-//                loadUserPostsData()
+                loadUserPostsData()
 //                getPetsDataFromUserVMtoPetsVM()
                 findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
             }
@@ -140,7 +143,7 @@ class LoginFragment : Fragment() {
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    postsViewModel.postsListVM.value = task.result!!.toObjects(Post::class.java)
+                    postsUserViewModel.postsUserListVM.value = task.result!!.toObjects(Post::class.java)
                 }
             }
     }

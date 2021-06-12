@@ -210,7 +210,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView_profile"
-        tools:listitem="@layout/profile_card"/>
+        tools:listitem="@layout/post_card"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
