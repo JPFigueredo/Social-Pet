@@ -59,4 +59,5 @@
     <string name="liked_your_post">liked your post</string>
     <string name="started_following_you">started following you</string>
     <string name="add_pet">Add Pet</string>
+    <string name="description">Description</string>
 </resources>

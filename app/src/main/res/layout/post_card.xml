@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
+    android:layout_height="wrap_content"
     android:background="?attr/colorSurface">
 
     <LinearLayout
@@ -55,12 +55,12 @@
         android:id="@+id/cd_posts_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cd_img_profile">
 
         <ImageView
             android:id="@+id/img_post"
@@ -73,25 +73,27 @@
     <LinearLayout
         android:id="@+id/layout_utilies"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/rect_all_radius"
         android:backgroundTint="?attr/colorOnPrimarySurface"
         android:elevation="10dp"
-        android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cd_posts_profile">
 
         <LinearLayout
             android:id="@+id/layout_likes"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
             android:backgroundTint="?attr/colorOnPrimarySurface"
             android:elevation="10dp"
             android:orientation="horizontal"
@@ -117,34 +119,19 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_coments"
+        <TextView
+            android:id="@+id/tv_description_post"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/layout_utilies"
-            app:layout_constraintTop_toBottomOf="@+id/img_post_profile">
-
-            <ImageView
-                android:id="@+id/img_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:tint="?attr/colorOnSecondary"
-                app:srcCompat="@drawable/ic_comment" />
-
-            <TextView
-                android:id="@+id/tv_num_coments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="2"
-                android:text="0" />
-        </LinearLayout>
+            android:gravity="start"
+            android:hint="@string/description"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

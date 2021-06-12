@@ -63,47 +63,17 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_coments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toEndOf="@+id/layout_utilies"
-                app:layout_constraintTop_toBottomOf="@+id/img_post_profile">
-
-                <ImageView
-                    android:id="@+id/img_comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:tint="?attr/colorOnSecondary"
-                    app:srcCompat="@drawable/ic_comment" />
-
-                <TextView
-                    android:id="@+id/tv_num_coments"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0" />
-            </LinearLayout>
-
             <TextView
                 android:id="@+id/tv_username_profile_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
                 android:text="username"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_coments" />
+                tools:layout_editor_absoluteY="408dp" />
 
             <LinearLayout
                 android:id="@+id/layout_description"
