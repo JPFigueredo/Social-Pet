@@ -48,8 +48,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
         firestoreDB = FirebaseFirestore.getInstance()
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,7 +62,7 @@ class LoginFragment : Fragment() {
 
         fillUserData ()
         setUpListeners()
-//        setWidgets()
+        setWidgets()
     }
 
     private fun setUpListeners(){
@@ -78,9 +77,9 @@ class LoginFragment : Fragment() {
         }
     }
 
-//    private fun setWidgets() {
-//        activity?.bottom_nav_view!!.visibility = View.GONE
-//    }
+    private fun setWidgets() {
+        activity?.bottom_nav_view!!.visibility = View.GONE
+    }
 
     private fun fillUserData () {
         userViewModel.emailVM.observe(viewLifecycleOwner, Observer {
@@ -95,17 +94,17 @@ class LoginFragment : Fragment() {
         })
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        val currentUser = auth.currentUser
-//        if (currentUser != null) {
-//            getUserData()
-//            loadDatabase()
-////            getPetsDataFromUserVMtoPetsVM()
-//            findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
-//        }
-//    }
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            getUserData()
+            loadDatabase()
+//            getPetsDataFromUserVMtoPetsVM()
+            findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
+        }
+    }
 
     fun doLogIn() {
         auth.signInWithEmailAndPassword(emailLogin_input.text.toString(), passwordLogin_input.text.toString())

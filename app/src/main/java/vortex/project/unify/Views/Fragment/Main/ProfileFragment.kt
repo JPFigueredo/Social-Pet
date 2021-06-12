@@ -8,6 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_feed.*
@@ -27,9 +29,11 @@ class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
     private lateinit var userViewModel: UserViewModel
     private lateinit var petsViewModel: PetsViewModel
     private lateinit var postsUserList: List<Post>
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
+        auth = FirebaseAuth.getInstance()
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -110,7 +114,8 @@ class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_logout -> {
-                //auth.signOut()
+                auth.signOut()
+                findNavController().navigate(R.id.action_profile_dest_to_loginFragment, null)
             }
             R.id.nav_preferences -> {
                 findNavController().navigate(R.id.nav_preferences, null)

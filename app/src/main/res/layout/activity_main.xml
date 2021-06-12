@@ -19,7 +19,7 @@
         <include layout="@layout/toolbar" />
     </RelativeLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/display_fragments"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

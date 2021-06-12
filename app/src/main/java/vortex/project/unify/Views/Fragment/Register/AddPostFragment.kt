@@ -1,6 +1,5 @@
 package vortex.project.unify.Views.Fragment.Register
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
@@ -19,17 +18,14 @@ import vortex.project.unify.R
 import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.Classes.Post
 import vortex.project.unify.Views.ViewModel.PetsViewModel
-import vortex.project.unify.Views.ViewModel.PostsUserViewModel
 import vortex.project.unify.Views.ViewModel.PostsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AddPostFragment : Fragment() {
 
     private lateinit var postsViewModel: PostsViewModel
-    private lateinit var postsUserViewModel: PostsUserViewModel
     private lateinit var userViewModel: UserViewModel
     private lateinit var petsViewModel: PetsViewModel
     private var firestoreDB: FirebaseFirestore? = null
@@ -45,7 +41,6 @@ class AddPostFragment : Fragment() {
             userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
             postsViewModel = ViewModelProviders.of(act).get(PostsViewModel::class.java)
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
-            postsUserViewModel = ViewModelProviders.of(act).get(PostsUserViewModel::class.java)
         }
         setUpListeners()
     }
@@ -70,16 +65,14 @@ class AddPostFragment : Fragment() {
 
     private fun saveViewModel() {
 //        if (checkEmpty()) {
-            val allPostslist = postsViewModel.postsListVM.value ?: listOf()
-            val userPostslist = postsUserViewModel.postsUserListVM.value ?: listOf()
+            val list = postsViewModel.postsListVM.value ?: listOf()
             val petName = userViewModel.petMain_nameVM.value.toString()
             val datePost = getDate()
-            val newPost = Post(petName, datePost, "0", getSecPost())
+            val newPost = Post(petName, datePost, "0")
 
             addPostFirebase(newPost)
 
-            postsViewModel.postsListVM.value = allPostslist + newPost
-            postsUserViewModel.postsUserListVM.value = userPostslist + newPost
+            postsViewModel.postsListVM.value = list + newPost
 
             findNavController().navigate(R.id.action_addPostFragment_to_home_dest, null)
 
@@ -104,9 +97,6 @@ class AddPostFragment : Fragment() {
     }
     private fun getDate(): String {
         val date = Calendar.getInstance().time
-        return DateFormat.getDateTimeInstance().format(date)
-    }
-    private fun getSecPost(): String {
-        return Date().time.toString()
+        return DateFormat.getDateInstance(DateFormat.LONG).format(date)
     }
 }
