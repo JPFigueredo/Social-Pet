@@ -92,8 +92,11 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         petMainViewModel.petMain_specieVM.value = chosenPetSpecie
 
         val pet = hashMapOf(
-            "pet_name" to chosenPetName,
-            "pet_specie" to chosenPetSpecie
+            "user_id" to userViewModel.user_idVM.value,
+            "email" to userViewModel.emailVM.value,
+            "phone" to userViewModel.phoneVM.value,
+            "mainPetName" to chosenPetName,
+            "mainPetSpecie" to chosenPetSpecie
         )
 
         firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString())

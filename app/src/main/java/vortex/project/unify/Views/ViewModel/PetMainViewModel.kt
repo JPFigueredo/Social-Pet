@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class PetMainViewModel: ViewModel() {
 
-    var petMain_nameVM = MutableLiveData<String>().apply { value = "Choose a Main Pet" }
+    var petMain_nameVM = MutableLiveData<String>().apply { value = "Main Pet" }
     var petMain_specieVM = MutableLiveData<String>().apply { value = "" }
     var petMain_genderVM = MutableLiveData<String>().apply { value = "" }
     var petMain_followersVM = MutableLiveData<String>().apply { value = "" }

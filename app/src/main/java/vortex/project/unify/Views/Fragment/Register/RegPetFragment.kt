@@ -44,6 +44,7 @@ class RegPetFragment : Fragment() {
     }
 
     private fun saveViewModel(){
+        petsViewModel.petsListVM.value = null
         val list = petsViewModel.petsListVM.value ?: listOf()
         val petName = reg_pets_name_input.text.toString()
         val petSpecie = reg_pets_especies_input.text.toString()
