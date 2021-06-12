@@ -104,7 +104,7 @@ class SearchFragment : Fragment(), SearchAdapter.OnItemClickListener {
                                                 if (task.isSuccessful) {
                                                     petList = searchViewModel.petsListSearch.value ?: listOf()
                                                     val pet = docPet.toObject(Pet::class.java)
-                                                    if (pet.pet_name.contains(petName)) {
+                                                    if (pet.pet_name.uppercase().contains(petName.uppercase())) {
                                                         searchViewModel.petsListSearch.value = petList + pet
                                                         Log.i("TESTE", pet.pet_name)
                                                     }

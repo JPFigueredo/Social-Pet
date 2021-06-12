@@ -1,6 +1,8 @@
 package vortex.project.unify.Views.Activity
 
+import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,7 +24,6 @@ import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.PreferencesViewModel
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    //Test
 
     private lateinit var appBarConfiguration : AppBarConfiguration
     private lateinit var preferencesViewModel: PreferencesViewModel
@@ -36,10 +37,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.display_fragments) as NavHostFragment? ?: return
-
         val navController = host.navController
 
         setupBottomNavMenu(navController)
+
+        bottom_nav_view!!.showOrInvisible(false)
 
         changeTheme()
 
@@ -93,5 +95,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         })
+    }
+
+    fun View.showOrInvisible(show: Boolean) {
+        visibility = if (show) {
+            View.VISIBLE
+        } else {
+            View.INVISIBLE
+        }
     }
 }

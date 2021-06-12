@@ -22,12 +22,15 @@
     </fragment>
     <fragment
         android:id="@+id/home_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.PostFragment"
+        android:name="vortex.project.unify.Views.Fragment.Main.FeedFragment"
         android:label="Posts"
-        tools:layout="@layout/fragment_post" >
+        tools:layout="@layout/fragment_feed" >
         <action
             android:id="@+id/action_home_dest_to_profile_dest"
             app:destination="@id/profile_dest" />
+        <action
+            android:id="@+id/action_home_dest_to_addPostFragment"
+            app:destination="@id/addPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
@@ -135,5 +138,14 @@
         <action
             android:id="@+id/action_customLanguageDialogFragment_to_nav_preferences"
             app:destination="@id/nav_preferences" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPostFragment"
+        android:name="vortex.project.unify.Views.Fragment.Register.AddPostFragment"
+        android:label="fragment_add_post"
+        tools:layout="@layout/fragment_add_post" >
+        <action
+            android:id="@+id/action_addPostFragment_to_home_dest"
+            app:destination="@id/home_dest" />
     </fragment>
 </navigation>

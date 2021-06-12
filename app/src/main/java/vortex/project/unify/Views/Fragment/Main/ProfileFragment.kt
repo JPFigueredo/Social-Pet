@@ -27,7 +27,7 @@ class ProfileFragment : Fragment() {
                 act -> userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
         }
 
-        setWidgets()
+//        setWidgets()
         setData()
         setUpListeners()
     }
@@ -38,10 +38,10 @@ class ProfileFragment : Fragment() {
 //        }
     }
 
-    private fun setWidgets() {
-        activity?.toolbar_layout!!.visibility = View.VISIBLE
-        activity?.bottom_nav_view!!.visibility = View.VISIBLE
-    }
+//    private fun setWidgets() {
+//        activity?.toolbar_layout!!.visibility = View.VISIBLE
+//        activity?.bottom_nav_view!!.visibility = View.VISIBLE
+//    }
 
     private fun setData(){
         userViewModel.petMain_nameVM.observe(viewLifecycleOwner, Observer {

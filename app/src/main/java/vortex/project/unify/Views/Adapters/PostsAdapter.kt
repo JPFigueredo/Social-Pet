@@ -3,42 +3,62 @@ package vortex.project.unify.Views.Adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vortex.project.unify.R
 import vortex.project.unify.Views.Classes.Post
 
-class PostsAdapter (var postList: List<Post?> = listOf()): RecyclerView.Adapter<PostsAdapter.Viewholder>(){
-
+class PostsAdapter (var postsList: List<Post?> = listOf(), private val listener: OnItemClickListener): RecyclerView.Adapter<PostsAdapter.Viewholder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
-        return Viewholder(LayoutInflater.from(parent.context).inflate(R.layout.post_card, parent, false))
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.post_card, parent, false)
+        val viewholder = Viewholder(view)
+        return viewholder
     }
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
 
-//        holder.photoPost = postList[position]!!.photoPost
-        holder.petNamePost.text = postList[position]!!.petNamePost
-        holder.datePost.text = postList[position]!!.datePost
-        holder.likesPost.text = postList[position]!!.likesPost
+//        holder.petPhotoPost.image = postsList[position]!!.petPhotoPost
+//        holder.postPhoto.image = postsList[position]!!.photoPost
+        holder.postPetName.text = postsList[position]!!.petNamePost
+        holder.postDate.text = postsList[position]!!.datePost
+        holder.postLikes.text = postsList[position]!!.likesPost
+
     }
 
     override fun getItemCount(): Int {
-        return postList.size
+        return postsList.size
     }
 
-    class Viewholder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class Viewholder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
-        val photoPost: TextView = itemView.findViewById(R.id.img_post)
-        val petNamePost: TextView = itemView.findViewById(R.id.tv_petname_card)
-        val datePost: TextView = itemView.findViewById(R.id.tv_datePost_card)
-        val likesPost: TextView = itemView.findViewById(R.id.tv_num_likes)
-        var descriptionsPost: String = ""
-        var locationPost: String = "0000.0000"
+        val petPhotoPost: ImageView = itemView.findViewById(R.id.img_pet)
+        val postPhoto: ImageView = itemView.findViewById(R.id.img_post)
+        val postPetName: TextView = itemView.findViewById(R.id.tv_petname_card)
+        val postDate: TextView = itemView.findViewById(R.id.tv_datePost_card)
+        val postLikes: TextView = itemView.findViewById(R.id.tv_num_likes)
+//        val postDescription: TextView = itemView.findViewById(R.id.)
+        val postLikeAddComments: ImageView = itemView.findViewById(R.id.img_like)
+
+        init {
+            postLikeAddComments.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
 
     }
 
-    fun changeData(restaurants: List<Post>){
-        postList = restaurants
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun changeData(posts: List<Post>){
+        postsList = posts
         notifyDataSetChanged()
     }
 }

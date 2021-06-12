@@ -38,7 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rect_top_radius"
-        android:visibility="gone"
+        android:visibility="visible"
         app:backgroundTint="@color/graphite"
         app:itemIconTint="@drawable/color_bottom_nav"
         app:itemTextColor="@drawable/color_bottom_nav"
