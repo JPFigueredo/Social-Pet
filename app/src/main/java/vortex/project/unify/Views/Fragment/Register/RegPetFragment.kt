@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_reg_pet.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.Encrypto
+import vortex.project.unify.Views.ViewModel.PetMainViewModel
 import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
 
@@ -21,6 +22,7 @@ class RegPetFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
     private lateinit var petsViewModel: PetsViewModel
+    private lateinit var petMainViewModel: PetMainViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_reg_pet, container, false)
@@ -30,6 +32,7 @@ class RegPetFragment : Fragment() {
         activity?.let {act ->
             userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
+            petMainViewModel = ViewModelProviders.of(act).get(PetMainViewModel::class.java)
         }
         setUpListeners()
     }
@@ -47,5 +50,7 @@ class RegPetFragment : Fragment() {
         val petGender = reg_pets_gender_input.text.toString()
         val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
         petsViewModel.petsListVM.value = list + newPet
+        petMainViewModel.petMain_nameVM.value = petName
+        petMainViewModel.petMain_specieVM.value = petSpecie
     }
 }

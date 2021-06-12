@@ -17,10 +17,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Adapters.PostsAdapter
 import vortex.project.unify.Views.Classes.Post
-import vortex.project.unify.Views.ViewModel.PetsViewModel
-import vortex.project.unify.Views.ViewModel.PostsUserViewModel
-import vortex.project.unify.Views.ViewModel.PostsViewModel
-import vortex.project.unify.Views.ViewModel.UserViewModel
+import vortex.project.unify.Views.ViewModel.*
 
 class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
 
@@ -28,6 +25,7 @@ class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
     private lateinit var postsUserViewModel: PostsUserViewModel
     private lateinit var userViewModel: UserViewModel
     private lateinit var petsViewModel: PetsViewModel
+    private lateinit var petMainViewModel: PetMainViewModel
     private lateinit var postsUserList: List<Post>
     private lateinit var auth: FirebaseAuth
 
@@ -47,12 +45,12 @@ class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
             postsViewModel = ViewModelProviders.of(act).get(PostsViewModel::class.java)
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
             postsUserViewModel = ViewModelProviders.of(act).get(PostsUserViewModel::class.java)
+            petMainViewModel = ViewModelProviders.of(act).get(PetMainViewModel::class.java)
             postsUserList = postsUserViewModel.postsUserListVM.value ?: listOf()
         }
-
-//        setWidgets()
+        configRecycleView()
+        subscribe()
         setData()
-//        setUpListeners()
     }
     private fun configRecycleView() {
         userPosts_recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -93,13 +91,13 @@ class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
 //    }
 
     private fun setData(){
-        userViewModel.petMain_nameVM.observe(viewLifecycleOwner, Observer {
+        petMainViewModel.petMain_nameVM.observe(viewLifecycleOwner, Observer {
             if (it != null && it.isNotBlank()) {
                 tv_pets_name_profile.text = it.toString()
             }
         })
 
-        userViewModel.petMain_specieVM.observe(viewLifecycleOwner, Observer {
+        petMainViewModel.petMain_specieVM.observe(viewLifecycleOwner, Observer {
             if (it != null && it.isNotBlank()) {
                 tv_bio.text = it.toString()
             }

@@ -1,6 +1,7 @@
 package vortex.project.unify.Views.Fragment.Main
 
 import android.app.Activity
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -24,6 +25,8 @@ import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Adapters.MyPetsAdapter
 import vortex.project.unify.Views.Classes.Pet
+import vortex.project.unify.Views.Classes.Post
+import vortex.project.unify.Views.ViewModel.PetMainViewModel
 import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
 
@@ -31,8 +34,10 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
 
     private lateinit var petsViewModel: PetsViewModel
     private lateinit var userViewModel: UserViewModel
+    private lateinit var petMainViewModel: PetMainViewModel
+
     private var firestoreDB: FirebaseFirestore? = null
-    private var firestoreListener: ListenerRegistration? = null
+
     private lateinit var petList: List<Pet>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,19 +51,12 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         activity?.let { act ->
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
             userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
+            petMainViewModel = ViewModelProviders.of(act).get(PetMainViewModel::class.java)
             petList = petsViewModel.petsListVM.value ?: listOf()
         }
         configRecycleView()
         subscribe()
-//        setUpListeners()
-//        setToolbar()
     }
-
-//    private fun setUpListeners(){
-//        fab_add_pet.setOnClickListener {
-//            findNavController().navigate(R.id.action_myPets_dest_to_addPetFragment, null)
-//        }
-//    }
 
     private fun configRecycleView() {
         myPets_recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -69,8 +67,10 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         val chosenPetName: String = petList[position].pet_name
         val chosenPetSpecie: String = petList[position].pet_specie
 
-        userViewModel.petMain_nameVM.value = chosenPetName
-        userViewModel.petMain_specieVM.value = chosenPetSpecie
+        petMainViewModel.petMain_nameVM.value = chosenPetName
+        petMainViewModel.petMain_specieVM.value = chosenPetSpecie
+
+        setMainPetFirebase(chosenPetName, chosenPetSpecie)
 
         Toast.makeText(context, "$chosenPetName chosen as your main Pet", Toast.LENGTH_SHORT).show()
     }
@@ -85,52 +85,26 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
             }
         })
     }
-    private fun downloadPetsFirebase(){
-        firestoreListener = firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
-            .addSnapshotListener(EventListener { documentSnapshots, e ->
-                if (e != null) {
-                    return@EventListener
-                }
 
-                for (doc in documentSnapshots!!) {
-                    Log.e("MyPetsFragment", doc.id, e)
-                    val pet = doc.toObject(Pet::class.java)
+    private fun setMainPetFirebase(chosenPetName: String, chosenPetSpecie: String){
 
-                    petsViewModel.petsListVM.value = petsViewModel.petsListVM.value!! + pet
-                }
-            })
-    }
+        petMainViewModel.petMain_nameVM.value = chosenPetName
+        petMainViewModel.petMain_specieVM.value = chosenPetSpecie
 
-    private fun addPetFirebase(pet_name: String, pet_specie: String, pet_gender: String, pet_followers: Int, pet_posts: Int, pet_address: String, pet_photo: String){
-        val pet = Pet(pet_name, pet_specie, pet_gender, pet_followers, pet_posts, pet_address, pet_photo)
+        val pet = hashMapOf(
+            "pet_name" to chosenPetName,
+            "pet_specie" to chosenPetSpecie
+        )
 
-        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
-            .add(pet)
-            .addOnSuccessListener { documentReference ->
-                Log.e(TAG, "DocumentSnapshot written with ID: " + documentReference.id)
-                Toast.makeText(context, "Pet has been added!", Toast.LENGTH_SHORT).show()
+        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString())
+            .set(pet)
+            .addOnSuccessListener {
+                Toast.makeText(context, "Main Pet has been added to Firebase!", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener { e ->
-                Log.e(TAG, "Error adding Product document", e)
-                Toast.makeText(context, "Pet could not be added!", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener {
+                Toast.makeText(context, "Main Pet could not be added to Firebase!", Toast.LENGTH_SHORT).show()
             }
 
-    }
-
-    private fun uploadPetsFirebase(){
-        firestoreListener = firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
-            .addSnapshotListener(EventListener { documentSnapshots, e ->
-                if (e != null) {
-                    return@EventListener
-                }
-
-                for (doc in documentSnapshots!!) {
-                    Log.e("MyPetsFragment", doc.id, e)
-                    val pet = doc.toObject(Pet::class.java)
-
-                    petsViewModel.petsListVM.value = petsViewModel.petsListVM.value!! + pet
-                }
-            })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -146,6 +120,54 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         }
         return true
     }
+
+
+//    private fun addPetFirebase(pet_name: String, pet_specie: String, pet_gender: String, pet_followers: Int, pet_posts: Int, pet_address: String, pet_photo: String){
+//        val pet = Pet(pet_name, pet_specie, pet_gender, pet_followers, pet_posts, pet_address, pet_photo)
+//
+//        firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("MainPet")
+//            .add(pet)
+//            .addOnSuccessListener { documentReference ->
+//                Log.e(TAG, "DocumentSnapshot written with ID: " + documentReference.id)
+//                Toast.makeText(context, "Pet has been added!", Toast.LENGTH_SHORT).show()
+//            }
+//            .addOnFailureListener { e ->
+//                Log.e(TAG, "Error adding Product document", e)
+//                Toast.makeText(context, "Pet could not be added!", Toast.LENGTH_SHORT).show()
+//            }
+//
+//    }
+//    private fun downloadPetsFirebase(){
+//        firestoreListener = firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
+//            .addSnapshotListener(EventListener { documentSnapshots, e ->
+//                if (e != null) {
+//                    return@EventListener
+//                }
+//
+//                for (doc in documentSnapshots!!) {
+//                    Log.e("MyPetsFragment", doc.id, e)
+//                    val pet = doc.toObject(Pet::class.java)
+//
+//                    petsViewModel.petsListVM.value = petsViewModel.petsListVM.value!! + pet
+//                }
+//            })
+//    }
+//
+//    private fun uploadPetsFirebase(){
+//        firestoreListener = firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString()).collection("Pets")
+//            .addSnapshotListener(EventListener { documentSnapshots, e ->
+//                if (e != null) {
+//                    return@EventListener
+//                }
+//
+//                for (doc in documentSnapshots!!) {
+//                    Log.e("MyPetsFragment", doc.id, e)
+//                    val pet = doc.toObject(Pet::class.java)
+//
+//                    petsViewModel.petsListVM.value = petsViewModel.petsListVM.value!! + pet
+//                }
+//            })
+//    }
 
 
 

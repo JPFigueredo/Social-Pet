@@ -29,10 +29,7 @@ import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.Classes.Post
 import vortex.project.unify.Views.Classes.User
 import vortex.project.unify.Views.Encrypto
-import vortex.project.unify.Views.ViewModel.PetsViewModel
-import vortex.project.unify.Views.ViewModel.PostsUserViewModel
-import vortex.project.unify.Views.ViewModel.PostsViewModel
-import vortex.project.unify.Views.ViewModel.UserViewModel
+import vortex.project.unify.Views.ViewModel.*
 
 class LoginFragment : Fragment() {
 
@@ -40,10 +37,12 @@ class LoginFragment : Fragment() {
     private lateinit var petsViewModel: PetsViewModel
     private lateinit var postsViewModel: PostsViewModel
     private lateinit var postsUserViewModel: PostsUserViewModel
+    private lateinit var petMainViewModel: PetMainViewModel
+
     private var firestoreDB: FirebaseFirestore? = null
-    private var firestoreListener: ListenerRegistration? = null
+//    private var firestoreListener: ListenerRegistration? = null
     private lateinit var auth: FirebaseAuth
-    private val encrypto = Encrypto()
+//    private val encrypto = Encrypto()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
@@ -58,6 +57,7 @@ class LoginFragment : Fragment() {
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
             postsViewModel = ViewModelProviders.of(act).get(PostsViewModel::class.java)
             postsUserViewModel = ViewModelProviders.of(act).get(PostsUserViewModel::class.java)
+            petMainViewModel = ViewModelProviders.of(act).get(PetMainViewModel::class.java)
         }
 
         fillUserData ()
@@ -175,6 +175,8 @@ class LoginFragment : Fragment() {
                             userViewModel.user_idVM.value = user_db.user_id
                             userViewModel.emailVM.value = user_db.email
                             userViewModel.phoneVM.value = user_db.phone
+                            petMainViewModel.petMain_nameVM.value = user_db.mainPetName
+                            petMainViewModel.petMain_specieVM.value = user_db.mainPetSpecie
                         }
                     }
                 }

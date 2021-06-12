@@ -108,25 +108,29 @@ class RegPasswordFragment : Fragment() {
     }
 
     private fun addNewUserDatabase(){
-        val petsList = petsViewModel.petsListVM.value
+        val petsList = petsViewModel.petsListVM.value?: listOf()
         val pet_name = petsList!![0].pet_name
         val pet_gender = petsList!![0].pet_gender
+        val pet_specie = petsList!![0].pet_specie
         val pet_followers = petsList!![0].pet_followers
         val pet_posts = petsList!![0].pet_posts
         val pet_address = petsList!![0].pet_address
         val pet_photo = petsList!![0].pet_photo
 
-        addUserFirebase(userViewModel.user_idVM.value.toString(), userViewModel.emailVM.value.toString(), userViewModel.phoneVM.value.toString())
-        addPetFirebase(pet_name, pet_gender, pet_gender, pet_followers, pet_posts, pet_address, pet_photo)
+
+        addUserFirebase(userViewModel.user_idVM.value.toString(), userViewModel.emailVM.value.toString(), userViewModel.phoneVM.value.toString(), pet_name, pet_specie)
+        addPetFirebase(pet_name, pet_specie, pet_gender, pet_followers, pet_posts, pet_address, pet_photo)
 
     }
 
-    private fun addUserFirebase(user_id: String, email: String, phone: String){
+    private fun addUserFirebase(user_id: String, email: String, phone: String, mainPetName: String, mainPetSpecie: String){
 
         val user = hashMapOf(
             "user_id" to user_id,
             "email" to email,
-            "phone" to phone
+            "phone" to phone,
+            "mainPetName" to mainPetName,
+            "mainPetSpecie" to mainPetSpecie
         )
 
         firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString())
