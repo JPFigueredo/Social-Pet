@@ -7,11 +7,11 @@ import org.junit.Test
 class PetTest {
 
     var pet: Pet? = Pet(
-        "Gertrude",
-        "Goat",
-        "Female",
-        50,
-        100,
+        "",
+        "",
+        "",
+        0,
+        0,
         "",
         "")
 
@@ -26,6 +26,7 @@ class PetTest {
             "Agadir Ida-Outanane, Marrocos",
             "encurtador.com.br/zOX12")
     }
+
     @Test
     fun verifyPetStrings(){
         assertEquals("Gertrude", pet!!.pet_name)
@@ -35,54 +36,68 @@ class PetTest {
     }
 
     @Test
-    fun verifyIfAcceptsZero() {
-        try {
-            pet!!.pet_posts = 0
-        } catch (e: Throwable){
-            assertTrue(e is Exception)
+    fun verifyIfAcceptsNegative() {
+        val pet = pet
+        if (pet != null) {
+            pet.pet_posts = -1
+        }
+
+        if (pet != null) {
+            if (pet.pet_posts < 0){
+                assertTrue(false)
+            }else{
+                assertTrue(true)
+            }
         }
     }
 
     @Test
     fun verifyIfFollowersAcceptsLessThanZero(){
-        try {
-            pet!!.pet_followers = -4
-        } catch (e: Throwable) {
-            assertTrue(e is Exception)
-        }
-    }
-    @Test
-    fun verifyIfPostsAcceptsLessThanZero(){
-        try {
-            pet!!.pet_posts = -4
-        } catch (e: Throwable) {
-            assertTrue(e is Exception)
-        }
-    }
-    @Test
-    fun verifyIfAcceptsNameWithLessThanTwoStrings(){
-        try {
-            pet!!.pet_name = "Zé"
-        } catch (e: Throwable){
-            assertTrue(e is Exception)
+        pet!!.pet_followers = -4
+        if(pet!!.pet_followers < 0){
+            assertTrue(false)
+        }else{
+            assertTrue(true)
         }
     }
 
     @Test
-    fun verifyIfItAcceptsOtherGenders(){
-        try {
-            pet!!.pet_gender = "Male"
-        } catch (e: Throwable) {
-            assertTrue(e is Exception)
+    fun verifyIfPostsAcceptsLessThanZero(){
+        pet!!.pet_posts = -4
+        if(pet!!.pet_posts < 0){
+            assertTrue(false)
+        }else{
+            assertTrue(true)
         }
+    }
+
+    @Test
+    fun verifyIfAcceptsNameWithLessThanTwoStrings(){
+        pet!!.pet_name = "Zé"
+        if(pet!!.pet_name.length < 2){
+            assertTrue(false)
+        }else{
+            assertTrue(true)
+        }
+    }
+    @Test
+    fun verifyIfItAcceptsOtherGenders(){
+            pet!!.pet_gender = "Male"
+        if(pet!!.pet_gender != "Male" || pet!!.pet_gender != "Female"){
+            assertTrue(false)
+        }else{
+            assertTrue(true)
+        }
+
     }
 
     @Test
     fun verifyIfItAcceptsOtherSpecies(){
-        try {
-            pet = Pet("Gertrude","Duck", "Male")
-        } catch (e: Throwable) {
-            assertTrue(e is Exception)
+        if(pet!!.pet_specie != "Duck" || pet!!.pet_specie != "Crab"){
+            assertTrue(false)
+        }else{
+            assertTrue(true)
         }
     }
+
 }
