@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -54,12 +55,14 @@ class RegPasswordFragment : Fragment() {
     }
 
     private fun setUpListeners() {
+        Snackbar.make(regPassword_root, "Enter 8-12 letter, 1 Number, 1 lowercase letter, 1 uppercase letter, 1 special character.", Snackbar.LENGTH_LONG).show()
+
         btn_next_password.setOnClickListener {
             if (checkPassword()) {
                 saveViewModel()
                 doRegister()
             } else {
-                Toast.makeText(context, "Password Mismatch", Toast.LENGTH_SHORT).show()
+                Snackbar.make(regPassword_root, "Enter 8-12 letter, 1 Number, 1 lowercase letter, 1 uppercase letter, 1 special character.", Snackbar.LENGTH_LONG).show()
             }
         }
     }
