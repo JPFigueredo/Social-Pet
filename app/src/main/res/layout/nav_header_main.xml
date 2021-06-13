@@ -11,7 +11,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_pet_photo_profile"
+        android:id="@+id/tv_pet_photo_profile"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="16dp"
@@ -31,7 +31,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="?attr/colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pet_photo_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_pet_photo_profile" />
 
     <TextView
         android:id="@+id/labelHaederEmail"

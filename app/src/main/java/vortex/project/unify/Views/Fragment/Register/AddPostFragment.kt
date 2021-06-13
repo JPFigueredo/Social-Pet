@@ -94,7 +94,7 @@ class AddPostFragment : Fragment() {
             val userPostslist = postsUserViewModel.postsUserListVM.value ?: listOf()
             val petName = petMainViewModel.petMain_nameVM.value.toString()
             val descriptionPost = description_post_input.text.toString()
-            val petPhoto = ""
+            val petPhoto = petsViewModel.petsListVM.value?.get(0)!!.pet_photo
             val datePost = getDate()
             val newPost = Post(petPhoto, encodedImageString, petName, datePost, "0", getSecPost(), descriptionPost)
 

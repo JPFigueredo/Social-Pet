@@ -1,6 +1,9 @@
 package vortex.project.unify.Views.Fragment.Main
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -103,6 +106,11 @@ class ProfileFragment : Fragment(), ProfileAdapter.OnItemClickListener  {
                 tv_bio.text = it.toString()
             }
         })
+        petMainViewModel.petMain_photoVM.observe(viewLifecycleOwner, Observer {
+            if (it != null && it.isNotBlank()) {
+                tv_pet_photo_profile.setImageBitmap(handleBitmap(it.toString()))
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -122,4 +130,14 @@ class ProfileFragment : Fragment(), ProfileAdapter.OnItemClickListener  {
         }
         return true
     }
+
+    private fun handleBitmap(photo: String): Bitmap? {
+        val byteArray: ByteArray = Base64.decode(photo, Base64.DEFAULT)
+        val bmImage = BitmapFactory.decodeByteArray(
+            byteArray, 0,
+            byteArray.size
+        )
+        return bmImage
+    }
+
 }

@@ -1,5 +1,8 @@
 package vortex.project.unify.Views.Adapters
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +25,9 @@ class SearchAdapter (var petsList: List<Pet?> = listOf(),
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
 
-//        holder.petPhotoCard.image = petsList[position]!!.pet_photos
-
+        if (petsList[position]!!.pet_photo.isNotEmpty()) {
+            holder.photoSearch.setImageBitmap(handleBitmap(petsList[position]!!.pet_photo))
+        }
         holder.userName.text = petsList[position]!!.pet_name
         holder.speciesSearch.text = petsList[position]!!.pet_specie
 
@@ -37,6 +41,7 @@ class SearchAdapter (var petsList: List<Pet?> = listOf(),
 
         val userName: TextView = itemView.findViewById(R.id.tv_username_search)
         val speciesSearch: TextView = itemView.findViewById(R.id.tv_species_search)
+        val photoSearch: ImageView = itemView.findViewById(R.id.img_user_search)
 
         init {
             itemView.setOnClickListener(this)
@@ -58,5 +63,14 @@ class SearchAdapter (var petsList: List<Pet?> = listOf(),
     fun changeData(pets: List<Pet>){
         petsList = pets
         notifyDataSetChanged()
+    }
+
+    private fun handleBitmap(photo: String): Bitmap? {
+        val byteArray: ByteArray = Base64.decode(photo, Base64.DEFAULT)
+        val bmImage = BitmapFactory.decodeByteArray(
+            byteArray, 0,
+            byteArray.size
+        )
+        return bmImage
     }
 }

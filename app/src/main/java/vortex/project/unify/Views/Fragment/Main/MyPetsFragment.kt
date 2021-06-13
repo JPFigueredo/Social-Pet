@@ -66,11 +66,13 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
     override fun onItemClick(position: Int) {
         val chosenPetName: String = petList[position].pet_name
         val chosenPetSpecie: String = petList[position].pet_specie
+        val chosenPetPhoto: String = petList[position].pet_photo
 
         petMainViewModel.petMain_nameVM.value = chosenPetName
         petMainViewModel.petMain_specieVM.value = chosenPetSpecie
+        petMainViewModel.petMain_photoVM.value = chosenPetPhoto
 
-        setMainPetFirebase(chosenPetName, chosenPetSpecie)
+        setMainPetFirebase(chosenPetName, chosenPetSpecie, chosenPetPhoto)
 
         Toast.makeText(context, "$chosenPetName chosen as your main Pet", Toast.LENGTH_SHORT).show()
     }
@@ -86,17 +88,19 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         })
     }
 
-    private fun setMainPetFirebase(chosenPetName: String, chosenPetSpecie: String){
+    private fun setMainPetFirebase(chosenPetName: String, chosenPetSpecie: String, chosenPetPhoto: String){
 
         petMainViewModel.petMain_nameVM.value = chosenPetName
         petMainViewModel.petMain_specieVM.value = chosenPetSpecie
+        petMainViewModel.petMain_photoVM.value = chosenPetPhoto
 
         val pet = hashMapOf(
             "user_id" to userViewModel.user_idVM.value,
             "email" to userViewModel.emailVM.value,
             "phone" to userViewModel.phoneVM.value,
             "mainPetName" to chosenPetName,
-            "mainPetSpecie" to chosenPetSpecie
+            "mainPetSpecie" to chosenPetSpecie,
+            "mainPetPhoto" to chosenPetPhoto
         )
 
         firestoreDB!!.collection("Users").document(userViewModel.user_idVM.value.toString())

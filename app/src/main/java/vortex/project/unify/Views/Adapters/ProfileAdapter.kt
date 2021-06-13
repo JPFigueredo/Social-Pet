@@ -28,7 +28,11 @@ class ProfileAdapter (var postsList: List<Post?> = listOf(), private val listene
 //        var dateString = dateFormat.toString()
 
 //        holder.petPhotoPost.setImageBitmap(handleBitmap(postsList[position]!!.petPhotoPost))
-        holder.postPhoto.setImageBitmap(handleBitmap(postsList[position]!!.photoPost))
+
+        if (postsList[position]!!.photoPost.isNotEmpty()) {
+            holder.postPhoto.setImageBitmap(handleBitmap(postsList[position]!!.photoPost))
+        }
+
         holder.postPetName.text = postsList[position]!!.petNamePost
         holder.postDate.text = postsList[position]!!.datePost
         holder.postLikes.text = postsList[position]!!.likesPost
@@ -77,7 +81,7 @@ class ProfileAdapter (var postsList: List<Post?> = listOf(), private val listene
 //        return format.format(date)
 //    }
 
-    private fun handleBitmap(photo: String): Bitmap {
+    private fun handleBitmap(photo: String): Bitmap? {
         val byteArray: ByteArray = Base64.decode(photo, Base64.DEFAULT)
         val bmImage = BitmapFactory.decodeByteArray(
             byteArray, 0,

@@ -106,7 +106,6 @@ class SearchFragment : Fragment(), SearchAdapter.OnItemClickListener {
                                                     val pet = docPet.toObject(Pet::class.java)
                                                     if (pet.pet_name.uppercase().contains(petName.uppercase())) {
                                                         searchViewModel.petsListSearch.value = petList + pet
-                                                        Log.i("TESTE", pet.pet_name)
                                                     }
 
                                                 }
@@ -120,10 +119,6 @@ class SearchFragment : Fragment(), SearchAdapter.OnItemClickListener {
         }
 
     private fun setToolbar() {
-        activity?.toolbar_layout!!.visibility = View.VISIBLE
-//        activity?.camera_button!!.visibility = View.VISIBLE
-//        activity?.new_followers_button!!.visibility = View.VISIBLE
-//            .endAt(petName + "\uf8ff")
-
+        //activity?.toolbar_layout!!.visibility = View.VISIBLE
     }
 }
