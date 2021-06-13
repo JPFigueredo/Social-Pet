@@ -13,10 +13,10 @@
     <string name="address_number">Número</string>
     <string name="street_name">Nome da rua</string>
     <string name="phone_number">Número de celularr</string>
-    <string name="comfirm_password">Confirmar senha</string>
+    <string name="confirm_password">Confirmar senha</string>
     <string name="password_mismatch">Senha Incompatível</string>
     <string name="e_mail">E-mail</string>
-    <string name="wellcome">Bem-vindo</string>
+    <string name="welcome">Bem-vindo</string>
     <string name="open">Aberto</string>
     <string name="close">Fechado</string>
     <string name="unify_project">Unify Project</string>
@@ -25,7 +25,6 @@
     <string name="welcome_">Bem-vindo,</string>
     <string name="buddy_">amiguinho!</string>
     <string name="not_a_member_sigup_now">Não é um membro? Inscreva-se já!</string>
-    <string name="confirm_password">Confirme a senha</string>
     <string name="phone_number_optional">Número de telefone (opcional)</string>
     <string name="save">Salvar</string>
     <string name="_1_of_3">1 de 3</string>
@@ -63,7 +62,12 @@
     <string name="submit">Enviar</string>
     <string name="dialogEnglish">English</string>
     <string name="dialogPortuguese">Portuguese</string>
-    <string name="add_pet">Add Pet</string>
-    <string name="description">Description</string>
-    <string name="add_your_location">Add your location</string>
+    <string name="add_pet">Adicionar Pet</string>
+    <string name="description">Descrição</string>
+    <string name="add_your_location">Adicionar localização</string>
+    <string name="add_post_button">Adicionar post</string>
+    <string name="add_photo_to_post">Adicionar foto ao post</string>
+    <string name="add_location_to_post">Adicionar localização ao post</string>
+    <string name="add_pet_button">Add pet button</string>
+    <string name="gender">Gender</string>
 </resources>

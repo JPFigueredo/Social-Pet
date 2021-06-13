@@ -129,9 +129,10 @@
                 android:id="@+id/add_pets_gender_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Gender"
+                android:hint="@string/gender"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_pet_finish_fab"
@@ -146,7 +147,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_pets_bio_layout"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            android:contentDescription="@string/add_pet_button"
+            android:focusable="true" />
 
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"

@@ -28,5 +28,6 @@ package="vortex.project.unify">
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7381191180566652~5878145819"/>
 
+
     </application>
 </manifest>

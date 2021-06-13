@@ -19,6 +19,8 @@ import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.android.synthetic.main.fragment_add_pet.*
@@ -54,8 +56,15 @@ class AddPetFragment : Fragment() {
         }
         setUpListeners()
         changeImage()
+        setUpAdMob()
     }
-//adViewPet
+
+    private fun setUpAdMob(){
+        MobileAds.initialize(context)
+        val adRequest = AdRequest.Builder().build()
+        adViewPet.loadAd(adRequest)
+    }
+
     private fun setUpListeners(){
         add_pet_finish_fab.setOnClickListener {
             saveViewModel()

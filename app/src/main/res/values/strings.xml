@@ -14,10 +14,10 @@
     <string name="address_number">Number</string>
     <string name="street_name">Street Name</string>
     <string name="phone_number">Phone Number</string>
-    <string name="comfirm_password">Confirm Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="password_mismatch">Password Mismatch</string>
     <string name="e_mail">E-mail</string>
-    <string name="wellcome">Welcome</string>
+    <string name="welcome">Welcome</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="unify_project">Unify Project</string>
@@ -26,7 +26,6 @@
     <string name="welcome_">Welcome,</string>
     <string name="buddy_">buddy!</string>
     <string name="not_a_member_sigup_now">Not a member? Sign Up now!</string>
-    <string name="confirm_password">Confirm Password</string>
     <string name="phone_number_optional">Phone Number (optional)</string>
     <string name="save">Save</string>
     <string name="_1_of_3">1 of 3</string>
@@ -67,4 +66,9 @@
     <string name="add_pet">Add Pet</string>
     <string name="description">Description</string>
     <string name="add_your_location">Add your location</string>
+    <string name="add_post_button">Add post button</string>
+    <string name="add_photo_to_post">add photo to post</string>
+    <string name="add_location_to_post">Add location to post</string>
+    <string name="add_pet_button">Add pet button</string>
+    <string name="gender">Gender</string>
 </resources>
