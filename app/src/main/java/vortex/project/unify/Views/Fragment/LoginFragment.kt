@@ -170,6 +170,7 @@ class LoginFragment : Fragment() {
                             userViewModel.phoneVM.value = user_db.phone
                             petMainViewModel.petMain_nameVM.value = user_db.mainPetName
                             petMainViewModel.petMain_specieVM.value = user_db.mainPetSpecie
+                            petMainViewModel.petMain_photoVM.value = user_db.mainPetPhoto
                         }
                     }
                 }

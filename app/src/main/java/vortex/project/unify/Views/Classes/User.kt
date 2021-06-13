@@ -1,6 +1,5 @@
 package vortex.project.unify.Views.Classes
 
-import com.google.firebase.firestore.CollectionReference
 
 class User(
 
@@ -9,6 +8,7 @@ class User(
     var phone: String = "",
     var mainPetName: String = "",
     var mainPetSpecie: String = "",
+    var mainPetPhoto: String = ""
 
     )
 {}

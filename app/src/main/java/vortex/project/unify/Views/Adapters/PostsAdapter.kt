@@ -31,6 +31,9 @@ class PostsAdapter (var postsList: List<Post?> = listOf(), private val listener:
         if (postsList[position]!!.photoPost.isNotEmpty()) {
             holder.postPhoto.setImageBitmap(handleBitmap(postsList[position]!!.photoPost))
         }
+        if (postsList[position]!!.petPhotoPost.isNotEmpty()) {
+            holder.petPhotoPost.setImageBitmap(handleBitmap(postsList[position]!!.petPhotoPost))
+        }
 
         holder.postPetName.text = postsList[position]!!.petNamePost
         holder.postDate.text = postsList[position]!!.datePost
