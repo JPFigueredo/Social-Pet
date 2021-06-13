@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_my_pets.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.Activity.Util
 import vortex.project.unify.Views.Adapters.MyPetsAdapter
 import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.Classes.Post
@@ -54,6 +55,7 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
             petMainViewModel = ViewModelProviders.of(act).get(PetMainViewModel::class.java)
             petList = petsViewModel.petsListVM.value ?: listOf()
         }
+        updateFirebasePet()
         configRecycleView()
         subscribe()
         setWidgets()
@@ -133,6 +135,26 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         }
         return true
     }
+
+    private fun updateFirebasePet(){
+        firestoreDB!!.collection("Users").document(Util.USER_ID).collection("Pets")
+            .addSnapshotListener(EventListener { documentSnapshots, e ->
+                if (e != null) {
+                    return@EventListener
+                }
+
+                var petList = mutableListOf<Pet>()
+
+                for (doc in documentSnapshots!!) {
+                    val pet = doc.toObject(Pet::class.java)
+                    Pet(pet.pet_name, pet.pet_specie, pet.pet_gender, pet.pet_followers, pet.pet_posts, pet.pet_address, pet.pet_photo)
+                    petList.add(pet)
+                }
+                petsViewModel.petsListVM.value = petList
+            })
+
+    }
+
 
 
 //    private fun addPetFirebase(pet_name: String, pet_specie: String, pet_gender: String, pet_followers: Int, pet_posts: Int, pet_address: String, pet_photo: String){

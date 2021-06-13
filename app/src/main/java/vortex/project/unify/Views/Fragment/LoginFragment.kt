@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_reg_pet.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Activity.MainActivity
+import vortex.project.unify.Views.Activity.Util
 import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.Classes.Post
 import vortex.project.unify.Views.Classes.User
@@ -119,6 +120,7 @@ class LoginFragment : Fragment() {
     private fun getUserData() {
         userViewModel.user_idVM.value = auth.currentUser?.uid.toString()
         userViewModel.emailVM.value = Firebase.auth.currentUser?.email
+        Util.USER_ID = userViewModel.user_idVM.value!!
     }
 
     private fun loadPetData() {
