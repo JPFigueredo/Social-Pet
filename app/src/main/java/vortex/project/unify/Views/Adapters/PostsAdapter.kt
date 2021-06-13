@@ -20,14 +20,6 @@ class PostsAdapter (var postsList: List<Post?> = listOf(), private val listener:
     }
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
-
-//        var date = postsList[position]!!.datePost
-////        var newDate = date as Date
-//        var dateFormat = DateFormat.getDateTimeInstance().format(newDate)
-//        var dateString = dateFormat.toString()
-
-//        holder.petPhotoPost.setImageBitmap(handleBitmap(postsList[position]!!.petPhotoPost))
-
         if (postsList[position]!!.photoPost.isNotEmpty()) {
             holder.postPhoto.setImageBitmap(handleBitmap(postsList[position]!!.photoPost))
         }
