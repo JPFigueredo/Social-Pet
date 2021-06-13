@@ -6,4 +6,5 @@ import vortex.project.unify.Views.Classes.Pet
 
 class PetsViewModel: ViewModel() {
     val petsListVM = MutableLiveData<List<Pet>>()
+    //val petPhoto = MutableLiveData<String>().apply { value = "" }
 }

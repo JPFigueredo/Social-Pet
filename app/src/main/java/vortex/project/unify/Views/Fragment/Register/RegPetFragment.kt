@@ -66,7 +66,8 @@ class RegPetFragment : Fragment() {
         val petName = reg_pets_name_input.text.toString()
         val petSpecie = reg_pets_especies_input.text.toString()
         val petGender = reg_pets_gender_input.text.toString()
-        val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
+        val petPhoto = encodedImageString
+        val newPet = Pet(petName, petSpecie, petGender,0,0,"", petPhoto)
         petsViewModel.petsListVM.value = list + newPet
         petMainViewModel.petMain_nameVM.value = petName
         petMainViewModel.petMain_specieVM.value = petSpecie

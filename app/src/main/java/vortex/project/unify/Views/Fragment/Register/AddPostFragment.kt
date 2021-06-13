@@ -93,8 +93,10 @@ class AddPostFragment : Fragment() {
             val allPostslist = postsViewModel.postsListVM.value ?: listOf()
             val userPostslist = postsUserViewModel.postsUserListVM.value ?: listOf()
             val petName = petMainViewModel.petMain_nameVM.value.toString()
+            val descriptionPost = description_post_input.text.toString()
+            val petPhoto = ""
             val datePost = getDate()
-            val newPost = Post(petName, datePost, "0", getSecPost())
+            val newPost = Post(petPhoto, encodedImageString, petName, datePost, "0", getSecPost(), descriptionPost)
 
             addPostFirebase(newPost)
 

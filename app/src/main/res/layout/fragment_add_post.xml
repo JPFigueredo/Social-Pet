@@ -57,6 +57,7 @@
             android:id="@+id/addPhotoAddPost_ImageButton"
             android:layout_width="260dp"
             android:layout_height="260dp"
+            android:scaleType="fitXY"
             tools:src="@tools:sample/avatars" />
 
         <ImageView

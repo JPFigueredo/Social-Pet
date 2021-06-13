@@ -16,10 +16,11 @@ import kotlinx.android.synthetic.main.fragment_feed.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Adapters.PostsAdapter
+import vortex.project.unify.Views.Adapters.ProfileAdapter
 import vortex.project.unify.Views.Classes.Post
 import vortex.project.unify.Views.ViewModel.*
 
-class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
+class ProfileFragment : Fragment(), ProfileAdapter.OnItemClickListener  {
 
     private lateinit var postsViewModel: PostsViewModel
     private lateinit var postsUserViewModel: PostsUserViewModel
@@ -54,7 +55,7 @@ class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
     }
     private fun configRecycleView() {
         userPosts_recyclerView.layoutManager = LinearLayoutManager(activity)
-        userPosts_recyclerView.adapter = PostsAdapter(postsUserList, this)
+        userPosts_recyclerView.adapter = ProfileAdapter(postsUserList, this)
 //        post_recyclerView.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
     }
     override fun onItemClick(position: Int) {
@@ -72,7 +73,7 @@ class ProfileFragment : Fragment(), PostsAdapter.OnItemClickListener  {
         postsUserViewModel.postsUserListVM.observe(viewLifecycleOwner, Observer { list->
             if (list != null){
                 val adapter = userPosts_recyclerView.adapter
-                if (adapter is PostsAdapter){
+                if (adapter is ProfileAdapter){
                     adapter.changeData(list)
                 }
             }

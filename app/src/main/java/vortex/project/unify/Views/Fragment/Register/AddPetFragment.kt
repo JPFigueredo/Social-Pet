@@ -82,11 +82,13 @@ class AddPetFragment : Fragment() {
             val petName = add_pets_name_input.text.toString()
             val petSpecie = add_pets_especies_input.text.toString()
             val petGender = add_pets_gender_input.text.toString()
-            val newPet = Pet(petName, petSpecie, petGender,0,0,"","")
+            val petPhoto = encodedImageString
+            val newPet = Pet(petName, petSpecie, petGender,0,0,"", petPhoto)
 
             addPetFirebase(newPet)
 
             petsViewModel.petsListVM.value = list + newPet
+            //petsViewModel.petPhoto.value = petPhoto
 
             findNavController().navigate(R.id.action_addPetFragment_to_myPets_dest, null)
 
