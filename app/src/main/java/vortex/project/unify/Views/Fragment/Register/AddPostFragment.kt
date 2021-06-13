@@ -1,16 +1,11 @@
 package vortex.project.unify.Views.Fragment.Register
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.location.Address
-import android.location.Geocoder
 import android.os.Bundle
-import android.os.Looper
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
@@ -18,15 +13,11 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,12 +25,10 @@ import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_add_post.*
 import kotlinx.android.synthetic.main.fragment_reg_pet.*
 import vortex.project.unify.R
-import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.Classes.Post
 import vortex.project.unify.Views.ViewModel.*
 import java.io.ByteArrayOutputStream
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AddPostFragment : Fragment() {
@@ -57,8 +46,6 @@ class AddPostFragment : Fragment() {
     private val REQUEST_PERMISSION_CODE = 1011
     private var imageBitmap: Bitmap? = null
     private var encodedImageString = ""
-
-    companion object{private val REQUEST_PERMISSION_REQUEST_CODE = 2020}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         firestoreDB = FirebaseFirestore.getInstance()
@@ -78,23 +65,18 @@ class AddPostFragment : Fragment() {
         setUpListeners()
         setWidgets()
         changeImage()
+        setUpAdMob()
+    }
+
+    private fun setUpAdMob(){
+        MobileAds.initialize(context)
+        val adRequest = AdRequest.Builder().build()
+        adViewPost.loadAd(adRequest)
     }
 
     private fun setUpListeners(){
         confirmAddPost_Button.setOnClickListener {
             savePost()
-        }
-        fab_add_location_post.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),REQUEST_PERMISSION_REQUEST_CODE)
-            }else {
-                tv_location_post.text = ""
-//                tvLatitude.text = ""
-//                tvLongitude.text = ""
-                location_post_pb.visibility = View.VISIBLE
-                getCurrentLocation()
-            }
-
         }
     }
 
@@ -224,56 +206,5 @@ class AddPostFragment : Fragment() {
 
     private fun setWidgets() {
         activity?.bottom_nav_view!!.visibility = View.GONE
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_PERMISSION_REQUEST_CODE && grantResults.size > 0){
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                getCurrentLocation()
-            }else{
-                Toast.makeText(requireActivity(),"Permission Denied!",Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun getCurrentLocation() {
-
-        var locationRequest = LocationRequest()
-        locationRequest.interval = 10000
-        locationRequest.fastestInterval = 5000
-        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-
-        //now getting address from latitude and longitude
-
-        val geocoder = Geocoder(requireActivity(), Locale.getDefault())
-        var addresses:List<Address>
-
-        LocationServices.getFusedLocationProviderClient(requireActivity())
-            .requestLocationUpdates(locationRequest,object : LocationCallback(){
-                override fun onLocationResult(locationResult: LocationResult?) {
-                    super.onLocationResult(locationResult)
-                    LocationServices.getFusedLocationProviderClient(requireActivity())
-                        .removeLocationUpdates(this)
-                    if (locationResult != null && locationResult.locations.size > 0){
-                        var locIndex = locationResult.locations.size-1
-
-                        var latitude = locationResult.locations[locIndex].latitude
-                        var longitude = locationResult.locations[locIndex].longitude
-//                        tvLatitude.text = "Latitude: "+latitude
-//                        tvLongitude.text = "Longitude: "+longitude
-
-                        addresses = geocoder.getFromLocation(latitude,longitude,1)
-
-                        var address:String = addresses[0].getAddressLine(0)
-                        tv_location_post.text = address
-                        if (tv_location_post != null){
-                            location_post_pb.visibility = View.GONE
-                        }
-                    }
-                }
-            }, Looper.getMainLooper())
-
     }
 }

@@ -113,14 +113,25 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewPost"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-7381191180566652/7739938111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmAddPost_Button" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/confirmAddPost_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:clickable="true"
         android:src="@drawable/ic_check"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adViewPost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_post_layout" />

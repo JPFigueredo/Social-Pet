@@ -55,7 +55,7 @@ class AddPetFragment : Fragment() {
         setUpListeners()
         changeImage()
     }
-
+//adViewPet
     private fun setUpListeners(){
         add_pet_finish_fab.setOnClickListener {
             saveViewModel()

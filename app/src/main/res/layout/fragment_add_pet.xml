@@ -138,15 +138,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="18dp"
             android:backgroundTint="@color/orange_400"
             android:clickable="true"
             android:src="@drawable/ic_pets"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/adViewPet"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_pets_bio_layout"
             app:tint="@color/white" />
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adViewPet"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-7381191180566652/7739938111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_pet_finish_fab" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
