@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_splash_screen.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +35,8 @@ class SplashScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setWidgets()
 
         val alphaAnimation = AlphaAnimation(0.1f, 2.0f)
         alphaAnimation.duration = 4000
@@ -71,5 +74,10 @@ class SplashScreenFragment : Fragment() {
             })
 
         img_logo_plash.startAnimation(animationSet)
+    }
+
+    private fun setWidgets() {
+        activity?.bottom_nav_view!!.visibility = View.GONE
+        activity?.toolbar_layout!!.visibility = View.GONE
     }
 }
