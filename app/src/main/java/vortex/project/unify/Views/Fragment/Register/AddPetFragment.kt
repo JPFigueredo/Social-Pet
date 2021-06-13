@@ -60,7 +60,6 @@ class AddPetFragment : Fragment() {
     }
 
     private fun setUpAdMob(){
-        MobileAds.initialize(context)
         val adRequest = AdRequest.Builder().build()
         adViewPet.loadAd(adRequest)
     }

@@ -69,7 +69,6 @@ class AddPostFragment : Fragment() {
     }
 
     private fun setUpAdMob(){
-        MobileAds.initialize(context)
         val adRequest = AdRequest.Builder().build()
         adViewPost.loadAd(adRequest)
     }

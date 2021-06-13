@@ -61,6 +61,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:23.0.1'
 //   <AdMob Ads SDK>
     implementation 'com.google.android.gms:play-services-ads:20.2.0'
+    implementation 'com.google.firebase:firebase-ads:20.2.0'
 //   </AdMob Ads SDK>
     testImplementation 'junit:junit:4.13.2'
 
