@@ -9,10 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_reg_email.*
-import kotlinx.android.synthetic.main.fragment_reg_pet.*
-import kotlinx.android.synthetic.main.toolbar.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.ViewModel.UserViewModel
 
@@ -29,8 +26,8 @@ class RegEmailFragment : Fragment() {
         activity?.let {
                 act -> userViewModel = ViewModelProviders.of(act).get(UserViewModel::class.java)
         }
-        setToolbar()
         setUpListeners()
+
     }
 
     private fun validateEmail(): Boolean {
@@ -57,22 +54,5 @@ class RegEmailFragment : Fragment() {
     }
     private fun saveViewModel(){
         userViewModel.emailVM.value = regEmail_input.text.toString()
-    }
-
-    private fun setToolbar() {
-        //val background = context?.let { AppCompatResources.getDrawable(it, R.color.white) }
-
-//        val value = TypedValue()
-//        activity?.theme!!.resolveAttribute(R.attr.colorOnPrimarySurface, value, true)
-//        val background = context?.let { ContextCompat.getColor(it, value.resourceId) }
-
-        activity?.toolbar_layout!!.visibility = View.VISIBLE
-//        activity?.camera_button!!.visibility = View.GONE
-//        activity?.new_fallowers_button!!.visibility = View.GONE
-//        activity?.toolbar_layout!!.background = background!!.toDrawable()
-
-        val parameter = activity?.toolbar!!.layoutParams as ViewGroup.MarginLayoutParams
-        parameter.marginStart = 0
-        activity?.toolbar!!.layoutParams = parameter
     }
 }

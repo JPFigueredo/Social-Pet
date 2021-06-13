@@ -118,7 +118,7 @@
     <fragment
         android:id="@+id/regPetFragment"
         android:name="vortex.project.unify.Views.Fragment.Register.RegPetFragment"
-        android:label="Your Pet"
+        android:label="Register Your Pet"
         tools:layout="@layout/fragment_reg_pet" >
         <action
             android:id="@+id/action_regPetFragment_to_regEmail"

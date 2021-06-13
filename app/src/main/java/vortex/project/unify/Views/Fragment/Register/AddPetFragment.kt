@@ -1,26 +1,32 @@
 package vortex.project.unify.Views.Fragment.Register
 
+import android.Manifest
+import android.app.Activity
 import android.content.ContentValues
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Base64
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.PermissionChecker
+import androidx.core.content.PermissionChecker.checkSelfPermission
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
-import kotlinx.android.synthetic.main.fragment_my_pets.*
-import kotlinx.android.synthetic.main.fragment_reg_pet.*
-import kotlinx.android.synthetic.main.fragment_reg_pet.reg_pet_fab
 import vortex.project.unify.R
 import vortex.project.unify.Views.Classes.Pet
 import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
+import java.io.ByteArrayOutputStream
 
 class AddPetFragment : Fragment() {
 
@@ -28,6 +34,12 @@ class AddPetFragment : Fragment() {
     private lateinit var petsViewModel: PetsViewModel
     private var firestoreDB: FirebaseFirestore? = null
     private var firestoreListener: ListenerRegistration? = null
+    private val GRANTED = PermissionChecker.PERMISSION_GRANTED
+    private val CAMERA  = Manifest.permission.CAMERA
+    private val REQUEST_IMAGE_CAPTURE = 1001
+    private val REQUEST_PERMISSION_CODE = 1009
+    private var imageBitmap: Bitmap? = null
+    private var encodedImageString = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         firestoreDB = FirebaseFirestore.getInstance()
@@ -41,7 +53,9 @@ class AddPetFragment : Fragment() {
             petsViewModel = ViewModelProviders.of(act).get(PetsViewModel::class.java)
         }
         setUpListeners()
+        changeImage()
     }
+
     private fun setUpListeners(){
         add_pet_finish_fab.setOnClickListener {
             saveViewModel()
@@ -91,5 +105,68 @@ class AddPetFragment : Fragment() {
         } else {Toast.makeText(context, "Pet`s Name can't be empty", Toast.LENGTH_SHORT).show()}
 
         return check
+    }
+
+    private fun changeImage() {
+        btn_change_profile_photo_add.setOnClickListener {
+            when {
+                checkSelfPermission(requireContext(), CAMERA) == GRANTED -> captureImage()
+                shouldShowRequestPermissionRationale(CAMERA) -> showDialogPermission(
+                    "É preciso liberar o acesso à câmera!",
+                    arrayOf(CAMERA)
+                )
+                else -> requestPermissions(
+                    arrayOf(CAMERA),
+                    REQUEST_IMAGE_CAPTURE
+                )
+            }
+        }
+    }
+
+    private fun captureImage(){
+        val capturaImagemIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        try {
+            startActivityForResult(capturaImagemIntent, REQUEST_IMAGE_CAPTURE)
+        } catch (e: Exception) {
+            Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                try {
+                    imageBitmap = data!!.extras!!["data"] as Bitmap?
+                    add_img_edit_profile_pet.setImageBitmap(imageBitmap)
+
+                    val baos = ByteArrayOutputStream()
+                    imageBitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                    val b: ByteArray = baos.toByteArray()
+                    encodedImageString = Base64.encodeToString(b, Base64.DEFAULT)
+
+                } catch (e: Exception) {
+                    Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun showDialogPermission(
+        message: String, permissions: Array<String>
+    ) {
+        val alertDialog = AlertDialog
+            .Builder(requireContext())
+            .setTitle("Permissões")
+            .setMessage(message)
+            .setPositiveButton("Ok") { dialog, _ ->
+                requestPermissions(
+                    permissions,
+                    REQUEST_PERMISSION_CODE)
+                dialog.dismiss()
+            }.setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+        alertDialog.show()
     }
 }
