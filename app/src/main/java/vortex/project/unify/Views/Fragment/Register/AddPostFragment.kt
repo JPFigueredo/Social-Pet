@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
@@ -78,6 +79,12 @@ class AddPostFragment : Fragment() {
         setUpListeners()
         setWidgets()
         changeImage()
+        setUpAdMob()
+    }
+
+    private fun setUpAdMob(){
+        val adRequest = AdRequest.Builder().build()
+        adViewPost.loadAd(adRequest)
     }
 
     private fun setUpListeners(){
