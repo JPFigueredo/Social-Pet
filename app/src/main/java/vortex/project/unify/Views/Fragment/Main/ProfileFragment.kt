@@ -55,6 +55,7 @@ class ProfileFragment : Fragment(), ProfileAdapter.OnItemClickListener  {
         configRecycleView()
         subscribe()
         setData()
+        setWidgets()
     }
     private fun configRecycleView() {
         userPosts_recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -89,10 +90,10 @@ class ProfileFragment : Fragment(), ProfileAdapter.OnItemClickListener  {
 ////        }
 //    }
 
-//    private fun setWidgets() {
-//        activity?.toolbar_layout!!.visibility = View.VISIBLE
-//        activity?.bottom_nav_view!!.visibility = View.VISIBLE
-//    }
+    private fun setWidgets() {
+        activity?.toolbar_layout!!.visibility = View.VISIBLE
+        activity?.bottom_nav_view!!.visibility = View.VISIBLE
+    }
 
     private fun setData(){
         petMainViewModel.petMain_nameVM.observe(viewLifecycleOwner, Observer {

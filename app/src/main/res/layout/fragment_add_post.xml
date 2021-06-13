@@ -28,7 +28,9 @@
             android:src="@drawable/ic_add_location"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/add_location_to_post"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/tv_location_post"
@@ -70,7 +72,8 @@
             android:layout_width="260dp"
             android:layout_height="260dp"
             android:scaleType="fitXY"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/add_photo_to_post" />
 
         <ImageView
             android:id="@+id/img_camera_add_post"
@@ -81,7 +84,8 @@
             android:scaleX="1.8"
             android:scaleY="1.8"
             android:src="@drawable/ic_photo_camera"
-            app:tint="@color/orange_400" />
+            app:tint="@color/orange_400"
+            android:contentDescription="@string/add_photo_to_post" />
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -113,17 +117,30 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewPost"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-7381191180566652/7739938111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmAddPost_Button" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/confirmAddPost_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:clickable="true"
         android:src="@drawable/ic_check"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adViewPost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_post_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/description_post_layout"
+        android:contentDescription="@string/add_post_button"
+        android:focusable="true" />
 
     <!--    <Button-->
 <!--        android:id="@+id/confirmAddPost_Button"-->
