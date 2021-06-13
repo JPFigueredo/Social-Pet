@@ -56,6 +56,7 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
         }
         configRecycleView()
         subscribe()
+        setWidgets()
     }
 
     private fun configRecycleView() {
@@ -86,6 +87,11 @@ class MyPetsFragment : Fragment(), MyPetsAdapter.OnItemClickListener {
                 }
             }
         })
+    }
+
+    private fun setWidgets() {
+        activity?.toolbar_layout!!.visibility = View.VISIBLE
+        activity?.bottom_nav_view!!.visibility = View.VISIBLE
     }
 
     private fun setMainPetFirebase(chosenPetName: String, chosenPetSpecie: String, chosenPetPhoto: String){
