@@ -96,12 +96,9 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            getUserData()
             loadDatabase()
-//            getPetsDataFromUserVMtoPetsVM()
             findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
         }
     }
@@ -110,11 +107,7 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(emailLogin_input.text.toString(), passwordLogin_input.text.toString())
             .addOnSuccessListener { taskSnapshot ->
                 Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
-                getUserData()
                 loadDatabase()
-                loadAllPostsData()
-                loadUserPostsData()
-//                getPetsDataFromUserVMtoPetsVM()
                 findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
             }
             .addOnFailureListener { exception ->
@@ -184,7 +177,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun loadDatabase(){
+        getUserData()
         loadUserData()
         loadPetData()
+        loadAllPostsData()
+        loadUserPostsData()
     }
 }
