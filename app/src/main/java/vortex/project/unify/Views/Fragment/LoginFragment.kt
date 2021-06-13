@@ -104,17 +104,23 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun doLogIn() {
-        auth.signInWithEmailAndPassword(emailLogin_input.text.toString(), passwordLogin_input.text.toString())
-            .addOnSuccessListener { taskSnapshot ->
-                Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
-                loadDatabase()
-                findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(context, "Authentication Failure", Toast.LENGTH_SHORT).show()
-            }
-
+    private fun doLogIn() {
+        if(emailLogin_input.text.toString().isNotEmpty() || passwordLogin_input.text.toString().isNotEmpty()) {
+            auth.signInWithEmailAndPassword(
+                emailLogin_input.text.toString(),
+                passwordLogin_input.text.toString()
+            )
+                .addOnSuccessListener { taskSnapshot ->
+                    Toast.makeText(context, "Authentication Success", Toast.LENGTH_SHORT).show()
+                    loadDatabase()
+                    findNavController().navigate(R.id.action_loginFragment_to_postFragment, null)
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(context, "Authentication Failure", Toast.LENGTH_SHORT).show()
+                }
+        }else{
+            Toast.makeText(context, "Fill all fields", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getUserData() {

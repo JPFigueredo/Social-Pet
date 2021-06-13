@@ -29,7 +29,7 @@ package="vortex.project.unify">
         <!--AdMob Ads SDK-->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7381191180566652~5878145819"/>
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
 
 
     </application>
