@@ -6,17 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Views.Fragment.Register.AddPostFragment">
+    tools:context=".Views.ui.Activity.Fragment.Register.AddPostFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout8"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rect_all_radius"
         android:backgroundTint="?attr/colorOnPrimarySurface"
+        ads:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,24 +27,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:contentDescription="@string/add_location_to_post"
+            android:focusable="true"
             android:src="@drawable/ic_add_location"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/add_location_to_post"
-            android:focusable="true" />
-
-        <TextView
-            android:id="@+id/tv_location_post"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/add_your_location"
-            android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fab_add_location_post"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            ads:layout_constraintBottom_toBottomOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintStart_toEndOf="@+id/fab_add_location_post"
+            ads:layout_constraintTop_toTopOf="@+id/fab_add_location_post">
+
+            <TextView
+                android:id="@+id/tv_location_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_your_location"
+                android:textColor="?attr/colorSecondaryVariant"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fab_add_location_post"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/location_post_pb"
@@ -62,6 +74,7 @@
         android:id="@+id/cardView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/description_post_layout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,21 +85,21 @@
             android:id="@+id/addPhotoAddPost_ImageButton"
             android:layout_width="260dp"
             android:layout_height="260dp"
+            android:contentDescription="@string/add_photo_to_post"
             android:scaleType="fitXY"
-            tools:src="@tools:sample/avatars"
-            android:contentDescription="@string/add_photo_to_post" />
+            tools:src="@tools:sample/avatars" />
 
         <ImageView
             android:id="@+id/img_camera_add_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@string/add_photo_to_post"
             android:padding="14dp"
             android:scaleX="1.8"
             android:scaleY="1.8"
             android:src="@drawable/ic_photo_camera"
-            app:tint="@color/orange_400"
-            android:contentDescription="@string/add_photo_to_post" />
+            app:tint="@color/orange_400" />
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -95,6 +108,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:textColorHint="?attr/colorSecondaryVariant"
         app:boxCornerRadiusBottomEnd="15dp"
@@ -112,36 +126,37 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description_post_input"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             android:hint="@string/description"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/confirmAddPost_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/add_post_button"
+        android:focusable="true"
+        android:src="@drawable/ic_check"
+        app:layout_constraintBottom_toTopOf="@+id/adViewPost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_post_layout" />
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmAddPost_Button" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/confirmAddPost_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_check"
-        app:layout_constraintBottom_toTopOf="@+id/adViewPost"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_post_layout"
-        android:contentDescription="@string/add_post_button"
-        android:focusable="true" />
 
     <!--    <Button-->
 <!--        android:id="@+id/confirmAddPost_Button"-->

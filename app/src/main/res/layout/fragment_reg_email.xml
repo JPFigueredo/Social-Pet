@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rabbit"
-    tools:context=".Views.Fragment.Register.RegEmailFragment">
+    tools:context=".Views.ui.Activity.Fragment.Register.RegEmailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"

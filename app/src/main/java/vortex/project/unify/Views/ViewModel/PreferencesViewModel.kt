@@ -7,6 +7,4 @@ class PreferencesViewModel : ViewModel() {
 
     val modeNight = MutableLiveData<String>().apply { value = "Night Mode" }
 
-    val language =  MutableLiveData<String>().apply { value = "English" }
-
 }

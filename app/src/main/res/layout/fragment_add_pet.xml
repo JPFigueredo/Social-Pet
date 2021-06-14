@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Views.Fragment.Register.AddPetFragment">
+    tools:context=".Views.ui.Activity.Fragment.Register.AddPetFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
@@ -30,7 +30,9 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/ic_launcher_background"
+            ads:layout_constraintBottom_toTopOf="@+id/add_pets_name_layout"
             app:layout_constraintEnd_toStartOf="@+id/btn_change_profile_photo_add"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -140,24 +142,23 @@
             android:id="@+id/add_pet_finish_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="18dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/orange_400"
             android:clickable="true"
+            android:contentDescription="@string/add_pet_button"
+            android:focusable="true"
             android:src="@drawable/ic_pets"
             app:layout_constraintBottom_toTopOf="@+id/adViewPet"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_pets_bio_layout"
-            app:tint="@color/white"
-            android:contentDescription="@string/add_pet_button"
-            android:focusable="true" />
+            app:tint="@color/white" />
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adViewPet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             ads:adSize="BANNER"
             ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
             app:layout_constraintBottom_toBottomOf="parent"
