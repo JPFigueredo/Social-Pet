@@ -56,19 +56,12 @@ class ProfileFragment : Fragment(), ProfileAdapter.OnItemClickListener  {
     private fun configRecycleView() {
         userPosts_recyclerView.layoutManager = LinearLayoutManager(activity)
         userPosts_recyclerView.adapter = ProfileAdapter(postsUserList, this)
-//        post_recyclerView.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
     }
-    override fun onItemClick(position: Int) {
-//        postsUserList = postsUserViewModel.postsUserListVM.value ?: listOf()
-//        val petPostName: String = postsUserList[position].petNamePost
-//        var postLikes = postsUserList[position].likesPost.toInt()
-//        postLikes += 1
-//
-//        postsUserList[position].likesPost = postLikes.toString()
-////        postsViewModel.postsListVM.value = postsUserList
 
+    override fun onItemClick(position: Int) {
         Toast.makeText(context, "You Can't like your pet post", Toast.LENGTH_SHORT).show()
     }
+
     private fun subscribe(){
         postsUserViewModel.postsUserListVM.observe(viewLifecycleOwner, Observer { list->
             if (list != null){

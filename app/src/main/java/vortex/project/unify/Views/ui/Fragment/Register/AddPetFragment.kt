@@ -22,6 +22,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import vortex.project.unify.R
 import vortex.project.unify.Views.Model.Pet
@@ -56,6 +57,11 @@ class AddPetFragment : Fragment() {
         setUpListeners()
         changeImage()
         setUpAdMob()
+        setWidgets()
+    }
+
+    private fun setWidgets() {
+        activity?.bottom_nav_view!!.visibility = View.GONE
     }
 
     private fun setUpAdMob(){
@@ -95,7 +101,6 @@ class AddPetFragment : Fragment() {
             addPetFirebase(newPet)
 
             petsViewModel.petsListVM.value = list + newPet
-            //petsViewModel.petPhoto.value = petPhoto
 
             findNavController().navigate(R.id.action_addPetFragment_to_myPets_dest, null)
 
