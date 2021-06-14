@@ -9,12 +9,15 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_feed.*
 import vortex.project.unify.R
+import vortex.project.unify.Views.Model.Pet
 import vortex.project.unify.Views.ui.Activity.Adapters.PostsAdapter
 import vortex.project.unify.Views.Model.Post
+import vortex.project.unify.Views.Util
 import vortex.project.unify.Views.ViewModel.PetsViewModel
 import vortex.project.unify.Views.ViewModel.PostsViewModel
 import vortex.project.unify.Views.ViewModel.UserViewModel
@@ -49,6 +52,7 @@ class FeedFragment : Fragment(), PostsAdapter.OnItemClickListener {
         setUpListeners()
         configRecycleView()
         subscribe()
+        updateFirebasePet()
 //        loadAllPostsData()
     }
     private fun setUpListeners(){
@@ -88,23 +92,13 @@ class FeedFragment : Fragment(), PostsAdapter.OnItemClickListener {
         activity?.bottom_nav_view!!.visibility = View.VISIBLE
         activity?.toolbar_layout!!.visibility = View.VISIBLE
     }
-//    private fun loadAllPostsData() {
-//        firestoreDB!!.collection("Users")
-//            .get()
-//            .addOnCompleteListener { documents ->
-//                if (documents.isSuccessful) {
-//                    var postsMutableList = mutableListOf<Post>()
-//                    for (document in documents.result!!) {
-//                        firestoreDB!!.collection("Users").document(document.id).collection("Post")
-//                            .get()
-//                            .addOnCompleteListener { task ->
-//                                if (task.isSuccessful) {
-//                                    postsMutableList.addAll(task.result!!.toObjects(Post::class.java))
-//                                }
-//                            }
-//                    }
-//                    postsViewModel.postsListVM.value = postsMutableList
-//                }
-//            }
-//    }
+
+    private fun updateFirebasePet(){
+        firestoreDB!!.collection("Users")
+            .addSnapshotListener(EventListener { documentSnapshots, e ->
+                if (e != null) {
+                    return@EventListener
+                }
+            })
+    }
 }

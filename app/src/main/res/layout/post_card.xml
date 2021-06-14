@@ -50,7 +50,8 @@
             android:id="@+id/img_pet"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:scaleType="fitXY"/>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
