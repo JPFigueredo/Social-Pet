@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="vortex.project.unify.Views.Fragment.LoginFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.LoginFragment"
         android:label="SignIn"
         tools:layout="@layout/fragment_login" >
         <action
@@ -22,8 +22,8 @@
     </fragment>
     <fragment
         android:id="@+id/home_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.FeedFragment"
-        android:label="Posts"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.FeedFragment"
+        android:label="SocialPet"
         tools:layout="@layout/fragment_feed" >
         <action
             android:id="@+id/action_home_dest_to_profile_dest"
@@ -34,12 +34,12 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="vortex.project.unify.Views.Fragment.ForgotPasswordFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.ForgotPasswordFragment"
         android:label="Forgot Password"
         tools:layout="@layout/fragment_forgot_password" />
     <fragment
         android:id="@+id/nav_preferences"
-        android:name="vortex.project.unify.Views.Fragment.Main.PreferencesFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.PreferencesFragment"
         android:label="Preferences"
         tools:layout="@layout/fragment_preferences" >
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/profile_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.ProfileFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/regEmail"
-        android:name="vortex.project.unify.Views.Fragment.Register.RegEmailFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Register.RegEmailFragment"
         android:label="Your email"
         tools:layout="@layout/fragment_reg_email" >
         <action
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/regPhone"
-        android:name="vortex.project.unify.Views.Fragment.Register.RegPhoneFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Register.RegPhoneFragment"
         android:label="Your phone"
         tools:layout="@layout/fragment_reg_phone" >
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/regPassword"
-        android:name="vortex.project.unify.Views.Fragment.Register.RegPasswordFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Register.RegPasswordFragment"
         android:label="Your password"
         tools:layout="@layout/fragment_reg_password" >
         <action
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/myPets_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.MyPetsFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.MyPetsFragment"
         android:label="My Pets"
         tools:layout="@layout/fragment_my_pets" >
         <action
@@ -102,22 +102,22 @@
     </fragment>
     <fragment
         android:id="@+id/likes_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.LikesFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.LikesFragment"
         android:label="Likes"
         tools:layout="@layout/fragment_likes" />
     <fragment
         android:id="@+id/search_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.SearchFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/new_fallowers_dest"
-        android:name="vortex.project.unify.Views.Fragment.Main.NewFollowersFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.NewFollowersFragment"
         android:label="Fallowers"
         tools:layout="@layout/fragment_new_followers" />
     <fragment
         android:id="@+id/regPetFragment"
-        android:name="vortex.project.unify.Views.Fragment.Register.RegPetFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Register.RegPetFragment"
         android:label="Register Your Pet"
         tools:layout="@layout/fragment_reg_pet" >
         <action
@@ -126,7 +126,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPetFragment"
-        android:name="vortex.project.unify.Views.Fragment.Register.AddPetFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Register.AddPetFragment"
         android:label="Add your pet"
         tools:layout="@layout/fragment_add_pet" >
         <action
@@ -135,7 +135,7 @@
     </fragment>
     <fragment
         android:id="@+id/customLanguageDialogFragment"
-        android:name="vortex.project.unify.Views.Fragment.CustomLanguageDialogFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.CustomLanguageDialogFragment"
         android:label="fragment_custom_language_dialog"
         tools:layout="@layout/fragment_custom_language_dialog" >
         <action
@@ -144,7 +144,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPostFragment"
-        android:name="vortex.project.unify.Views.Fragment.Register.AddPostFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Register.AddPostFragment"
         android:label="Add your post"
         tools:layout="@layout/fragment_add_post" >
         <action
@@ -153,7 +153,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="vortex.project.unify.Views.Fragment.Main.SplashScreenFragment"
+        android:name="vortex.project.unify.Views.ui.Activity.Fragment.Main.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action

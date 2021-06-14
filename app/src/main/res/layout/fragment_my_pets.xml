@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorSurface"
-    tools:context=".Views.Fragment.Main.MyPetsFragment">
+    tools:context=".Views.ui.Activity.Fragment.Main.MyPetsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myPets_recyclerView"

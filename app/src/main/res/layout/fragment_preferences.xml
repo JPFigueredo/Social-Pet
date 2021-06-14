@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dog_paws"
-    tools:context=".Views.Fragment.Main.PreferencesFragment">
+    tools:context=".Views.ui.Activity.Fragment.Main.PreferencesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
