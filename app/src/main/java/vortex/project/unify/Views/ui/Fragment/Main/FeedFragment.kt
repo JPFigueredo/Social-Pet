@@ -8,6 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_feed.*
 import vortex.project.unify.R
@@ -25,7 +27,12 @@ class FeedFragment : Fragment(), PostsAdapter.OnItemClickListener {
     private lateinit var petsViewModel: PetsViewModel
     private lateinit var postsList: List<Post>
 
+    private var firestoreDB: FirebaseFirestore? = null
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        auth = FirebaseAuth.getInstance()
+        firestoreDB = FirebaseFirestore.getInstance()
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
         return view
     }
@@ -42,6 +49,7 @@ class FeedFragment : Fragment(), PostsAdapter.OnItemClickListener {
         setUpListeners()
         configRecycleView()
         subscribe()
+//        loadAllPostsData()
     }
     private fun setUpListeners(){
         fab_add_post.setOnClickListener {
@@ -80,4 +88,23 @@ class FeedFragment : Fragment(), PostsAdapter.OnItemClickListener {
         activity?.bottom_nav_view!!.visibility = View.VISIBLE
         activity?.toolbar_layout!!.visibility = View.VISIBLE
     }
+//    private fun loadAllPostsData() {
+//        firestoreDB!!.collection("Users")
+//            .get()
+//            .addOnCompleteListener { documents ->
+//                if (documents.isSuccessful) {
+//                    var postsMutableList = mutableListOf<Post>()
+//                    for (document in documents.result!!) {
+//                        firestoreDB!!.collection("Users").document(document.id).collection("Post")
+//                            .get()
+//                            .addOnCompleteListener { task ->
+//                                if (task.isSuccessful) {
+//                                    postsMutableList.addAll(task.result!!.toObjects(Post::class.java))
+//                                }
+//                            }
+//                    }
+//                    postsViewModel.postsListVM.value = postsMutableList
+//                }
+//            }
+//    }
 }

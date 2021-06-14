@@ -137,19 +137,24 @@ class LoginFragment : Fragment() {
             }
     }
     private fun loadAllPostsData() {
-        firestoreDB!!.collection("Users").get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                for (doc in task.result!!) {
-                    firestoreDB!!.collection("Users").document(doc.id)
-                        .collection("Post")
-                        .get()
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                postsViewModel.postsListVM.value = task.result!!.toObjects(Post::class.java)
+        firestoreDB!!.collection("Users")
+            .get()
+            .addOnCompleteListener { documents ->
+                if (documents.isSuccessful) {
+                    var postsMutableList = mutableListOf<Post>()
+                    for (document in documents.result!!) {
+                        firestoreDB!!.collection("Users").document(document.id).collection("Post").orderBy("secPost", Query.Direction.ASCENDING)
+                            .get()
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    postsMutableList.addAll(task.result!!.toObjects(Post::class.java))
+                                }
                             }
-                        }
+                    }
+                    postsMutableList.sortBy{it.secPost}
+                    var orderedPostsList = postsMutableList.reversed()
+                    postsViewModel.postsListVM.value = postsMutableList
                 }
-            }
         }
     }
 

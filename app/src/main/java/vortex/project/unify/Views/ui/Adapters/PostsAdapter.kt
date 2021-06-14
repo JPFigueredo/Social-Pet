@@ -68,7 +68,7 @@ class PostsAdapter (var postsList: List<Post?> = listOf(), private val listener:
     }
 
     fun changeData(posts: List<Post>){
-        postsList = posts.reversed()
+        postsList = posts
         notifyDataSetChanged()
     }
 
