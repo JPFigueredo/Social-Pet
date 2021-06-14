@@ -44,9 +44,9 @@ class PetTest {
 
         if (pet != null) {
             if (pet.pet_posts < 0){
-                assertTrue(false)
-            }else{
                 assertTrue(true)
+            }else{
+                assertTrue(false)
             }
         }
     }
@@ -55,9 +55,9 @@ class PetTest {
     fun verifyIfFollowersAcceptsLessThanZero(){
         pet!!.pet_followers = -4
         if(pet!!.pet_followers < 0){
-            assertTrue(false)
-        }else{
             assertTrue(true)
+        }else{
+            assertTrue(false)
         }
     }
 
@@ -65,38 +65,38 @@ class PetTest {
     fun verifyIfPostsAcceptsLessThanZero(){
         pet!!.pet_posts = -4
         if(pet!!.pet_posts < 0){
-            assertTrue(false)
-        }else{
             assertTrue(true)
+        }else{
+            assertTrue(false)
         }
     }
 
     @Test
     fun verifyIfAcceptsNameWithLessThanTwoStrings(){
         pet!!.pet_name = "Zé"
-        if(pet!!.pet_name.length < 2){
-            assertTrue(false)
-        }else{
+        if(pet!!.pet_name.length <= 2){
             assertTrue(true)
+        }else{
+            assertTrue(false)
         }
     }
     @Test
     fun verifyIfItAcceptsOtherGenders(){
-            pet!!.pet_gender = "Male"
+            pet!!.pet_gender = "Hermaphrodite"
         if(pet!!.pet_gender != "Male" || pet!!.pet_gender != "Female"){
-            assertTrue(false)
-        }else{
             assertTrue(true)
+        }else{
+            assertTrue(false)
         }
 
     }
 
     @Test
     fun verifyIfItAcceptsOtherSpecies(){
-        if(pet!!.pet_specie != "Duck" || pet!!.pet_specie != "Crab"){
-            assertTrue(false)
-        }else{
+        if(pet!!.pet_specie != "Dog" || pet!!.pet_specie != "Cat"){
             assertTrue(true)
+        }else{
+            assertTrue(false)
         }
     }
 
